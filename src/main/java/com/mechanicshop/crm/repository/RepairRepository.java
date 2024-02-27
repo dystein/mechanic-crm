@@ -4,7 +4,12 @@ import com.mechanicshop.crm.model.Repair;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RepairRepository extends JpaRepository<Repair, Long> {
-    // Here you might add queries to find repairs by status or date range
+    List<Repair> findByStatus(String status);
+
+    // Method to find repairs by vehicle ID
+    List<Repair> findByVehicleId(Long vehicleId);
 }

@@ -32,6 +32,73 @@ public class Vehicle {
     @JoinColumn(name = "customerID")
     private Customer customer;
 
-    //Getters and setters
+    // Constructors
+    public Vehicle() {
+    }
 
+    // Getters
+    public Long getVehicleId() {
+        return vehicleId;
+    }
+
+    public String getMake() {
+        return make;
+    }
+
+    public String getModel() {
+        return model;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public Integer getMileage() {
+        return mileage;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public String getAdditionalNotes() {
+        return additionalNotes;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    // Setters
+    public void setVehicleId(Long vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public void setMake(String make) {
+        this.make = make;
+    }
+
+    public void setModel(String model) {
+        this.model = model;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public void setMileage(Integer mileage) {
+        this.mileage = mileage;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
+    }
+
+    public void setAdditionalNotes(String additionalNotes) {
+        this.additionalNotes = additionalNotes;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 }

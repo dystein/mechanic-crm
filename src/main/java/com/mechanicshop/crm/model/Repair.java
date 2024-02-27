@@ -33,5 +33,65 @@ public class Repair {
     @JoinColumn(name = "vehicleId")
     private Vehicle vehicle;
 
-    // Getters and setters
+    // Constructors
+    public Repair() {
+    }
+
+    // Getters
+    public Long getRepairId() {
+        return repairId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    // Setters
+    public void setRepairId(Long repairId) {
+        this.repairId = repairId;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public void setCost(BigDecimal cost) {
+        this.cost = cost;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
 }
