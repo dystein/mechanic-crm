@@ -1,15 +1,18 @@
 package com.mechanicshop.crm.repository;
 
-import com.mechanicshop.crm.model.Repair;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+// Required imports
 
-import java.util.List;
+import com.mechanicshop.crm.model.Repair; // Importing the Repair entity
+import org.springframework.data.jpa.repository.JpaRepository; // Spring Data JPA repository interface
+import org.springframework.stereotype.Repository; // Annotation to denote a repository component
 
-@Repository
+import java.util.List; // Import for using the List collection
+
+@Repository // Marks the interface as a repository component in the Spring context
 public interface RepairRepository extends JpaRepository<Repair, Long> {
+    // Method to find repairs by their status
     List<Repair> findByStatus(String status);
 
-    // Method to find repairs by vehicle ID
+    // Custom method to find repairs associated with a specific vehicle ID
     List<Repair> findByVehicleId(Long vehicleId);
 }

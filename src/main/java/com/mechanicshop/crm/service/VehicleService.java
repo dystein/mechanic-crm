@@ -14,23 +14,28 @@ public class VehicleService {
 
     private final VehicleRepository vehicleRepository;
 
+    // Constructor for dependency injection of VehicleRepository
     @Autowired
     public VehicleService(VehicleRepository vehicleRepository) {
         this.vehicleRepository = vehicleRepository;
     }
 
+    // Saves a vehicle entity to the database
     public Vehicle saveVehicle(Vehicle vehicle) {
         return vehicleRepository.save(vehicle);
     }
 
+    // Retrieves all vehicles from the database
     public List<Vehicle> getAllVehicles() {
         return vehicleRepository.findAll();
     }
 
+    // Retrieves a vehicle by its ID
     public Optional<Vehicle> getVehicleById(Long id) {
         return vehicleRepository.findById(id);
     }
 
+    // Updates a vehicle entity with new details
     public Vehicle updateVehicle(Long id, Vehicle vehicleDetails) {
         Vehicle vehicle = vehicleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vehicle not found for this id :: " + id));
@@ -41,12 +46,14 @@ public class VehicleService {
         return vehicleRepository.save(vehicle);
     }
 
+    // Deletes a vehicle by its ID
     public void deleteVehicle(Long id) {
         Vehicle vehicle = vehicleRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Vehicle not found for this id :: " + id));
         vehicleRepository.delete(vehicle);
     }
 
+    // Searches vehicles by license plate, make, and model
     public List<Vehicle> searchVehicles(String licensePlate, String make, String model) {
         // Initialize an empty list to hold the results
         List<Vehicle> results = new ArrayList<>();

@@ -1,5 +1,6 @@
 package com.mechanicshop.crm.service;
 
+// Required imports
 import com.mechanicshop.crm.model.Customer;
 import com.mechanicshop.crm.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,37 +8,42 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+@Service // Marks this class as a service component in the Spring context
 public class CustomerService {
 
-    private final CustomerRepository customerRepository;
+    private final CustomerRepository customerRepository; // Dependency on the CustomerRepository
 
-    @Autowired
+    @Autowired // Autowiring the CustomerRepository to inject its instance
     public CustomerService(CustomerRepository customerRepository) {
         this.customerRepository = customerRepository;
     }
 
+    // Saves a customer to the database
     public Customer saveCustomer(Customer customer) {
         return customerRepository.save(customer);
     }
 
+    // Retrieves all customers from the database
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
+    // Retrieves a customer by their ID
     public Optional<Customer> getCustomerById(Long id) {
         return customerRepository.findById(id);
     }
 
+    // Updates a customer's details
     public Customer updateCustomer(Long id, Customer customerDetails) {
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found for this id :: " + id));
         customer.setName(customerDetails.getName());
         customer.setEmail(customerDetails.getEmail());
-        // Update other fields as needed
+        // Potentially updates other fields as necessary
         return customerRepository.save(customer);
     }
 
+    // Deletes a customer by their ID
     public void deleteCustomer(Long id) {
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found for this id :: " + id));
