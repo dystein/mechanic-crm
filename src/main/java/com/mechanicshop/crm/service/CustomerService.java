@@ -49,4 +49,11 @@ public class CustomerService {
                 .orElseThrow(() -> new RuntimeException("Customer not found for this id :: " + id));
         customerRepository.delete(customer);
     }
+
+    // Search for customers by name or phone
+    public List<Customer> searchCustomers(String query) {
+        // Assuming you have a method in CustomerRepository to search by name or phone
+        // This method needs to be implemented in CustomerRepository
+        return customerRepository.findByFirstNameContainingOrLastNameContainingOrPhoneNumberContaining(query, query, query);
+    }
 }
