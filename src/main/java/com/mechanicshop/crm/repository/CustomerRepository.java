@@ -14,5 +14,5 @@ public interface CustomerRepository extends JpaRepository<Customer, Long> {
     // This method declaration provides a way to search for customers by first name, last name, or phone number.
     // It extends JpaRepository, providing generic CRUD operations on the Customer entity.
     // The method takes three String parameters and returns a list of Customer objects that match the criteria.
-    List<Customer> findByFirstNameContainingOrLastNameContainingOrPhoneNumberContaining(String firstName, String lastName, String phoneNumber);
+    List<Customer> findByNameContainingOrPhoneContaining(String Name, String phoneNumber);
 }
