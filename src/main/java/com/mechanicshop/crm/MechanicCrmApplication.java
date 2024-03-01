@@ -134,7 +134,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 			// Display the details of each customer found
 			System.out.println("Found customers:");
 			for (Customer customer : customers) {
-				System.out.println("ID: " + customer.getCustomerId() + ", Name: " + customer.getName() + ", Phone: " + customer.getPhone()
+				System.out.println("ID: " + customer.getCustomerID() + ", Name: " + customer.getName() + ", Phone: " + customer.getPhone()
 						+ ", Email: " + customer.getEmail() + ", Address: " + customer.getAddress());
 				// Print other customer details if necessary
 			}

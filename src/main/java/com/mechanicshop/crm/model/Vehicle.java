@@ -13,29 +13,29 @@ public class Vehicle {
     @Id
     // Configures the way the primary key is generated automatically by the database
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long vehicleId;
+    private Long VehicleId;
 
     // Specifies these fields as columns in the table, with a constraint that they cannot be null
     @Column(nullable = false)
-    private String make;
+    private String Make;
 
     @Column(nullable = false)
-    private String model;
+    private String Model;
 
     @Column(nullable = false)
     private Integer year;
 
     // This field can be null, thus doesn't have the nullable = false constraint
     @Column
-    private Integer mileage;
+    private Integer Mileage;
 
     // Specifies that the licensePlate column must be unique and not null
     @Column(nullable = false, unique = true)
-    private String licensePlate;
+    private String LicensePlate;
 
     // A large text field for additional notes about the vehicle
     @Column(length = 65535, columnDefinition = "TEXT")
-    private String additionalNotes;
+    private String AdditionalNotes;
 
     // Establishes a many-to-one relationship between vehicles and a customer
     // FetchType.LAZY indicates that the customer associated with a vehicle is loaded on demand
@@ -49,15 +49,15 @@ public class Vehicle {
 
     // Getters and setters for all fields to access and modify the vehicle's properties
     public Long getVehicleId() {
-        return vehicleId;
+        return VehicleId;
     }
 
     public String getMake() {
-        return make;
+        return Make;
     }
 
     public String getModel() {
-        return model;
+        return Model;
     }
 
     public Integer getYear() {
@@ -65,15 +65,15 @@ public class Vehicle {
     }
 
     public Integer getMileage() {
-        return mileage;
+        return Mileage;
     }
 
     public String getLicensePlate() {
-        return licensePlate;
+        return LicensePlate;
     }
 
     public String getAdditionalNotes() {
-        return additionalNotes;
+        return AdditionalNotes;
     }
 
     public Customer getCustomer() {
@@ -81,15 +81,15 @@ public class Vehicle {
     }
 
     public void setVehicleId(Long vehicleId) {
-        this.vehicleId = vehicleId;
+        this.VehicleId = vehicleId;
     }
 
     public void setMake(String make) {
-        this.make = make;
+        this.Make = make;
     }
 
     public void setModel(String model) {
-        this.model = model;
+        this.Model = model;
     }
 
     public void setYear(Integer year) {
@@ -97,15 +97,15 @@ public class Vehicle {
     }
 
     public void setMileage(Integer mileage) {
-        this.mileage = mileage;
+        this.Mileage = mileage;
     }
 
     public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
+        this.LicensePlate = licensePlate;
     }
 
     public void setAdditionalNotes(String additionalNotes) {
-        this.additionalNotes = additionalNotes;
+        this.AdditionalNotes = additionalNotes;
     }
 
     public void setCustomer(Customer customer) {

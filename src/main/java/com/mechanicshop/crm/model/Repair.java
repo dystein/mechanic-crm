@@ -19,17 +19,17 @@ public class Repair {
 
     // A text column in the database to store the repair description, capable of storing large text
     @Column(length = 65535, columnDefinition = "TEXT")
-    private String description;
+    private String Description;
 
     // Stores the start date of the repair, using the DATE type in the database
     @Column
     @Temporal(TemporalType.DATE)
-    private Date startDate;
+    private Date StartDate;
 
     // Stores the end date of the repair, similar to startDate
     @Column
     @Temporal(TemporalType.DATE)
-    private Date endDate;
+    private Date EndDate;
 
     // A non-nullable column to store the cost of the repair with precise decimal numbers
     @Column(nullable = false)
@@ -37,7 +37,7 @@ public class Repair {
 
     // A non-nullable string column to store the status of the repair, limited to 50 characters
     @Column(nullable = false, length = 50)
-    private String status;
+    private String Status;
 
     // Establishes a many-to-one relationship with the Vehicle entity
     // Indicates that each repair is associated with one vehicle
@@ -55,15 +55,15 @@ public class Repair {
     }
 
     public String getDescription() {
-        return description;
+        return Description;
     }
 
     public Date getStartDate() {
-        return startDate;
+        return StartDate;
     }
 
     public Date getEndDate() {
-        return endDate;
+        return EndDate;
     }
 
     public BigDecimal getCost() {
@@ -71,7 +71,7 @@ public class Repair {
     }
 
     public String getStatus() {
-        return status;
+        return Status;
     }
 
     public Vehicle getVehicle() {
@@ -84,15 +84,15 @@ public class Repair {
     }
 
     public void setDescription(String description) {
-        this.description = description;
+        this.Description = description;
     }
 
     public void setStartDate(Date startDate) {
-        this.startDate = startDate;
+        this.StartDate = startDate;
     }
 
     public void setEndDate(Date endDate) {
-        this.endDate = endDate;
+        this.EndDate = endDate;
     }
 
     public void setCost(BigDecimal cost) {
@@ -100,7 +100,7 @@ public class Repair {
     }
 
     public void setStatus(String status) {
-        this.status = status;
+        this.Status = status;
     }
 
     public void setVehicle(Vehicle vehicle) {
