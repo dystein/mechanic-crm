@@ -13,23 +13,23 @@ public class Customer {
     // Specifies the primary key of the entity with auto-increment strategy
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CustomerID;
+    private Long customerID;
 
     // Marks the field as a column in the table with a not-null constraint
     @Column(nullable = false)
-    private String Name;
+    private String name;
 
     // Similar to name, marks as a column that cannot be null
     @Column(nullable = false)
-    private String Phone;
+    private String phone;
 
     // Marks the email as a unique column, ensuring no two customers have the same email
     @Column(nullable = false, unique = true)
-    private String Email;
+    private String email;
 
     // Specifies a TEXT type column for longer strings, also with a not-null constraint
     @Column(nullable = false, length = 65535, columnDefinition = "TEXT")
-    private String Address;
+    private String address;
 
     // Establishes a one-to-many relationship with the Vehicle entity
     // Cascade type ALL means persist, merge, remove, and refresh operations will cascade from customer to vehicles
@@ -42,23 +42,23 @@ public class Customer {
 
     // Getters and setters for all the fields to access and modify the entity's properties
     public Long getCustomerID() {
-        return CustomerID;
+        return customerID;
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public String getEmail() {
-        return Email;
+        return email;
     }
 
     public String getAddress() {
-        return Address;
+        return address;
     }
 
     public Set<Vehicle> getVehicles() {
@@ -66,23 +66,23 @@ public class Customer {
     }
 
     public void setCustomerID(Long customerID) {
-        this.CustomerID = customerID;
+        this.customerID = customerID;
     }
 
     public void setName(String name) {
-        this.Name = name;
+        this.name = name;
     }
 
     public void setPhone(String phone) {
-        this.Phone = phone;
+        this.phone = phone;
     }
 
     public void setEmail(String email) {
-        this.Email = email;
+        this.email = email;
     }
 
     public void setAddress(String address) {
-        this.Address = address;
+        this.address = address;
     }
 
     // When setting vehicles, ensure each vehicle is associated back to this customer
