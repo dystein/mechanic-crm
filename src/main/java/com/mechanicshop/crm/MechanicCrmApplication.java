@@ -1,6 +1,7 @@
 package com.mechanicshop.crm;
 
 import com.mechanicshop.crm.model.Customer;
+import com.mechanicshop.crm.model.Vehicle;
 import com.mechanicshop.crm.service.CustomerService;
 import com.mechanicshop.crm.service.RepairService;
 import com.mechanicshop.crm.service.VehicleService;
@@ -60,14 +61,117 @@ public class MechanicCrmApplication implements CommandLineRunner {
 	}
 
 	private void handleRepairs(Scanner scanner) {
-		// Placeholder for repair-related operations
-		// TODO: Implement repair operations
+
 	}
 
 	private void handleVehicles(Scanner scanner) {
-		// Placeholder for vehicle-related operations
-		// TODO: Implement vehicle operations
+		// Vehicle operations menu
+		System.out.println("\nVehicle Operations:");
+		System.out.println("1. Add a new vehicle");
+		System.out.println("2. Search for a vehicle");
+		System.out.println("3. Return to main menu");
+		System.out.print("Enter your choice: ");
+
+		String vehicleChoice = scanner.nextLine();
+		switch (vehicleChoice) {
+			case "1":
+				addNewVehicle(scanner);
+				break;
+			case "2":
+				searchForVehicle(scanner);
+				break;
+			case "3":
+				// Returns to the main menu
+				break;
+			default:
+				System.out.println("Invalid choice. Please try again.");
+		}
 	}
+
+	private void addNewVehicle(Scanner scanner) {
+		System.out.print("Enter vehicle make: ");
+		String make = scanner.nextLine();
+
+		System.out.print("Enter vehicle model: ");
+		String model = scanner.nextLine();
+
+		System.out.print("Enter vehicle year: ");
+		int year = Integer.parseInt(scanner.nextLine());
+
+		System.out.print("Enter vehicle mileage: ");
+		int mileage = Integer.parseInt(scanner.nextLine());
+
+		System.out.print("Enter license plate: ");
+		String licensePlate = scanner.nextLine();
+
+		// Add other fields as necessary...
+
+		System.out.println("Does this vehicle belong to an existing customer?");
+		System.out.println("1. Yes");
+		System.out.println("2. No");
+		System.out.print("Enter your choice: ");
+		String existingCustomerChoice = scanner.nextLine();
+		Long customerId = null;
+		if ("1".equals(existingCustomerChoice)) {
+			customerId = searchAndSelectCustomer(scanner);
+			if (customerId == null) {
+				System.out.println("No customer selected, returning to vehicle menu.");
+				return; // Go back if no customer is selected
+			}
+		} else if ("2".equals(existingCustomerChoice)) {
+			addNewCustomer(scanner); // This should return the ID of the new customer
+		} else {
+			System.out.println("Invalid choice. Returning to vehicle menu.");
+			return;
+		}
+
+		Vehicle vehicle = new Vehicle();
+		vehicle.setMake(make);
+		vehicle.setModel(model);
+		vehicle.setYear(year);
+		vehicle.setMileage(mileage);
+		vehicle.setLicensePlate(licensePlate);
+		// Set other fields...
+
+		// Link to customer
+		if (customerId != null) {
+			Customer customer = customerService.getCustomerById(customerId)
+					.orElseThrow(() -> new RuntimeException("Customer not found"));
+			vehicle.setCustomer(customer);
+		}
+
+		vehicleService.saveVehicle(vehicle);
+		System.out.println("Vehicle added successfully!");
+	}
+
+	private Long searchAndSelectCustomer(Scanner scanner) {
+		System.out.print("Enter customer name or phone number to search: ");
+		String query = scanner.nextLine();
+
+		List<Customer> customers = customerService.searchCustomers(query);
+		if (customers.isEmpty()) {
+			System.out.println("No customers found.");
+			return null;
+		}
+
+		System.out.println("Select a customer by ID:");
+		for (Customer customer : customers) {
+			System.out.println("ID: " + customer.getCustomerID() + ", Name: " + customer.getName());
+		}
+		System.out.print("Enter the customer ID: ");
+		String customerIdInput = scanner.nextLine();
+		try {
+			return Long.parseLong(customerIdInput);
+		} catch (NumberFormatException e) {
+			System.out.println("Invalid customer ID.");
+			return null;
+		}
+	}
+
+	private void searchForVehicle(Scanner scanner) {
+		// TODO: Implement search functionality based on various vehicle attributes
+	}
+
 
 	private void handleCustomers(Scanner scanner) {
 		// Customer operations menu

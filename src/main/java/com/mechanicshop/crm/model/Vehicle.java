@@ -38,6 +38,9 @@ public class Vehicle {
     @Column(name = "additionalNotes", columnDefinition = "TEXT")
     private String additionalNotes;
 
+    @Column(name = "state", columnDefinition = "TEXT")
+    private String state;
+
     // Establishes a many-to-one relationship between vehicles and a customer
     // FetchType.LAZY indicates that the customer associated with a vehicle is loaded on demand
     @ManyToOne(fetch = FetchType.LAZY)
@@ -103,6 +106,14 @@ public class Vehicle {
 
     public void setAdditionalNotes(String additionalNotes) {
         this.additionalNotes = additionalNotes;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.additionalNotes = state;
     }
 
     public Customer getCustomer() {
