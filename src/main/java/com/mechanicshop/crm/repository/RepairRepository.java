@@ -11,8 +11,4 @@ import java.util.List; // Import for using the List collection
 @Repository // Marks the interface as a repository component in the Spring context
 public interface RepairRepository extends JpaRepository<Repair, Long> {
     // Method to find repairs by their status
-    List<Repair> findByStatus(String status);
-
-    // Custom method to find repairs associated with a specific vehicle ID
-    List<Repair> findByVehicleId(Long vehicleId);
 }
