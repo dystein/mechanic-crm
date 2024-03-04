@@ -43,7 +43,7 @@ public class Vehicle {
 
     // Establishes a many-to-one relationship between vehicles and a customer
     // FetchType.LAZY indicates that the customer associated with a vehicle is loaded on demand
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID") // Specifies the foreign key column in the vehicles table
     private Customer customer;
 

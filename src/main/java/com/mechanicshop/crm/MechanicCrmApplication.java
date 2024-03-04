@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -70,6 +71,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		System.out.println("1. Add a new vehicle");
 		System.out.println("2. Search for a vehicle");
 		System.out.println("3. Return to main menu");
+        System.out.println("4. Delete Vehicle");
 		System.out.print("Enter your choice: ");
 
 		String vehicleChoice = scanner.nextLine();
@@ -83,13 +85,22 @@ public class MechanicCrmApplication implements CommandLineRunner {
 			case "3":
 				// Returns to the main menu
 				break;
+            case "4":
+                deleteVehicle(scanner);
+                break;
 			default:
 				System.out.println("Invalid choice. Please try again.");
 		}
 	}
 
+    private void deleteVehicle(Scanner scanner) {
+        System.out.print("Enter the ID of the vehicle to delete: ");
+        Long vehicleId = Long.parseLong(scanner.nextLine());
+        vehicleService.deleteVehicle(vehicleId);
+    }
+
 	private void addNewVehicle(Scanner scanner) {
-		System.out.print("Enter vehicle make: ");
+        System.out.print("Enter vehicle make/brand: ");
 		String make = scanner.nextLine();
 
 		System.out.print("Enter vehicle model: ");
@@ -103,6 +114,12 @@ public class MechanicCrmApplication implements CommandLineRunner {
 
 		System.out.print("Enter license plate: ");
 		String licensePlate = scanner.nextLine();
+
+        System.out.print("Enter license plate state: ");
+        String state = scanner.nextLine();
+
+        System.out.print("Enter any additional vehicle notes: ");
+        String additionalNotes = scanner.nextLine();
 
 		// Add other fields as necessary...
 
@@ -131,6 +148,8 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		vehicle.setYear(year);
 		vehicle.setMileage(mileage);
 		vehicle.setLicensePlate(licensePlate);
+        vehicle.setState(state);
+        vehicle.setAdditionalNotes(additionalNotes);
 		// Set other fields...
 
 		// Link to customer
@@ -169,8 +188,62 @@ public class MechanicCrmApplication implements CommandLineRunner {
 	}
 
 	private void searchForVehicle(Scanner scanner) {
-		// TODO: Implement search functionality based on various vehicle attributes
-	}
+        System.out.println("\nEnter search criteria for the vehicle:");
+        System.out.println("1. By Make");
+        System.out.println("2. By Model");
+        System.out.println("3. By License Plate");
+        System.out.print("Enter your choice: ");
+        String searchChoice = scanner.nextLine();
+
+        List<Vehicle> vehicles = new ArrayList<>();
+        switch (searchChoice) {
+            case "1":
+                System.out.print("Enter make: ");
+                String make = scanner.nextLine();
+                vehicles = vehicleService.searchVehiclesByMake(make);
+                break;
+            case "2":
+                System.out.print("Enter model: ");
+                String model = scanner.nextLine();
+                vehicles = vehicleService.searchVehiclesByModel(model);
+                break;
+            case "3":
+                System.out.print("Enter license plate: ");
+                String licensePlate = scanner.nextLine();
+                vehicles = vehicleService.searchVehiclesByLicensePlate(licensePlate);
+                break;
+            default:
+                System.out.println("Invalid choice. Please try again.");
+                return;
+        }
+
+        if (vehicles.isEmpty()) {
+            System.out.println("No vehicles found.");
+        } else {
+            System.out.println("Found vehicles:");
+            for (Vehicle vehicle : vehicles) {
+                // Assuming your Vehicle class has a getCustomer() method to access the Customer entity
+                Customer owner = vehicle.getCustomer();
+                System.out.println("Vehicle ID: " + vehicle.getVehicleId() +
+                        ", Make: " + vehicle.getMake() +
+                        ", Model: " + vehicle.getModel() +
+                        ", License Plate: " + vehicle.getLicensePlate() +
+                        ", Year: " + vehicle.getYear() +
+                        ", Mileage: " + vehicle.getMileage() +
+                        ", State: " + vehicle.getState() +
+                        ", Notes: " + vehicle.getAdditionalNotes());
+                if (owner != null) {
+                    System.out.println("Owned by: " + owner.getName() +
+                            ", Phone: " + owner.getPhone() +
+                            ", Email: " + owner.getEmail());
+                } else {
+                    System.out.println("This vehicle is not linked to an owner.");
+                }
+            }
+        }
+
+    }
+
 
 
 	private void handleCustomers(Scanner scanner) {
@@ -179,6 +252,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		System.out.println("1. Add new customer");
 		System.out.println("2. Search for customer");
 		System.out.println("3. Return to main menu");
+        System.out.println("4. Delete Customer");
 		System.out.print("Enter your choice: ");
 
 		String customerChoice = scanner.nextLine();
@@ -192,10 +266,19 @@ public class MechanicCrmApplication implements CommandLineRunner {
 			case "3":
 				// Returns to the main menu
 				break;
+            case "4":
+                deleteCustomer(scanner);
+                break;
 			default:
 				System.out.println("Invalid choice. Please try again.");
 		}
 	}
+
+    private void deleteCustomer(Scanner scanner) {
+        System.out.print("Enter the ID of the customer to delete: ");
+        Long customerId = Long.parseLong(scanner.nextLine());
+        customerService.deleteCustomer(customerId);
+    }
 
 	private void addNewCustomer(Scanner scanner) {
 		// Collect customer information from the user
@@ -245,5 +328,6 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		}
 	}
 
-	// Other methods for vehicles and repairs...
+
+    // Other methods for vehicles and repairs...
 }
