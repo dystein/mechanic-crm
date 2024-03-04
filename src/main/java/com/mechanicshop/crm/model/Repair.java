@@ -1,106 +1,92 @@
-// Defines the package where this class belongs
 package com.mechanicshop.crm.model;
 
-// Import statements for JPA annotations and Java utility classes
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.Date;
 
-// Annotation to declare this class as an entity for JPA, mapping it to a database table
 @Entity
-// Specifies the name of the table in the database that this entity maps to
 @Table(name = "repairs")
 public class Repair {
 
-    // Primary key of the entity, auto-generated with the database's identity column
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "repairID")
     private Long repairId;
 
-    // A text column in the database to store the repair description, capable of storing large text
-    @Column(length = 65535, columnDefinition = "TEXT")
+    @Column(name = "description", length = 65535, columnDefinition = "TEXT")
     private String description;
 
-    // Stores the start date of the repair, using the DATE type in the database
-    @Column
+    @Column(name = "startDate")
     @Temporal(TemporalType.DATE)
     private Date startDate;
 
-    // Stores the end date of the repair, similar to startDate
-    @Column
+    @Column(name = "endDate")
     @Temporal(TemporalType.DATE)
     private Date endDate;
 
-    // A non-nullable column to store the cost of the repair with precise decimal numbers
-    @Column(nullable = false)
+    @Column(name = "cost", nullable = false)
     private BigDecimal cost;
 
-    // A non-nullable string column to store the status of the repair, limited to 50 characters
-    @Column(nullable = false, length = 50)
+    @Column(name = "status", nullable = false, length = 50)
     private String status;
 
-    // Establishes a many-to-one relationship with the Vehicle entity
-    // Indicates that each repair is associated with one vehicle
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehicleId") // Foreign key column in the repairs table
+    @JoinColumn(name = "vehicleID") // Updated to uppercase as per database schema
     private Vehicle vehicle;
 
-    // Default constructor required by JPA
     public Repair() {
     }
 
-    // Getter methods to retrieve the values of the entity's properties
     public Long getRepairId() {
         return repairId;
+    }
+
+    public void setRepairId(Long repairId) {
+        this.repairId = repairId;
     }
 
     public String getDescription() {
         return description;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public Date getEndDate() {
-        return endDate;
-    }
-
-    public BigDecimal getCost() {
-        return cost;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    // Setter methods to set the values of the entity's properties
-    public void setRepairId(Long repairId) {
-        this.repairId = repairId;
-    }
-
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getStartDate() {
+        return startDate;
     }
 
     public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
+    public Date getEndDate() {
+        return endDate;
+    }
+
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public BigDecimal getCost() {
+        return cost;
     }
 
     public void setCost(BigDecimal cost) {
         this.cost = cost;
     }
 
+    public String getStatus() {
+        return status;
+    }
+
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
     }
 
     public void setVehicle(Vehicle vehicle) {

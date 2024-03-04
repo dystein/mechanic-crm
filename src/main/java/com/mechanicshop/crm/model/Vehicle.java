@@ -13,28 +13,29 @@ public class Vehicle {
     @Id
     // Configures the way the primary key is generated automatically by the database
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "vehicleID", nullable = false)
     private Long vehicleId;
 
     // Specifies these fields as columns in the table, with a constraint that they cannot be null
-    @Column(nullable = false)
+    @Column(name = "make", nullable = false)
     private String make;
 
-    @Column(nullable = false)
+    @Column(name = "model", nullable = false)
     private String model;
 
-    @Column(nullable = false)
+    @Column(name = "year", nullable = false)
     private Integer year;
 
     // This field can be null, thus doesn't have the nullable = false constraint
-    @Column
+    @Column(name = "mileage")
     private Integer mileage;
 
     // Specifies that the licensePlate column must be unique and not null
-    @Column(nullable = false, unique = true)
+    @Column(name = "licensePlate", nullable = false, unique = true)
     private String licensePlate;
 
     // A large text field for additional notes about the vehicle
-    @Column(length = 65535, columnDefinition = "TEXT")
+    @Column(name = "additionalNotes", length = 65535, columnDefinition = "TEXT")
     private String additionalNotes;
 
     // Establishes a many-to-one relationship between vehicles and a customer
@@ -52,60 +53,60 @@ public class Vehicle {
         return vehicleId;
     }
 
-    public String getMake() {
-        return make;
-    }
-
-    public String getModel() {
-        return model;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public Integer getMileage() {
-        return mileage;
-    }
-
-    public String getLicensePlate() {
-        return licensePlate;
-    }
-
-    public String getAdditionalNotes() {
-        return additionalNotes;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
     public void setVehicleId(Long vehicleId) {
         this.vehicleId = vehicleId;
+    }
+
+    public String getMake() {
+        return make;
     }
 
     public void setMake(String make) {
         this.make = make;
     }
 
+    public String getModel() {
+        return model;
+    }
+
     public void setModel(String model) {
         this.model = model;
+    }
+
+    public Integer getYear() {
+        return year;
     }
 
     public void setYear(Integer year) {
         this.year = year;
     }
 
+    public Integer getMileage() {
+        return mileage;
+    }
+
     public void setMileage(Integer mileage) {
         this.mileage = mileage;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
     }
 
     public void setLicensePlate(String licensePlate) {
         this.licensePlate = licensePlate;
     }
 
+    public String getAdditionalNotes() {
+        return additionalNotes;
+    }
+
     public void setAdditionalNotes(String additionalNotes) {
         this.additionalNotes = additionalNotes;
+    }
+
+    public Customer getCustomer() {
+        return customer;
     }
 
     public void setCustomer(Customer customer) {
