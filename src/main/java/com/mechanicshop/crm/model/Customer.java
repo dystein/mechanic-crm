@@ -27,8 +27,8 @@ public class Customer {
     @Column(nullable = false, unique = true)
     private String email;
 
-    // Specifies a TEXT type column for longer strings, also with a not-null constraint
-    @Column(nullable = false, length = 65535, columnDefinition = "TEXT")
+    // Specifies a TEXT type column for longer strings, without a not-null constraint
+    @Column(columnDefinition = "TEXT")
     private String address;
 
     // Establishes a one-to-many relationship with the Vehicle entity

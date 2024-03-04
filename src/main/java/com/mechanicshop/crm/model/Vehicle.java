@@ -35,7 +35,7 @@ public class Vehicle {
     private String licensePlate;
 
     // A large text field for additional notes about the vehicle
-    @Column(name = "additionalNotes", length = 65535, columnDefinition = "TEXT")
+    @Column(name = "additionalNotes", columnDefinition = "TEXT")
     private String additionalNotes;
 
     // Establishes a many-to-one relationship between vehicles and a customer
