@@ -74,4 +74,8 @@ public class VehicleService {
     public List<Vehicle> searchVehiclesByLicensePlate(String licensePlate) {
         return searchVehicles(licensePlate, null, null);
     }
+
+    public void saveAllVehicles(List<Vehicle> vehicles) {
+        vehicleRepository.saveAll(vehicles);
+    }
 }

@@ -9,8 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.apache.poi.ss.usermodel.*;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -72,6 +79,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		System.out.println("2. Search for a vehicle");
 		System.out.println("3. Return to main menu");
         System.out.println("4. Delete Vehicle");
+		System.out.println("5. Import Vehicles");
 		System.out.print("Enter your choice: ");
 
 		String vehicleChoice = scanner.nextLine();
@@ -88,12 +96,15 @@ public class MechanicCrmApplication implements CommandLineRunner {
             case "4":
                 deleteVehicle(scanner);
                 break;
+			case "5":
+				importVehicleData(scanner);
 			default:
 				System.out.println("Invalid choice. Please try again.");
 		}
 	}
 
-    private void deleteVehicle(Scanner scanner) {
+
+	private void deleteVehicle(Scanner scanner) {
         System.out.print("Enter the ID of the vehicle to delete: ");
         Long vehicleId = Long.parseLong(scanner.nextLine());
         vehicleService.deleteVehicle(vehicleId);
@@ -253,6 +264,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		System.out.println("2. Search for customer");
 		System.out.println("3. Return to main menu");
         System.out.println("4. Delete Customer");
+		System.out.println("5. Import Customers");
 		System.out.print("Enter your choice: ");
 
 		String customerChoice = scanner.nextLine();
@@ -269,12 +281,92 @@ public class MechanicCrmApplication implements CommandLineRunner {
             case "4":
                 deleteCustomer(scanner);
                 break;
+			case "5":
+				importCustomerData(scanner);
 			default:
 				System.out.println("Invalid choice. Please try again.");
 		}
 	}
 
-    private void deleteCustomer(Scanner scanner) {
+	private void importCustomerData(Scanner scanner) {
+		System.out.print("Enter the Excel file path for customers: ");
+		String filePath = scanner.nextLine();
+
+		try {
+			FileInputStream excelFile = new FileInputStream(new File(filePath));
+			Workbook workbook = new XSSFWorkbook(excelFile);
+			Sheet datatypeSheet = workbook.getSheetAt(0);
+			Iterator<Row> iterator = datatypeSheet.iterator();
+
+			List<Customer> customers = new ArrayList<>();
+			while (iterator.hasNext()) {
+				Row currentRow = iterator.next();
+				if (currentRow.getRowNum() == 0) continue; // Skip header row
+
+				Customer customer = new Customer();
+				customer.setName(currentRow.getCell(1).getStringCellValue());
+				customer.setPhone(currentRow.getCell(2).getStringCellValue());
+				customer.setEmail(currentRow.getCell(3).getStringCellValue());
+				customer.setAddress(currentRow.getCell(4).getStringCellValue());
+				customers.add(customer);
+			}
+
+			// Save all customers to database
+			customerService.saveAllCustomers(customers);
+			System.out.println("Customers imported successfully!");
+
+			workbook.close();
+			excelFile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Failed to import customers. Error reading the Excel file.");
+		}
+	}
+
+	private void importVehicleData(Scanner scanner) {
+		System.out.print("Enter the Excel file path for vehicles: ");
+		String filePath = scanner.nextLine();
+
+		try {
+			FileInputStream excelFile = new FileInputStream(new File(filePath));
+			Workbook workbook = new XSSFWorkbook(excelFile);
+			Sheet datatypeSheet = workbook.getSheetAt(0);
+			Iterator<Row> iterator = datatypeSheet.iterator();
+
+			List<Vehicle> vehicles = new ArrayList<>();
+			while (iterator.hasNext()) {
+				Row currentRow = iterator.next();
+				if (currentRow.getRowNum() == 0) continue; // Skip header row
+
+				Vehicle vehicle = new Vehicle();
+				// Assuming the customerId in Excel is the actual ID and the customer exists in DB
+				Long customerId = (long) currentRow.getCell(1).getNumericCellValue();
+				Customer customer = customerService.getCustomerById(customerId)
+						.orElseThrow(() -> new RuntimeException("Customer not found with ID: " + customerId));
+
+				vehicle.setCustomer(customer);
+				vehicle.setMake(currentRow.getCell(2).getStringCellValue());
+				vehicle.setModel(currentRow.getCell(3).getStringCellValue());
+				vehicle.setYear((int) currentRow.getCell(4).getNumericCellValue());
+				vehicle.setMileage((int) currentRow.getCell(5).getNumericCellValue());
+				vehicle.setLicensePlate(currentRow.getCell(6).getStringCellValue());
+				vehicle.setAdditionalNotes(currentRow.getCell(7).getStringCellValue());
+				vehicles.add(vehicle);
+			}
+
+			// Save all vehicles to database
+			vehicleService.saveAllVehicles(vehicles);
+			System.out.println("Vehicles imported successfully!");
+
+			workbook.close();
+			excelFile.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("Failed to import vehicles. Error reading the Excel file.");
+		}
+	}
+
+	private void deleteCustomer(Scanner scanner) {
         System.out.print("Enter the ID of the customer to delete: ");
         Long customerId = Long.parseLong(scanner.nextLine());
         customerService.deleteCustomer(customerId);

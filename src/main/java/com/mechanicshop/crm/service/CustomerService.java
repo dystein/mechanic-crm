@@ -57,5 +57,9 @@ public class CustomerService {
         return customerRepository.findByNameContainingOrPhoneContaining(query, query);
     }
 
+    public void saveAllCustomers(List<Customer> customers) {
+        customerRepository.saveAll(customers);
+    }
+
 
 }
