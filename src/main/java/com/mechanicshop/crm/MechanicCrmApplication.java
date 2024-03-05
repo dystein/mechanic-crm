@@ -16,10 +16,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 @SpringBootApplication
 public class MechanicCrmApplication implements CommandLineRunner {
@@ -304,10 +301,10 @@ public class MechanicCrmApplication implements CommandLineRunner {
 				if (currentRow.getRowNum() == 0) continue; // Skip header row
 
 				Customer customer = new Customer();
-				customer.setName(currentRow.getCell(1).getStringCellValue());
-				customer.setPhone(currentRow.getCell(2).getStringCellValue());
-				customer.setEmail(currentRow.getCell(3).getStringCellValue());
-				customer.setAddress(currentRow.getCell(4).getStringCellValue());
+				customer.setName(Optional.ofNullable(currentRow.getCell(0)).map(Cell::getStringCellValue).orElse(""));
+				customer.setPhone(Optional.ofNullable(currentRow.getCell(1)).map(Cell::getStringCellValue).orElse(""));
+				customer.setEmail(Optional.ofNullable(currentRow.getCell(2)).map(Cell::getStringCellValue).orElse(""));
+				customer.setAddress(Optional.ofNullable(currentRow.getCell(3)).map(Cell::getStringCellValue).orElse(""));
 				customers.add(customer);
 			}
 
@@ -322,6 +319,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 			System.out.println("Failed to import customers. Error reading the Excel file.");
 		}
 	}
+
 
 	private void importVehicleData(Scanner scanner) {
 		System.out.print("Enter the Excel file path for vehicles: ");
@@ -339,22 +337,29 @@ public class MechanicCrmApplication implements CommandLineRunner {
 				if (currentRow.getRowNum() == 0) continue; // Skip header row
 
 				Vehicle vehicle = new Vehicle();
-				// Assuming the customerId in Excel is the actual ID and the customer exists in DB
-				Long customerId = (long) currentRow.getCell(1).getNumericCellValue();
-				Customer customer = customerService.getCustomerById(customerId)
-						.orElseThrow(() -> new RuntimeException("Customer not found with ID: " + customerId));
 
-				vehicle.setCustomer(customer);
-				vehicle.setMake(currentRow.getCell(2).getStringCellValue());
-				vehicle.setModel(currentRow.getCell(3).getStringCellValue());
-				vehicle.setYear((int) currentRow.getCell(4).getNumericCellValue());
-				vehicle.setMileage((int) currentRow.getCell(5).getNumericCellValue());
-				vehicle.setLicensePlate(currentRow.getCell(6).getStringCellValue());
-				vehicle.setAdditionalNotes(currentRow.getCell(7).getStringCellValue());
+				// Check if the customer ID cell is numeric and not null
+				Cell customerIdCell = currentRow.getCell(1);
+				if (customerIdCell != null && customerIdCell.getCellType() == CellType.NUMERIC) {
+					Long customerId = (long) customerIdCell.getNumericCellValue();
+					// Ensure the customer exists in the database
+					Customer customer = customerService.getCustomerById(customerId).orElse(null);
+					vehicle.setCustomer(customer);
+				}
+
+				// Safely retrieve values for each cell, accounting for possible null or different cell types
+				vehicle.setMake(getCellStringValue(currentRow.getCell(2)));
+				vehicle.setModel(getCellStringValue(currentRow.getCell(3)));
+				vehicle.setYear(getCellIntegerValue(currentRow.getCell(4)));
+				vehicle.setMileage(getCellIntegerValue(currentRow.getCell(5)));
+				vehicle.setLicensePlate(getCellStringValue(currentRow.getCell(6)));
+				vehicle.setAdditionalNotes(getCellStringValue(currentRow.getCell(7)));
+				// Add any additional fields as necessary
+
 				vehicles.add(vehicle);
 			}
 
-			// Save all vehicles to database
+			// Save all vehicles to the database
 			vehicleService.saveAllVehicles(vehicles);
 			System.out.println("Vehicles imported successfully!");
 
@@ -365,6 +370,32 @@ public class MechanicCrmApplication implements CommandLineRunner {
 			System.out.println("Failed to import vehicles. Error reading the Excel file.");
 		}
 	}
+
+	private String getCellStringValue(Cell cell) {
+		return Optional.ofNullable(cell).map(c -> {
+			if (c.getCellType() == CellType.STRING) {
+				return c.getStringCellValue();
+			} else if (c.getCellType() == CellType.NUMERIC) {
+				return String.valueOf(c.getNumericCellValue());
+			}
+			// Handle boolean or other cell types as necessary
+			return "";
+		}).orElse("");
+	}
+
+	private int getCellIntegerValue(Cell cell) {
+		return Optional.ofNullable(cell).map(c -> {
+			if (c.getCellType() == CellType.NUMERIC) {
+				return (int) c.getNumericCellValue();
+			}
+			// If it's a string and you know it's an integer like "2019", you could parse it
+			// Be careful with exceptions that might be thrown here
+			return 0;
+		}).orElse(0);
+	}
+
+
+
 
 	private void deleteCustomer(Scanner scanner) {
         System.out.print("Enter the ID of the customer to delete: ");
