@@ -1,6 +1,7 @@
 package com.mechanicshop.crm;
 
 import com.mechanicshop.crm.model.Customer;
+import com.mechanicshop.crm.model.Repair;
 import com.mechanicshop.crm.model.Vehicle;
 import com.mechanicshop.crm.service.CustomerService;
 import com.mechanicshop.crm.service.RepairService;
@@ -15,6 +16,10 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import java.util.*;
 
@@ -66,6 +71,65 @@ public class MechanicCrmApplication implements CommandLineRunner {
 	}
 
 	private void handleRepairs(Scanner scanner) {
+		// Repair operations menu
+		// MAY WANT TO CHANGE OPTIONS
+		System.out.println("\nRepair Operations:");
+		System.out.println("1. Create a new Repair");
+		System.out.println("2. Search for previous Repair");
+		System.out.println("3. Return to main menu");
+		System.out.println("4. Delete Repair");
+		System.out.println("5. Import Repairs");
+		System.out.print("Enter your choice: ");
+
+		String repairChoice = scanner.nextLine();
+
+		// Need to implement functions to handle each option
+		switch (repairChoice) {
+			case "1":
+				// addNewRepair(scanner);
+				break;
+			case "2":
+				// searchForRepair(scanner);
+				break;
+			case "3":
+				// Returns to the main menu
+				break;
+			case "4":
+				//deleteRepair(scanner);
+				break;
+			case "5":
+				//importRepairData(scanner);
+			default:
+				System.out.println("Invalid choice. Please try again.");
+		}
+	}
+
+	private void addNewRepair(Scanner scanner){
+		// need to link repair to customer somehow, will implement soon
+		// System.out.print("Enter the ID of the customer that is linked to repair: ");
+
+		System.out.print("Enter a description of the Repair: ");
+		String description = scanner.nextLine();
+
+		System.out.print("Enter the start date of the Repair (yyyy-mm-dd): ");
+		String startDateString = scanner.nextLine();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		try {
+			LocalDate startDate = LocalDate.parse(startDateString, formatter);
+		} catch (DateTimeParseException e) {
+			System.out.println("The date is in an incorrect format.");
+		}
+
+
+		System.out.print("Enter the end date of the Repair (yyyy-mm-dd): ");
+		String endDateString = scanner.nextLine();
+		try {
+			LocalDate startDate = LocalDate.parse(startDateString, formatter);
+		} catch (DateTimeParseException e) {
+			System.out.println("The date is in an incorrect format.");
+		}
+
+		Repair repair = new Repair();
 
 	}
 
