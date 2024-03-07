@@ -17,6 +17,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import java.math.BigDecimal;
+
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -86,7 +88,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		// Need to implement functions to handle each option
 		switch (repairChoice) {
 			case "1":
-				// addNewRepair(scanner);
+				addNewRepair(scanner);
 				break;
 			case "2":
 				// searchForRepair(scanner);
@@ -105,8 +107,10 @@ public class MechanicCrmApplication implements CommandLineRunner {
 	}
 
 	private void addNewRepair(Scanner scanner){
-		// need to link repair to customer somehow, will implement soon
-		// System.out.print("Enter the ID of the customer that is linked to repair: ");
+		// Implemented but not tested
+
+		// Must have a vehicle already in the database before adding an associated repair
+		// or error check to make sure that is the case
 
 		System.out.print("Enter a description of the Repair: ");
 		String description = scanner.nextLine();
@@ -115,21 +119,43 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		String startDateString = scanner.nextLine();
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		try {
-			LocalDate startDate = LocalDate.parse(startDateString, formatter);
+			LocalDate.parse(startDateString, formatter);
 		} catch (DateTimeParseException e) {
 			System.out.println("The date is in an incorrect format.");
 		}
-
+		LocalDate startDate = LocalDate.parse(startDateString, formatter);
 
 		System.out.print("Enter the end date of the Repair (yyyy-mm-dd): ");
 		String endDateString = scanner.nextLine();
 		try {
-			LocalDate startDate = LocalDate.parse(startDateString, formatter);
+			LocalDate.parse(endDateString, formatter);
 		} catch (DateTimeParseException e) {
 			System.out.println("The date is in an incorrect format.");
 		}
+		LocalDate endDate = LocalDate.parse(endDateString, formatter);
+
+		// ADD ERROR CHECKING FOR INPUT
+		System.out.print("Enter the cost of the Repair: ");
+		String costString = scanner.nextLine();
+		BigDecimal cost = new BigDecimal(costString);
+
+		System.out.print("Enter the status of the Repair: ");
+		String status = scanner.nextLine();
+
+		// ADD ERROR CHECKING FOR INPUT
+		System.out.print("Enter the vehicle ID associated with the Repair: ");
+		String vehicleIDString = scanner.nextLine();
+		Long vehicleID = Long.parseLong(vehicleIDString);
+		// THIS MIGHT BE WRONG \/
+		Vehicle vehicle = vehicleService.getVehicleById(vehicleID).orElseThrow();
 
 		Repair repair = new Repair();
+		repair.setDescription(description);
+		repair.setStartDate(startDate);
+		repair.setEndDate(endDate);
+		repair.setCost(cost);
+		repair.setStatus(status);
+		repair.setVehicle(vehicle);
 
 	}
 
