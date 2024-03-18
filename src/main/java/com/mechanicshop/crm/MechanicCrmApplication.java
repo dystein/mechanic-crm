@@ -97,7 +97,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 				// Returns to the main menu
 				break;
 			case "4":
-				//deleteRepair(scanner);
+				deleteRepair(scanner);
 				break;
 			case "5":
 				//importRepairData(scanner);
@@ -158,6 +158,14 @@ public class MechanicCrmApplication implements CommandLineRunner {
 		repair.setVehicle(vehicle);
 
 	}
+
+	private void deleteRepair(Scanner scanner) {
+		// NEED TO TEST
+		System.out.print("Enter the ID of the repair to delete: ");
+		Long repairId = Long.parseLong(scanner.nextLine());
+		repairService.deleteRepair(repairId);
+	}
+
 
 	private void handleVehicles(Scanner scanner) {
 		// Vehicle operations menu
