@@ -1,18 +1,26 @@
 package com.mechanicshop.crm.ui;
 
 import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class MechanicCrmDesktopApp extends Application {
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/mechanicshop/crm/ui/main_view.fxml"));
-        Scene scene = new Scene(loader.load());
+    public void start(Stage primaryStage) {
+        Button btn = new Button();
+        btn.setText("Click me!");
+        btn.setOnAction(event -> System.out.println("Button Clicked!"));
+
+        StackPane root = new StackPane();
+        root.getChildren().add(btn);
+
+        Scene scene = new Scene(root, 300, 250);
+
+        primaryStage.setTitle("Simple JavaFX Application");
         primaryStage.setScene(scene);
-        primaryStage.setTitle("Mechanic CRM - Desktop");
         primaryStage.show();
     }
 
