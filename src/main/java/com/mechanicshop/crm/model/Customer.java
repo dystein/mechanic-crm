@@ -76,11 +76,11 @@ public class Customer {
         this.customerid = customerid;
     }
 
-    public void setFirstName(String name) {
+    public void setFirstName(String firstname) {
         this.firstname = firstname;
     }
 
-    public void setLastName(String name) {
+    public void setLastName(String lastname) {
         this.lastname = lastname;
     }
 
