@@ -37,7 +37,8 @@ public class CustomerService {
     public Customer updateCustomer(Long id, Customer customerDetails) {
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found for this id :: " + id));
-        customer.setName(customerDetails.getName());
+        customer.setFirstName(customerDetails.getFirstName());
+        customer.setLastName(customerDetails.getLastName());
         customer.setEmail(customerDetails.getEmail());
         // Potentially updates other fields as necessary
         return customerRepository.save(customer);
