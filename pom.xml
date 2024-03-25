@@ -101,17 +101,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.13.0</version>
-				<executions>
-					<execution>
-						<id>log-maven-version</id>
-						<goals>
-							<goal>help</goal>
-						</goals>
-						<phase>initialize</phase>
-					</execution>
-				</executions>
 			</plugin>
-
 		</plugins>
 	</build>
 
