@@ -1,0 +1,99 @@
+.avatar,
+.avatar1 {
+  border-radius: var(--br-6xl);
+}
+.avatar1 {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: var(--grey-grey-50);
+}
+.avatar {
+  height: 44px;
+  width: 44px;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.firstName,
+.lastName {
+  position: relative;
+  line-height: 27px;
+}
+.firstName {
+  display: inline-block;
+  min-width: 60px;
+}
+.lastName {
+  flex: 1;
+}
+.email,
+.name {
+  align-self: stretch;
+}
+.name {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-8xs);
+}
+.email {
+  position: relative;
+  font-size: var(--small-medium-size);
+  line-height: 27px;
+  color: var(--grey-grey-70);
+  white-space: nowrap;
+}
+.customer,
+.details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  min-width: 175px;
+}
+.customer {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--gap-base);
+  min-width: 214px;
+  max-width: 100%;
+}
+.editIcon {
+  height: 50px;
+  width: 50px;
+  position: relative;
+  border-radius: var(--br-31xl);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.customerRepeatLink {
+  align-self: stretch;
+  overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  padding: var(--padding-4xs) var(--padding-sm) var(--padding-4xs)
+    var(--padding-5xl);
+  box-sizing: border-box;
+  max-width: 100%;
+  row-gap: 20px;
+  cursor: pointer;
+  text-align: left;
+  font-size: var(--body-bold-27-size);
+  color: var(--primary-navy);
+  font-family: var(--small-medium);
+}
+@media screen and (max-width: 450px) {
+  .customer,
+  .customerRepeatLink {
+    flex-wrap: wrap;
+  }
+}
