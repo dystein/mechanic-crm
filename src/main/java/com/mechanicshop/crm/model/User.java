@@ -21,9 +21,11 @@ public class User {
     private String role; // "customer" or "mechanic"
 
     public String getUsername() {
+        return null;
     }
 
     public Object getPassword() {
+        return null;
     }
 
     // Getters, Setters, and Constructors (as needed)
