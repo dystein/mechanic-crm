@@ -1,0 +1,45 @@
+.vuesaxoutlinebriefcase-icon2 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+.vuesaxoutlinebriefcase-container {
+  height: 24px;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 0 67px 0 67.5px;
+  box-sizing: border-box;
+}
+.text2 {
+  position: relative;
+  line-height: 27px;
+}
+.dashboard-vehicles-progress-v {
+  flex: 1;
+  border-radius: var(--br-xs);
+  background-color: var(--primary-white);
+  border: 1px solid var(--grey-grey-30);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 154.5px var(--padding-xl);
+  max-width: 100%;
+  text-align: left;
+  font-size: var(--small-medium-size);
+  color: var(--grey-grey-70);
+  font-family: var(--small-medium);
+}
+.dashboard-vehicle-progress-n {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  letter-spacing: normal;
+}

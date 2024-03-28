@@ -1,38 +1,41 @@
 import React from "react";
+import Image from "next/image";
 import styles from "./Header.module.css";
 
 const Header = () => {
   return (
     <div className={styles.frame}>
-      <div className="logo-parent">
-        <img
-          className="logo-icon"
+      <div className={styles.logoParent}>
+        <Image
+          className={styles.logoIcon}
           loading="lazy"
           alt=""
-          src="./public/logo.svg"
+          src="/logo.svg"
+          width={90}
+          height={90}
         />
 
-        <div className="dashboard-wrapper">
-          <h2 className="dashboard1">Dashboard</h2>
+        <div className={styles.dashboardWrapper}>
+          <h2 className={styles.dashboard1}>Dashboard</h2>
         </div>
       </div>
-      <div className="right-bar">
-        <button className="add-new" id="addNew">
-          <div className="button">Add New</div>
-          <div className="icon-wrapper">
-            <img className="icon" alt="" src="./public/icon.svg" />
+      <div className={styles.rightBar}>
+        <button className={styles.addNew} id="addNew">
+          <div className={styles.button}>Add New</div>
+          <div className={styles.iconWrapper}>
+            <img className={styles.icon} alt="" src="./public/icon.svg" />
           </div>
         </button>
-        <div className="button-parent">
+        <div className={styles.buttonParent}>
           <img
-            className="button-icon"
+            className={styles.buttonIcon}
             loading="lazy"
             alt=""
             src="./public/button.svg"
           />
 
           <img
-            className="user-icon"
+            className={styles.userIcon}
             loading="lazy"
             alt=""
             src="./public/user@2x.png"

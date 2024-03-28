@@ -1,0 +1,65 @@
+.emoji-icon3 {
+  width: 18.9px;
+  height: 20px;
+  position: relative;
+}
+.emoji-wrapper1 {
+  height: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-8xs) 0 0;
+  box-sizing: border-box;
+}
+.vehicle-deleted {
+  flex: 1;
+  position: relative;
+  line-height: 30px;
+}
+.vuesaxoutlineclose-circle-icon3 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+  cursor: pointer;
+}
+.alert-vehicle-deleted,
+.close-button2,
+.notification3 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.close-button2 {
+  height: 27px;
+  flex-direction: column;
+  padding: var(--padding-10xs) 0 0;
+  box-sizing: border-box;
+}
+.alert-vehicle-deleted,
+.notification3 {
+  overflow: hidden;
+  flex-direction: row;
+}
+.notification3 {
+  flex: 1;
+  border-radius: var(--br-5xs);
+  background-color: var(--base-shade-100);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  padding: var(--padding-smi) var(--padding-base) var(--padding-smi)
+    var(--padding-3xl);
+  gap: var(--gap-xs);
+}
+.alert-vehicle-deleted {
+  width: 347px;
+  position: relative;
+  padding: var(--padding-13xl);
+  box-sizing: border-box;
+  letter-spacing: normal;
+  max-width: 90%;
+  max-height: 90%;
+  text-align: left;
+  font-size: var(--small-medium-size);
+  color: var(--primary-white);
+  font-family: var(--small-medium);
+}

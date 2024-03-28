@@ -1,0 +1,40 @@
+.vuesaxoutlinebriefcase-icon1 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+.vuesaxoutlinebriefcase-wrapper {
+  height: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+  box-sizing: border-box;
+}
+.message3 {
+  width: 142px;
+  position: relative;
+  line-height: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.customer-detail-recent-deals {
+  width: 100%;
+  height: 48px;
+  position: relative;
+  background-color: var(--grey-grey-20);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-4xs) var(--padding-5xl);
+  box-sizing: border-box;
+  gap: var(--gap-xs);
+  letter-spacing: normal;
+  text-align: right;
+  font-size: var(--body-bold-27-size);
+  color: var(--grey-grey-70);
+  font-family: var(--small-medium);
+}

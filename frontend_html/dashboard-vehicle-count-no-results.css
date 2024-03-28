@@ -1,0 +1,60 @@
+.vehicles4 {
+  align-self: stretch;
+  position: relative;
+  line-height: 30px;
+  font-weight: 500;
+}
+.deals-count {
+  width: 31px;
+  position: relative;
+  font-size: var(--font-size-29xl);
+  line-height: 80px;
+  font-weight: 600;
+  font-family: var(--font-manrope);
+  display: inline-block;
+}
+.vehicles-group {
+  width: 73px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: var(--gap-3xs);
+}
+.icon82 {
+  width: 80px;
+  height: 80px;
+  position: relative;
+  border-radius: var(--br-81xl);
+  overflow: hidden;
+  flex-shrink: 0;
+}
+.dashboard-vehicle-count-no-r,
+.icon-wrapper6 {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+}
+.icon-wrapper6 {
+  height: 100px;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: var(--padding-xl) 0 0;
+}
+.dashboard-vehicle-count-no-r {
+  width: 100%;
+  position: relative;
+  border-radius: var(--br-xs);
+  background-color: var(--primary-white);
+  border: 1px solid var(--grey-grey-30);
+  flex-direction: row;
+  justify-content: space-between;
+  padding: var(--padding-5xl) var(--padding-6xl) var(--padding-5xl)
+    var(--padding-4xl);
+  letter-spacing: normal;
+  gap: var(--gap-xl);
+  text-align: left;
+  font-size: var(--heading-h5-bold-size);
+  color: var(--grey-grey-70);
+  font-family: var(--small-medium);
+}
