@@ -37,7 +37,8 @@ public class CustomerService {
     public Customer updateCustomer(Long id, Customer customerDetails) {
         Customer customer = customerRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Customer not found for this id :: " + id));
-        customer.setName(customerDetails.getName());
+        customer.setFirstName(customerDetails.getFirstName());
+        customer.setLastName(customerDetails.getLastName());
         customer.setEmail(customerDetails.getEmail());
         // Potentially updates other fields as necessary
         return customerRepository.save(customer);
@@ -54,7 +55,7 @@ public class CustomerService {
     public List<Customer> searchCustomers(String query) {
         // Assuming you have a method in CustomerRepository to search by name or phone
         // This method needs to be implemented in CustomerRepository
-        return customerRepository.findByNameContainingOrPhoneContaining(query, query);
+        return customerRepository.findByFirstnameContainingOrLastnameContainingOrPhoneContaining(query, query, query);
     }
 
     public void saveAllCustomers(List<Customer> customers) {

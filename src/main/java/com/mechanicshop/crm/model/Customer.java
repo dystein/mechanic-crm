@@ -13,11 +13,14 @@ public class Customer {
     // Specifies the primary key of the entity with auto-increment strategy
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long customerID;
+    private Long customerid;
 
     // Marks the field as a column in the table with a not-null constraint
     @Column(nullable = false)
-    private String name;
+    private String firstname;
+
+    @Column(nullable = false)
+    private String lastname;
 
     // Similar to name, marks as a column that cannot be null
     @Column(nullable = false)
@@ -41,12 +44,16 @@ public class Customer {
     }
 
     // Getters and setters for all the fields to access and modify the entity's properties
-    public Long getCustomerID() {
-        return customerID;
+    public Long getCustomerid() {
+        return customerid;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstname;
+    }
+
+    public String getLastName() {
+        return lastname;
     }
 
     public String getPhone() {
@@ -65,12 +72,16 @@ public class Customer {
         return vehicles;
     }
 
-    public void setCustomerID(Long customerID) {
-        this.customerID = customerID;
+    public void setCustomerid(Long customerid) {
+        this.customerid = customerid;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String name) {
+        this.firstname = firstname;
+    }
+
+    public void setLastName(String name) {
+        this.lastname = lastname;
     }
 
     public void setPhone(String phone) {

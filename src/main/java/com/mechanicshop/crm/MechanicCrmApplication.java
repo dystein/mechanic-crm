@@ -281,7 +281,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 
 		System.out.println("Select a customer by ID:");
 		for (Customer customer : customers) {
-			System.out.println("ID: " + customer.getCustomerID() + ", Name: " + customer.getName());
+			System.out.println("ID: " + customer.getCustomerid() + ", Name: " + customer.getFirstName());
 		}
 		System.out.print("Enter the customer ID: ");
 		String customerIdInput = scanner.nextLine();
@@ -339,7 +339,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
                         ", State: " + vehicle.getState() +
                         ", Notes: " + vehicle.getAdditionalNotes());
                 if (owner != null) {
-                    System.out.println("Owned by: " + owner.getName() +
+                    System.out.println("Owned by: " + owner.getFirstName() +
                             ", Phone: " + owner.getPhone() +
                             ", Email: " + owner.getEmail());
                 } else {
@@ -399,7 +399,8 @@ public class MechanicCrmApplication implements CommandLineRunner {
 				if (currentRow.getRowNum() == 0) continue; // Skip header row
 
 				Customer customer = new Customer();
-				customer.setName(Optional.ofNullable(currentRow.getCell(0)).map(Cell::getStringCellValue).orElse(""));
+				customer.setFirstName(Optional.ofNullable(currentRow.getCell(0)).map(Cell::getStringCellValue).orElse(""));
+				customer.setLastName(Optional.ofNullable(currentRow.getCell(0)).map(Cell::getStringCellValue).orElse(""));
 				customer.setPhone(Optional.ofNullable(currentRow.getCell(1)).map(Cell::getStringCellValue).orElse(""));
 				customer.setEmail(Optional.ofNullable(currentRow.getCell(2)).map(Cell::getStringCellValue).orElse(""));
 				customer.setAddress(Optional.ofNullable(currentRow.getCell(3)).map(Cell::getStringCellValue).orElse(""));
@@ -503,8 +504,11 @@ public class MechanicCrmApplication implements CommandLineRunner {
 
 	private void addNewCustomer(Scanner scanner) {
 		// Collect customer information from the user
-		System.out.print("Enter customer name: ");
-		String name = scanner.nextLine();
+		System.out.print("Enter customer first name: ");
+		String firstname = scanner.nextLine();
+
+		System.out.print("Enter customer last name: ");
+		String lastname = scanner.nextLine();
 
 		System.out.print("Enter customer phone: ");
 		String phone = scanner.nextLine();
@@ -517,7 +521,8 @@ public class MechanicCrmApplication implements CommandLineRunner {
 
 		// Create a new Customer object and populate it with the user input
 		Customer customer = new Customer();
-		customer.setName(name);
+		customer.setFirstName(firstname);
+		customer.setLastName(lastname);
 		customer.setPhone(phone);
 		customer.setEmail(email);
 		customer.setAddress(address);
@@ -542,7 +547,7 @@ public class MechanicCrmApplication implements CommandLineRunner {
 			// Display the details of each customer found
 			System.out.println("Found customers:");
 			for (Customer customer : customers) {
-				System.out.println("ID: " + customer.getCustomerID() + ", Name: " + customer.getName() + ", Phone: " + customer.getPhone()
+				System.out.println("ID: " + customer.getCustomerid() + ", Name: " + customer.getFirstName() + ", Phone: " + customer.getPhone()
 						+ ", Email: " + customer.getEmail() + ", Address: " + customer.getAddress());
 				// Print other customer details if necessary
 			}
