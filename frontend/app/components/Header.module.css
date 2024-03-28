@@ -1,0 +1,5 @@
+.frame {
+    align-self: stretch;
+    justify-content: space-between;
+    gap: var(--gap-xl);
+}
