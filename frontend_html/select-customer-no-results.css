@@ -1,0 +1,40 @@
+.vuesaxoutlineprofile-2user-icon {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+.f-r-a-m-e-select-customer {
+  height: 27px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-10xs) 0 0;
+  box-sizing: border-box;
+}
+.message {
+  width: 160px;
+  position: relative;
+  line-height: 30px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+.select-customer-no-results {
+  width: 100%;
+  height: 78px;
+  position: relative;
+  background-color: var(--primary-white);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-5xl);
+  box-sizing: border-box;
+  gap: var(--gap-xs);
+  letter-spacing: normal;
+  text-align: right;
+  font-size: var(--body-bold-27-size);
+  color: var(--grey-grey-70);
+  font-family: var(--small-medium);
+}

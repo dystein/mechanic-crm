@@ -1,0 +1,68 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
+  theme: {
+    extend: {
+      colors: {
+        "grey-grey-10": "#f6fafd",
+        ghostwhite: "rgba(246, 250, 253, 0.9)",
+        "grey-grey-30": "#eaeef4",
+        "primary-white": "#fff",
+        "primary-blue": "#514ef3",
+        "grey-grey-20": "#eef6fb",
+        "base-shade-70": "rgba(0, 0, 0, 0.7)",
+        "base-shade-100": "#000",
+        olive: "#726000",
+        "primary-navy": "#092c4c",
+        "grey-grey-70": "#7e92a2",
+        "grey-grey-50": "#d6e1e6",
+        goldenrod: {
+          "100": "#f3cf4e",
+          "200": "#f1c247",
+          "300": "#dbb800",
+          "400": "#dab700",
+        },
+        lemonchiffon: "#fffdc3",
+        saddlebrown: "#825d00",
+        "primary-blue-light": "#ececfe",
+        aliceblue: "rgba(238, 246, 251, 0.9)",
+        gold: {
+          "100": "#eac500",
+          "200": "#e8c400",
+          "300": "#e0bd00",
+        },
+        "black-black-50": "rgba(0, 0, 0, 0.5)",
+        "grey-grey-90": "#526477",
+      },
+      spacing: {},
+      fontFamily: {
+        "heading-h5-bold": "Inter",
+        manrope: "Manrope",
+      },
+      borderRadius: {
+        "31xl": "50px",
+        "3xs": "10px",
+        "lg-5": "18.5px",
+        "6xl": "25px",
+        "81xl": "100px",
+        "51xl": "70px",
+        "11xl": "30px",
+      },
+    },
+    fontSize: {
+      "smi-9": "12.9px",
+      "3xl-2": "22.2px",
+      sm: "14px",
+      lg: "18px",
+      base: "16px",
+      xs: "12px",
+      "29xl": "48px",
+      "5xl": "24px",
+      "9xl": "28px",
+      inherit: "inherit",
+    },
+  },
+  corePlugins: {
+    preflight: false,
+  },
+};

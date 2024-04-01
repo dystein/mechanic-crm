@@ -1,0 +1,62 @@
+.vuesaxoutlinebriefcase-icon3 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+.text4 {
+  position: relative;
+  line-height: 27px;
+  display: inline-block;
+  min-width: 105px;
+}
+.deal-wrapper,
+.detail6,
+.message5 {
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.message5 {
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 280px;
+}
+.deal-wrapper,
+.detail6 {
+  flex-direction: row;
+}
+.detail6 {
+  flex: 1;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-base);
+}
+.deal-wrapper {
+  align-self: stretch;
+  overflow: hidden;
+  align-items: flex-start;
+  padding: var(--padding-xs) var(--padding-5xl);
+  box-sizing: border-box;
+}
+.dashboard-recent-deals-view1,
+.dashboard-recent-vehicles-no {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.dashboard-recent-deals-view1 {
+  align-self: stretch;
+  max-width: 100%;
+}
+.dashboard-recent-vehicles-no {
+  width: 100%;
+  position: relative;
+  background-color: var(--primary-white);
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--small-medium-size);
+  color: var(--grey-grey-70);
+  font-family: var(--small-medium);
+}

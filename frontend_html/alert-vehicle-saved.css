@@ -1,0 +1,64 @@
+.emoji-icon2 {
+  width: 20px;
+  height: 19.7px;
+  position: relative;
+}
+.emoji-frame {
+  height: 24.9px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 5.2000000000000455px 0 0;
+  box-sizing: border-box;
+}
+.vehicle-saved {
+  width: 177px;
+  position: relative;
+  line-height: 30px;
+  display: inline-block;
+}
+.vuesaxoutlineclose-circle-icon2 {
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+.alert-vehicle-saved,
+.close-button1,
+.notification2 {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.close-button1 {
+  height: 27px;
+  flex-direction: column;
+  padding: var(--padding-10xs) 0 0;
+  box-sizing: border-box;
+}
+.alert-vehicle-saved,
+.notification2 {
+  flex-direction: row;
+}
+.notification2 {
+  flex: 1;
+  border-radius: var(--br-5xs);
+  background-color: var(--base-shade-100);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  overflow-x: auto;
+  padding: var(--padding-smi) var(--padding-base) var(--padding-smi)
+    var(--padding-3xl);
+  gap: var(--gap-xs);
+}
+.alert-vehicle-saved {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  padding: var(--padding-13xl);
+  box-sizing: border-box;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--small-medium-size);
+  color: var(--primary-white);
+  font-family: var(--small-medium);
+}

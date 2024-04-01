@@ -1,0 +1,52 @@
+.vuesaxoutlineprofile-2user-icon2 {
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+.text1 {
+  position: relative;
+  line-height: 27px;
+}
+.detail5,
+.message4 {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  max-width: 100%;
+}
+.message4 {
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 213px;
+}
+.detail5 {
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--gap-base);
+}
+.dashboard-customers-no-resul,
+.dashboard-customers-view-no {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.dashboard-customers-view-no {
+  align-self: stretch;
+  overflow: hidden;
+  flex-direction: row;
+  padding: var(--padding-xs) var(--padding-5xl);
+  box-sizing: border-box;
+  max-width: 100%;
+}
+.dashboard-customers-no-resul {
+  width: 100%;
+  position: relative;
+  background-color: var(--grey-grey-20);
+  flex-direction: column;
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--small-medium-size);
+  color: var(--grey-grey-70);
+  font-family: var(--small-medium);
+}

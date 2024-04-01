@@ -1,0 +1,28 @@
+.vuesaxboldtask-icon {
+  height: 24px;
+  width: 24px;
+  position: relative;
+}
+.text {
+  flex: 1;
+  position: relative;
+  line-height: 27px;
+}
+.dashboard-tasks-no-results {
+  width: 100%;
+  height: 317px;
+  position: relative;
+  background-color: var(--grey-grey-10);
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: var(--padding-xs) var(--padding-5xl) 278px;
+  box-sizing: border-box;
+  gap: var(--gap-base);
+  letter-spacing: normal;
+  text-align: left;
+  font-size: var(--small-medium-size);
+  color: var(--grey-grey-70);
+  font-family: var(--small-medium);
+}
