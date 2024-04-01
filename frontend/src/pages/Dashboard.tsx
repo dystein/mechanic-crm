@@ -1,10 +1,13 @@
 import { FunctionComponent, useState, useCallback } from "react";
-import ScreenColumnsBG from "../components/ScreenColumnsBG";
 import TypeRightIconStylePrimary from "../components/TypeRightIconStylePrimary";
 import { useNavigate } from "react-router-dom";
-import TypeDefaultStyleWhite from "../components/TypeDefaultStyleWhite";
+import DashRecentVehicle from "../components/DashRecentVehicle";
 import Badge from "../components/Badge";
 import Base from "../components/Base";
+import DashLatestRepair from "../components/DashLatestRepair";
+import DashRecVehRepairs from "../components/DashRecVehRepairs";
+import CustomerVehicleCount from "../components/CustomerVehicleCount";
+import DashRecentCustomer from "../components/DashRecentCustomer";
 
 const Dashboard: FunctionComponent = () => {
   const [isAddNewOpen, setAddNewOpen] = useState(false);
@@ -20,10 +23,6 @@ const Dashboard: FunctionComponent = () => {
 
   const onDashboardCustomersCountClick = useCallback(() => {
     navigate("/customers");
-  }, [navigate]);
-
-  const onDashboardVehiclesCountClick = useCallback(() => {
-    navigate("/vehicles");
   }, [navigate]);
 
   const onDealContainer2Click = useCallback(() => {
@@ -60,307 +59,27 @@ const Dashboard: FunctionComponent = () => {
                 </div>
               </div>
               <div className="self-stretch h-[314px] overflow-y-auto shrink-0 flex flex-col items-start justify-start gap-[4px] text-base">
-                <div className="self-stretch overflow-hidden shrink-0 flex flex-row items-start justify-start py-[9px] px-6">
-                  <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
-                    <img
-                      className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
-                      alt=""
-                      src="/image@2x.png"
-                    />
-                    <div className="flex-1 flex flex-col items-start justify-start">
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[12px]">
-                        <b className="flex-1 relative leading-[27px]">
-                          2011 Nissan Altima
-                        </b>
-                        <div className="self-stretch flex flex-row items-start justify-end text-sm">
-                          <b className="relative leading-[27px]">$</b>
-                          <b className="relative leading-[27px]">5750</b>
-                        </div>
-                      </div>
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[12px] text-sm text-grey-grey-70">
-                        <div className="flex-1 flex flex-row items-start justify-start">
-                          <div className="relative leading-[27px]">WEI0302</div>
-                          <div className="w-2.5 relative leading-[27px] inline-block shrink-0">{`, `}</div>
-                          <div className="relative leading-[27px]">NY</div>
-                          <div className="w-[42px] relative leading-[27px] hidden">
-                            12345
-                          </div>
-                        </div>
-                        <div className="relative leading-[27px] text-right">
-                          Nov 15, 08:00 AM
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="self-stretch overflow-hidden shrink-0 flex flex-row items-start justify-start py-[9px] px-6">
-                  <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
-                    <img
-                      className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
-                      alt=""
-                      src="/image1@2x.png"
-                    />
-                    <div className="flex-1 flex flex-col items-start justify-start">
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[12px]">
-                        <b className="flex-1 relative leading-[27px]">
-                          2001 Honda Civic
-                        </b>
-                        <div className="self-stretch flex flex-row items-start justify-end text-sm">
-                          <b className="relative leading-[27px]">$</b>
-                          <b className="relative leading-[27px]">5750</b>
-                        </div>
-                      </div>
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[12px] text-sm text-grey-grey-70">
-                        <div className="flex-1 flex flex-row items-start justify-start">
-                          <div className="relative leading-[27px]">DPV3012</div>
-                          <div className="w-2.5 relative leading-[27px] inline-block shrink-0">{`, `}</div>
-                          <div className="relative leading-[27px]">NJ</div>
-                          <div className="w-[42px] relative leading-[27px] hidden">
-                            12345
-                          </div>
-                        </div>
-                        <div className="relative leading-[27px] text-right">
-                          Nov 16, 09:00 AM
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="self-stretch overflow-hidden shrink-0 flex flex-row items-start justify-start py-[9px] px-6">
-                  <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
-                    <img
-                      className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
-                      alt=""
-                      src="/image2@2x.png"
-                    />
-                    <div className="flex-1 flex flex-col items-start justify-start">
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[12px]">
-                        <b className="flex-1 relative leading-[27px]">
-                          2019 Ford Fusion
-                        </b>
-                        <div className="self-stretch flex flex-row items-start justify-end text-sm">
-                          <b className="relative leading-[27px]">$</b>
-                          <b className="relative leading-[27px]">5750</b>
-                        </div>
-                      </div>
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[12px] text-sm text-grey-grey-70">
-                        <div className="flex-1 flex flex-row items-start justify-start">
-                          <div className="relative leading-[27px]">3052350</div>
-                          <div className="w-2.5 relative leading-[27px] inline-block shrink-0">{`, `}</div>
-                          <div className="relative leading-[27px]">CA</div>
-                          <div className="w-[42px] relative leading-[27px] hidden">
-                            12345
-                          </div>
-                        </div>
-                        <div className="relative leading-[27px] text-right">
-                          Nov 17, 10:00 AM
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+                {/* Add map functionality for 3 recent vehicles from db: repairs/startdate */}
+                <DashRecentVehicle />
+                <DashRecentVehicle />
+                <DashRecentVehicle />
+                <DashRecentVehicle />
               </div>
             </div>
-            <div className="w-[268px] relative rounded-xl bg-goldenrod-200 box-border h-[392px] text-sm text-primary-white border-[1px] border-solid border-grey-grey-30">
-              <div className="absolute top-[78px] left-[0px] w-[369.1px] h-[314px] overflow-hidden">
-                <div className="absolute h-full w-[calc(100%_-_101.1px)] top-[0px] right-[101.1px] bottom-[0px] left-[0px] flex flex-col items-start justify-start">
-                  <div
-                    className="w-[268px] relative h-[314px] overflow-hidden shrink-0 cursor-pointer"
-                    onClick={onDealContainerClick}
-                  >
-                    <div className="absolute top-[0px] left-[24px] w-[220px] flex flex-row items-center justify-start gap-[12px]">
-                      <div className="w-11 relative rounded-6xl bg-primary-blue-light h-11 overflow-hidden shrink-0" />
-                      <div className="flex-1 flex flex-col items-start justify-start">
-                        <div className="self-stretch overflow-hidden flex flex-row items-start justify-start">
-                          <b className="relative leading-[27px]">
-                            2020 Mercedes-Benz
-                          </b>
-                        </div>
-                        <div className="self-stretch overflow-hidden flex flex-row items-start justify-start">
-                          <div className="relative leading-[27px]">S550</div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute top-[78px] left-[24px] w-[220px] flex flex-col items-start justify-start">
-                      <div className="relative leading-[27px]">
-                        Appointment Date
-                      </div>
-                      <b className="w-[220px] relative leading-[27px] inline-block h-[27px] shrink-0">
-                        Nov 18 2021, 17:00
-                      </b>
-                    </div>
-                    <div className="absolute top-[236px] left-[24px] w-[73px] flex flex-col items-start justify-start">
-                      <div className="relative leading-[27px]">Price</div>
-                      <div className="self-stretch flex flex-row items-start justify-start">
-                        <b className="relative leading-[27px]">$</b>
-                        <b className="relative leading-[27px]">5750</b>
-                      </div>
-                    </div>
-                    <div className="absolute top-[156px] right-[24px] w-[100px] h-[54px] flex flex-col items-start justify-start">
-                      <div className="relative leading-[27px]">State</div>
-                      <b className="self-stretch relative leading-[27px]">NJ</b>
-                    </div>
-                    <div className="absolute top-[156px] left-[24px] w-[103px] h-[54px] flex flex-col items-start justify-start">
-                      <div className="relative leading-[27px]">Mileage</div>
-                      <div className="self-stretch flex flex-row items-center justify-start">
-                        <b className="w-[59px] relative leading-[27px] flex items-center shrink-0">
-                          123,456
-                        </b>
-                      </div>
-                    </div>
-                    <TypeDefaultStyleWhite
-                      buttonText="See Detail"
-                      typeDefaultStyleWhitePosition="absolute"
-                      typeDefaultStyleWhiteTop="238px"
-                      typeDefaultStyleWhiteRight="24px"
-                      typeDefaultStyleWhiteWidth="132px"
-                      typeDefaultStyleWhiteOverflow="hidden"
-                      typeDefaultStyleWhiteBottom="unset"
-                      typeDefaultStyleWhiteLeft="unset"
-                      typeDefaultStyleWhiteBackgroundColor="#fff"
-                      typeDefaultStyleWhiteBorder="1px solid #eaeef4"
-                      typeDefaultStyleWhiteFlex="unset"
-                      buttonColor="#092c4c"
-                    />
-                  </div>
-                </div>
-              </div>
-              <div className="absolute top-[0px] left-[0px] w-[369.1px] h-[78px] overflow-hidden text-lg">
-                <div className="absolute top-[0px] left-[0px] w-[268px] h-[78px]">
-                  <b className="absolute top-[24px] left-[24px] leading-[30px]">
-                    Next Appointment
-                  </b>
-                  <div className="absolute top-[34px] right-[28px] rounded-3xs bg-primary-white w-2.5 h-2.5" />
-                </div>
-              </div>
-            </div>
+            {/* Latest Repair */}
+            <DashLatestRepair />
           </div>
           <div className="absolute w-[calc(100%_-_48px)] top-[436px] right-[24px] left-[24px] flex flex-row items-start justify-start gap-[24px] text-grey-grey-70">
+            {/* Customer & Vehicle Count */}
             <div className="w-[268px] h-[360px] flex flex-col items-start justify-start gap-[24px]">
-              <div
-                className="self-stretch relative rounded-xl bg-primary-white box-border h-[168px] cursor-pointer border-[1px] border-solid border-grey-grey-30"
-                onClick={onDashboardCustomersCountClick}
-              >
-                <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] overflow-hidden">
-                  <div className="absolute top-[24px] left-[24px] leading-[30px] font-medium">
-                    Customers
-                  </div>
-                  <div className="absolute top-[64px] left-[24px] text-29xl leading-[80px] font-semibold font-manrope text-primary-navy">
-                    78
-                  </div>
-                  <img
-                    className="absolute top-[44px] left-[164px] rounded-81xl w-20 h-20 overflow-hidden"
-                    alt=""
-                    src="/icon1.svg"
-                  />
-                </div>
-              </div>
-              <div
-                className="self-stretch relative rounded-xl bg-primary-white box-border h-[168px] cursor-pointer border-[1px] border-solid border-grey-grey-30"
-                onClick={onDashboardVehiclesCountClick}
-              >
-                <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] overflow-hidden">
-                  <div className="absolute top-[24px] left-[24px] leading-[30px] font-medium">
-                    Vehicles
-                  </div>
-                  <div className="absolute top-[64px] left-[24px] text-29xl leading-[80px] font-semibold font-manrope text-primary-navy">
-                    136
-                  </div>
-                  <img
-                    className="absolute top-[44px] left-[164px] rounded-81xl w-20 h-20 overflow-hidden"
-                    alt=""
-                    src="/icon2.svg"
-                  />
-                </div>
-              </div>
+              <CustomerVehicleCount customerOrVehicle="Customers" />
+              <CustomerVehicleCount customerOrVehicle="Vehicles" />
             </div>
-            <div className="flex-1 rounded-xl bg-primary-white box-border h-[360px] flex flex-col items-start justify-start text-sm border-[1px] border-solid border-grey-grey-30">
-              <div
-                className="self-stretch flex-1 flex flex-col items-start justify-start cursor-pointer"
-                onClick={onDealContainer2Click}
-              >
-                <div className="self-stretch relative bg-primary-white h-[86px] overflow-hidden shrink-0">
-                  <Badge
-                    statusLabel="IN PROGRESS"
-                    badgeBackgroundColor="#fffdc3"
-                    badgePosition="absolute"
-                    badgeTop="calc(50% - 20px)"
-                    badgeRight="74px"
-                    badgeWidth="unset"
-                    badgeHeight="unset"
-                    badgeColor="#825d00"
-                    badgeTextTransform="uppercase"
-                    badgeFontWeight="500"
-                  />
-                  <Base
-                    baseWidth="100%"
-                    basePosition="absolute"
-                    baseRight="0px"
-                    baseBottom="0px"
-                    baseLeft="0px"
-                    baseHeight="1px"
-                    baseTop="unset"
-                    baseAlignSelf="unset"
-                  />
-                  <img
-                    className="absolute top-[calc(50%_-_25px)] right-[24px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
-                    alt=""
-                    src="/button1.svg"
-                  />
-                </div>
-                <div className="self-stretch flex-1 relative">
-                  <Base
-                    baseWidth="1px"
-                    basePosition="absolute"
-                    baseRight="unset"
-                    baseBottom="unset"
-                    baseLeft="45px"
-                    baseHeight="207px"
-                    baseTop="31px"
-                    baseAlignSelf="unset"
-                  />
-                  <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] overflow-y-auto flex flex-col items-start justify-start p-[18px] box-border gap-[18px]">
-                    <div className="self-stretch flex flex-row items-start justify-start">
-                      <div className="w-[54px] relative h-[54px] overflow-hidden shrink-0">
-                        <div className="absolute top-[calc(50%_-_16px)] left-[calc(50%_-_16px)] rounded-81xl bg-primary-white box-border w-8 h-8 overflow-hidden border-[11px] border-solid border-goldenrod-100" />
-                      </div>
-                      <div className="flex-1 flex flex-col items-start justify-start">
-                        <div className="self-stretch flex flex-col items-start justify-start">
-                          <div className="self-stretch relative leading-[27px]">
-                            17 Nov 2021
-                          </div>
-                          <div className="self-stretch relative leading-[27px] font-medium text-primary-navy">
-                            Installation of the new air conditioning system
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="self-stretch flex flex-row items-start justify-start">
-                      <div className="w-[54px] relative h-[54px] overflow-hidden shrink-0">
-                        <div className="absolute top-[calc(50%_-_16px)] left-[calc(50%_-_16px)] rounded-81xl bg-primary-white box-border w-8 h-8 overflow-hidden border-[11px] border-solid border-goldenrod-100" />
-                      </div>
-                      <div className="flex-1 flex flex-col items-start justify-start">
-                        <div className="self-stretch flex flex-col items-start justify-start">
-                          <div className="self-stretch relative leading-[27px]">
-                            17 Nov 2021
-                          </div>
-                          <div className="self-stretch relative leading-[27px] font-medium text-primary-navy">
-                            Installation of the new air conditioning system
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="self-stretch relative bg-primary-white h-[46px] overflow-hidden shrink-0 text-center text-base text-olive">
-                      <b className="absolute top-[calc(50%_-_15px)] left-[calc(50%_-_41.5px)] leading-[30px]">
-                        Load More
-                      </b>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            {/* Recent Vehicle Repairs */}
+            <DashRecVehRepairs />
           </div>
         </div>
+        {/* Dashboard Customers Right Sidebar */}
         <div className="absolute top-[0px] right-[0px] bg-grey-grey-20 w-[417px] h-[820px]">
           <div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[316px] flex flex-col items-start justify-start">
             <div className="self-stretch relative h-[78px] overflow-hidden shrink-0">
@@ -374,62 +93,24 @@ const Dashboard: FunctionComponent = () => {
                 View All
               </div>
             </div>
-            <div className="self-stretch relative h-[238px] overflow-hidden shrink-0 text-base">
+            <div className="self-stretch relative shrink-0 text-base">
               <div className="absolute w-full top-[0px] right-[0px] left-[0px] flex flex-col items-start justify-start gap-[3px]">
-                <div className="self-stretch overflow-hidden flex flex-row items-center justify-start py-[9px] pr-3.5 pl-6">
-                  <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
-                    <img
-                      className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
-                      alt=""
-                      src="/avatar@2x.png"
-                    />
-                    <div className="flex-1 flex flex-col items-start justify-start">
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[5px]">
-                        <b className="relative leading-[27px]">Andrea</b>
-                        <b className="flex-1 relative leading-[27px]">Willis</b>
-                      </div>
-                      <div className="self-stretch relative text-sm leading-[27px] text-grey-grey-70">
-                        andreawillis@gmail.com
-                      </div>
-                    </div>
-                  </div>
-                  <img
-                    className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
-                    alt=""
-                    src="/edit.svg"
-                  />
-                </div>
-                <div className="self-stretch overflow-hidden flex flex-row items-center justify-start py-[9px] pr-3.5 pl-6">
-                  <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
-                    <img
-                      className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
-                      alt=""
-                      src="/avatar@2x.png"
-                    />
-                    <div className="flex-1 flex flex-col items-start justify-start">
-                      <div className="self-stretch flex flex-row items-start justify-start gap-[5px]">
-                        <b className="relative leading-[27px]">Brent</b>
-                        <b className="flex-1 relative leading-[27px]">
-                          Rodrigues
-                        </b>
-                      </div>
-                      <div className="self-stretch relative text-sm leading-[27px] text-grey-grey-70">
-                        brodrigues@gmail.com
-                      </div>
-                    </div>
-                  </div>
-                  <img
-                    className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
-                    alt=""
-                    src="/edit.svg"
-                  />
-                </div>
+                {/* Add map functionality for 8 recent customers from db: repairs/startdate/customers */}
+                <DashRecentCustomer />
+                <DashRecentCustomer />
+                <DashRecentCustomer />
+                <DashRecentCustomer />
+                <DashRecentCustomer />
+                <DashRecentCustomer />
+                <DashRecentCustomer />
+                <DashRecentCustomer />
               </div>
             </div>
           </div>
         </div>
       </div>
 
+      {/* Sidebar */}
       <div className="absolute h-[calc(100%_-_90px)] top-[90px] bottom-[0px] left-[0px] bg-ghostwhite w-[90px]">
         <Base
           baseWidth="1px"
@@ -486,6 +167,7 @@ const Dashboard: FunctionComponent = () => {
           />
         </div>
       </div>
+      {/* Header */}
       <div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[90px] text-5xl">
         <div className="absolute w-[calc(100%_-_507px)] top-[0px] right-[417px] left-[90px] bg-ghostwhite h-[90px] overflow-hidden">
           <b className="absolute top-[calc(50%_-_20px)] left-[24px] leading-[40px]">

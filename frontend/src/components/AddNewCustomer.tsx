@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import LabelYes from "./LabelYes";
 import LabelNo from "./LabelNo";
-import TypeDefaultStyleWhite from "./TypeDefaultStyleWhite";
+import DefaultButton from "./DefaultButton";
 
 const AddNewCustomer: FunctionComponent = () => {
   return (
@@ -174,32 +174,32 @@ const AddNewCustomer: FunctionComponent = () => {
         </div>
         <div className="self-stretch flex flex-row items-center justify-end pt-4 px-8 pb-7">
           <div className="flex flex-row items-start justify-start gap-[16px]">
-            <TypeDefaultStyleWhite
+            <DefaultButton
               buttonText="Cancel"
-              typeDefaultStyleWhitePosition="unset"
-              typeDefaultStyleWhiteTop="unset"
-              typeDefaultStyleWhiteRight="unset"
-              typeDefaultStyleWhiteWidth="unset"
-              typeDefaultStyleWhiteOverflow="hidden"
-              typeDefaultStyleWhiteBottom="unset"
-              typeDefaultStyleWhiteLeft="unset"
-              typeDefaultStyleWhiteBackgroundColor="unset"
-              typeDefaultStyleWhiteBorder="unset"
-              typeDefaultStyleWhiteFlex="unset"
+              DefaultButtonPosition="unset"
+              DefaultButtonTop="unset"
+              DefaultButtonRight="unset"
+              DefaultButtonWidth="unset"
+              DefaultButtonOverflow="hidden"
+              DefaultButtonBottom="unset"
+              DefaultButtonLeft="unset"
+              DefaultButtonBackgroundColor="unset"
+              DefaultButtonBorder="unset"
+              DefaultButtonFlex="unset"
               buttonColor="#092c4c"
             />
-            <TypeDefaultStyleWhite
+            <DefaultButton
               buttonText="Save Customer"
-              typeDefaultStyleWhitePosition="unset"
-              typeDefaultStyleWhiteTop="unset"
-              typeDefaultStyleWhiteRight="unset"
-              typeDefaultStyleWhiteWidth="unset"
-              typeDefaultStyleWhiteOverflow="hidden"
-              typeDefaultStyleWhiteBottom="unset"
-              typeDefaultStyleWhiteLeft="unset"
-              typeDefaultStyleWhiteBackgroundColor="#dbb800"
-              typeDefaultStyleWhiteBorder="unset"
-              typeDefaultStyleWhiteFlex="unset"
+              DefaultButtonPosition="unset"
+              DefaultButtonTop="unset"
+              DefaultButtonRight="unset"
+              DefaultButtonWidth="unset"
+              DefaultButtonOverflow="hidden"
+              DefaultButtonBottom="unset"
+              DefaultButtonLeft="unset"
+              DefaultButtonBackgroundColor="#dbb800"
+              DefaultButtonBorder="unset"
+              DefaultButtonFlex="unset"
               buttonColor="#fff"
             />
           </div>
