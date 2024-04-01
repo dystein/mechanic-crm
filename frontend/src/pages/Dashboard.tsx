@@ -162,11 +162,6 @@ const Dashboard: FunctionComponent = () => {
               </div>
             </div>
             <div className="w-[268px] relative rounded-xl bg-goldenrod-200 box-border h-[392px] text-sm text-primary-white border-[1px] border-solid border-grey-grey-30">
-              <img
-                className="absolute top-[210px] left-[69.1px] w-[300px] h-[300px] overflow-hidden"
-                alt=""
-                src="/frame-1.svg"
-              />
               <div className="absolute top-[78px] left-[0px] w-[369.1px] h-[314px] overflow-hidden">
                 <div className="absolute h-full w-[calc(100%_-_101.1px)] top-[0px] right-[101.1px] bottom-[0px] left-[0px] flex flex-col items-start justify-start">
                   <div
@@ -409,7 +404,7 @@ const Dashboard: FunctionComponent = () => {
                     <img
                       className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
                       alt=""
-                      src="/avatar1@2x.png"
+                      src="/avatar@2x.png"
                     />
                     <div className="flex-1 flex flex-col items-start justify-start">
                       <div className="self-stretch flex flex-row items-start justify-start gap-[5px]">
@@ -427,100 +422,6 @@ const Dashboard: FunctionComponent = () => {
                     className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
                     alt=""
                     src="/edit.svg"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="absolute h-[calc(100%_-_316px)] w-full top-[316px] right-[0px] bottom-[0px] left-[0px]">
-            <div className="absolute h-[calc(100%_-_48px)] w-[calc(100%_-_48px)] top-[24px] right-[24px] bottom-[24px] left-[24px] rounded-xl bg-grey-grey-10 box-border overflow-hidden flex flex-col items-start justify-start border-[1px] border-solid border-grey-grey-30">
-              <div className="self-stretch relative bg-grey-grey-10 h-[78px] overflow-hidden shrink-0">
-                <b className="absolute top-[24px] left-[24px] leading-[30px]">
-                  Metrics
-                </b>
-                <div className="absolute top-[24px] right-[24px] text-sm leading-[30px] font-medium text-olive text-right">
-                  View All
-                </div>
-              </div>
-              <div className="self-stretch flex-1 relative overflow-y-auto text-3xl-2 text-base-shade-100">
-                <img
-                  className="absolute h-[39.68%] w-[43.36%] top-[48.94%] right-[5.15%] bottom-[11.38%] left-[51.49%] rounded-[18.47px] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/bounds.svg"
-                />
-                <img
-                  className="absolute h-[39.68%] w-[43.36%] top-[48.94%] right-[50.95%] bottom-[11.38%] left-[5.69%] rounded-[18.47px] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/bounds.svg"
-                />
-                <img
-                  className="absolute h-[39.68%] w-[43.36%] top-[4.76%] right-[50.14%] bottom-[55.56%] left-[6.5%] rounded-[18.47px] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/bounds.svg"
-                />
-                <img
-                  className="absolute h-[39.68%] w-[43.36%] top-[4.76%] right-[5.15%] bottom-[55.56%] left-[51.49%] rounded-[18.47px] max-w-full overflow-hidden max-h-full"
-                  alt=""
-                  src="/bounds.svg"
-                />
-                <div className="absolute top-[49px] left-[39px] w-[130.4px] h-[98.4px]">
-                  <b className="absolute h-[25.41%] w-[97.39%] top-[33.54%] left-[4.6%] flex items-center">
-                    $2,505
-                  </b>
-                  <div className="absolute h-[16.26%] top-[-5.49%] bottom-[89.23%] left-[6.5px] flex flex-row items-start justify-start text-smi-9 text-base-shade-70">
-                    <div className="relative tracking-[-0.14px] font-medium">
-                      Monthly Profit
-                    </div>
-                  </div>
-                  <img
-                    className="absolute h-[31.3%] w-[97.24%] top-[69.51%] right-[-2.07%] bottom-[-0.81%] left-[4.83%] max-w-full overflow-hidden max-h-full"
-                    alt=""
-                    src="/graph.svg"
-                  />
-                </div>
-                <div className="absolute top-[49px] left-[205px] w-[130.4px] h-[98.4px]">
-                  <b className="absolute h-[25.41%] w-[97.39%] top-[33.54%] left-[4.6%] flex items-center">
-                    $35,037
-                  </b>
-                  <div className="absolute h-[16.26%] top-[-5.49%] bottom-[89.23%] left-[6.5px] flex flex-row items-start justify-start text-smi-9 text-base-shade-70">
-                    <div className="relative tracking-[-0.14px] font-medium">
-                      Monthly Revenue
-                    </div>
-                  </div>
-                  <img
-                    className="absolute h-[31.3%] w-[97.24%] top-[69.51%] right-[-2.07%] bottom-[-0.81%] left-[4.83%] max-w-full overflow-hidden max-h-full"
-                    alt=""
-                    src="/graph.svg"
-                  />
-                </div>
-                <div className="absolute top-[214px] left-[36px] w-[130.4px] h-[98.4px]">
-                  <b className="absolute h-[25.41%] w-[97.39%] top-[33.54%] left-[4.6%] flex items-center">
-                    $32,532
-                  </b>
-                  <div className="absolute h-[16.26%] top-[-5.49%] bottom-[89.23%] left-[6.5px] flex flex-row items-start justify-start text-smi-9 text-base-shade-70">
-                    <div className="relative tracking-[-0.14px] font-medium">
-                      Monthly Expenses
-                    </div>
-                  </div>
-                  <img
-                    className="absolute h-[31.3%] w-[97.24%] top-[69.51%] right-[-2.07%] bottom-[-0.81%] left-[4.83%] max-w-full overflow-hidden max-h-full"
-                    alt=""
-                    src="/graph.svg"
-                  />
-                </div>
-                <div className="absolute top-[214px] left-[205px] w-[130.4px] h-[98.4px]">
-                  <b className="absolute h-[25.41%] w-[97.39%] top-[33.54%] left-[4.6%] flex items-center">
-                    $735,037
-                  </b>
-                  <div className="absolute h-[16.26%] top-[-5.49%] bottom-[89.23%] left-[6.5px] flex flex-row items-start justify-start text-smi-9 text-base-shade-70">
-                    <div className="relative tracking-[-0.14px] font-medium">
-                      All Time Revenue
-                    </div>
-                  </div>
-                  <img
-                    className="absolute h-[31.3%] w-[97.24%] top-[69.51%] right-[-2.07%] bottom-[-0.81%] left-[4.83%] max-w-full overflow-hidden max-h-full"
-                    alt=""
-                    src="/graph.svg"
                   />
                 </div>
               </div>
