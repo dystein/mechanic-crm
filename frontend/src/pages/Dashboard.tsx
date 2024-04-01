@@ -2,7 +2,6 @@ import { FunctionComponent, useState, useCallback } from "react";
 import TypeRightIconStylePrimary from "../components/TypeRightIconStylePrimary";
 import { useNavigate } from "react-router-dom";
 import DashRecentVehicle from "../components/DashRecentVehicle";
-import Badge from "../components/Badge";
 import Base from "../components/Base";
 import DashLatestRepair from "../components/DashLatestRepair";
 import DashRecVehRepairs from "../components/DashRecVehRepairs";
@@ -15,18 +14,6 @@ const Dashboard: FunctionComponent = () => {
 
   const onViewAllTextClick = useCallback(() => {
     navigate("/vehicles");
-  }, [navigate]);
-
-  const onDealContainerClick = useCallback(() => {
-    navigate("/vehicle-detail");
-  }, [navigate]);
-
-  const onDashboardCustomersCountClick = useCallback(() => {
-    navigate("/customers");
-  }, [navigate]);
-
-  const onDealContainer2Click = useCallback(() => {
-    navigate("/vehicle-detail");
   }, [navigate]);
 
   const onViewAllText2Click = useCallback(() => {
@@ -44,8 +31,11 @@ const Dashboard: FunctionComponent = () => {
   return (
     <div className="w-[1366px] bg-grey-grey-10 max-w-full h-[910px] overflow-y-auto text-left text-5xl text-primary-navy font-heading-h5-bold">
       <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start">
+        {/* Inner dashboard content */}
         <div className="absolute w-[calc(100%_-_417px)] top-[0px] right-[417px] left-[0px] h-[820px]">
+          {/* Inner dashboard content: Upper section */}
           <div className="absolute w-[calc(100%_-_48px)] top-[20px] right-[24px] left-[24px] flex flex-row items-start justify-start gap-[24px]">
+            {/* Recent Vehicles */}
             <div className="flex-1 rounded-xl bg-primary-white box-border h-[392px] flex flex-col items-start justify-start border-[1px] border-solid border-grey-grey-30">
               <div className="self-stretch relative h-[78px]">
                 <b className="absolute top-[24px] left-[24px] leading-[30px]">
@@ -69,6 +59,7 @@ const Dashboard: FunctionComponent = () => {
             {/* Latest Repair */}
             <DashLatestRepair />
           </div>
+          {/* Inner dashboard content: Lower section */}
           <div className="absolute w-[calc(100%_-_48px)] top-[436px] right-[24px] left-[24px] flex flex-row items-start justify-start gap-[24px] text-grey-grey-70">
             {/* Customer & Vehicle Count */}
             <div className="w-[268px] h-[360px] flex flex-col items-start justify-start gap-[24px]">
@@ -79,7 +70,7 @@ const Dashboard: FunctionComponent = () => {
             <DashRecVehRepairs />
           </div>
         </div>
-        {/* Dashboard Customers Right Sidebar */}
+        {/* Right Sidebar: Dashboard Customers */}
         <div className="absolute top-[0px] right-[0px] bg-grey-grey-20 w-[417px] h-[820px]">
           <div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[316px] flex flex-col items-start justify-start">
             <div className="self-stretch relative h-[78px] overflow-hidden shrink-0">
