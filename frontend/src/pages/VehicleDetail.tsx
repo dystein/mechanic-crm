@@ -4,7 +4,7 @@ import ScreenColumnsBG from "../components/ScreenColumnsBG";
 import Base from "../components/Base";
 import LabelYes from "../components/LabelYes";
 import LabelNo from "../components/LabelNo";
-import TypeDefaultStyleWhite from "../components/TypeDefaultStyleWhite";
+import DefaultButton from "../components/DefaultButton";
 import MainHeader from "../components/MainHeader";
 
 const VehicleDetail: FunctionComponent = () => {
@@ -248,18 +248,18 @@ const VehicleDetail: FunctionComponent = () => {
                   </div>
                 </div>
                 <div className="self-stretch relative h-[78px] overflow-hidden shrink-0">
-                  <TypeDefaultStyleWhite
+                  <DefaultButton
                     buttonText="Save"
-                    typeDefaultStyleWhitePosition="absolute"
-                    typeDefaultStyleWhiteTop="unset"
-                    typeDefaultStyleWhiteRight="24px"
-                    typeDefaultStyleWhiteWidth="100px"
-                    typeDefaultStyleWhiteOverflow="hidden"
-                    typeDefaultStyleWhiteBottom="20px"
-                    typeDefaultStyleWhiteLeft="unset"
-                    typeDefaultStyleWhiteBackgroundColor="#e8c400"
-                    typeDefaultStyleWhiteBorder="unset"
-                    typeDefaultStyleWhiteFlex="unset"
+                    DefaultButtonPosition="absolute"
+                    DefaultButtonTop="unset"
+                    DefaultButtonRight="24px"
+                    DefaultButtonWidth="100px"
+                    DefaultButtonOverflow="hidden"
+                    DefaultButtonBottom="20px"
+                    DefaultButtonLeft="unset"
+                    DefaultButtonBackgroundColor="#e8c400"
+                    DefaultButtonBorder="unset"
+                    DefaultButtonFlex="unset"
                     buttonColor="#fff"
                   />
                 </div>
