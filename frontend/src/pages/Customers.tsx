@@ -4,7 +4,7 @@ import InfoAndFilters from "../components/InfoAndFilters";
 import TableHeader from "../components/TableHeader";
 import { useNavigate } from "react-router-dom";
 import CustomerRowIgnore from "../components/CustomerRowIgnore";
-import TypeDefaultStyleWhite from "../components/TypeDefaultStyleWhite";
+import DefaultButton from "../components/DefaultButton";
 import Base from "../components/Base";
 import TypeRightIconStylePrimary from "../components/TypeRightIconStylePrimary";
 import Sidebar from "../components/Sidebar";
@@ -169,18 +169,18 @@ const Customers: FunctionComponent = () => {
               zipCode="93711"
             />
             <div className="self-stretch relative h-[100px] overflow-hidden shrink-0">
-              <TypeDefaultStyleWhite
+              <DefaultButton
                 buttonText="Load More"
-                typeDefaultStyleWhitePosition="absolute"
-                typeDefaultStyleWhiteTop="calc(50% - 25px)"
-                typeDefaultStyleWhiteRight="unset"
-                typeDefaultStyleWhiteWidth="130px"
-                typeDefaultStyleWhiteOverflow="hidden"
-                typeDefaultStyleWhiteBottom="unset"
-                typeDefaultStyleWhiteLeft="calc(50% - 65px)"
-                typeDefaultStyleWhiteBackgroundColor="#fff"
-                typeDefaultStyleWhiteBorder="1px solid #eaeef4"
-                typeDefaultStyleWhiteFlex="unset"
+                DefaultButtonPosition="absolute"
+                DefaultButtonTop="calc(50% - 25px)"
+                DefaultButtonRight="unset"
+                DefaultButtonWidth="130px"
+                DefaultButtonOverflow="hidden"
+                DefaultButtonBottom="unset"
+                DefaultButtonLeft="calc(50% - 65px)"
+                DefaultButtonBackgroundColor="#fff"
+                DefaultButtonBorder="1px solid #eaeef4"
+                DefaultButtonFlex="unset"
                 buttonColor="#092c4c"
               />
             </div>

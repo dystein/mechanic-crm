@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import TypeDefaultStyleWhite from "../components/TypeDefaultStyleWhite";
 import Badge from "../components/Badge";
 import Base from "../components/Base";
-import Sidebar from '../components/Sidebar';
 
 const Dashboard: FunctionComponent = () => {
   const [isAddNewOpen, setAddNewOpen] = useState(false);
@@ -35,6 +34,13 @@ const Dashboard: FunctionComponent = () => {
     navigate("/customers");
   }, [navigate]);
 
+  const onButtonIcon1Click = useCallback(() => {
+    navigate("/vehicles");
+  }, [navigate]);
+
+  const onButtonIcon2Click = useCallback(() => {
+    navigate("/customers");
+  }, [navigate]);
 
   return (
     <div className="w-[1366px] bg-grey-grey-10 max-w-full h-[910px] overflow-y-auto text-left text-5xl text-primary-navy font-heading-h5-bold">
@@ -424,16 +430,64 @@ const Dashboard: FunctionComponent = () => {
         </div>
       </div>
 
-      <div
-          className="w-[1366px] bg-grey-grey-10 max-w-full h-[910px] overflow-y-auto text-left text-5xl text-primary-navy font-heading-h5-bold">
-        <Sidebar/>
-        <div
-            className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start">
+      <div className="absolute h-[calc(100%_-_90px)] top-[90px] bottom-[0px] left-[0px] bg-ghostwhite w-[90px]">
+        <Base
+          baseWidth="1px"
+          basePosition="absolute"
+          baseRight="0px"
+          baseBottom="0px"
+          baseLeft="unset"
+          baseHeight="100%"
+          baseTop="0px"
+          baseAlignSelf="unset"
+        />
+        <div className="absolute top-[20px] left-[calc(50%_-_25px)] flex flex-col items-start justify-start gap-[16px]">
+          <img
+            className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
+            alt=""
+            src="/button-1.svg"
+          />
+          <img
+            className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
+            alt=""
+            src="/button3.svg"
+            onClick={onButtonIcon1Click}
+          />
+          <img
+            className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
+            alt=""
+            src="/button4.svg"
+            onClick={onButtonIcon2Click}
+          />
+          <img
+            className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
+            alt=""
+            src="/button5.svg"
+          />
+          <img
+            className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
+            alt=""
+            src="/button6.svg"
+          />
+          <div className="w-[50px] relative rounded-31xl bg-primary-white box-border h-[50px] overflow-hidden shrink-0 border-[1px] border-solid border-grey-grey-30">
+            <img
+              className="absolute top-[calc(50%_-_10px)] left-[calc(50%_-_10px)] w-5 h-5"
+              alt=""
+              src="/icon3.svg"
+            />
+            <div className="absolute top-[15px] left-[25px] w-2.5 h-2.5">
+              <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] rounded-3xs bg-primary-blue box-border border-[2px] border-solid border-primary-white" />
+            </div>
+          </div>
+          <img
+            className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
+            alt=""
+            src="/button7.svg"
+          />
         </div>
       </div>
       <div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[90px] text-5xl">
-        <div
-            className="absolute w-[calc(100%_-_507px)] top-[0px] right-[417px] left-[90px] bg-ghostwhite h-[90px] overflow-hidden">
+        <div className="absolute w-[calc(100%_-_507px)] top-[0px] right-[417px] left-[90px] bg-ghostwhite h-[90px] overflow-hidden">
           <b className="absolute top-[calc(50%_-_20px)] left-[24px] leading-[40px]">
             Dashboard
           </b>
