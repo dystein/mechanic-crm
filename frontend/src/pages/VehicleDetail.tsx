@@ -6,6 +6,7 @@ import LabelYes from "../components/LabelYes";
 import LabelNo from "../components/LabelNo";
 import DefaultButton from "../components/DefaultButton";
 import MainHeader from "../components/MainHeader";
+import Sidebar from "../components/Sidebar";
 
 const VehicleDetail: FunctionComponent = () => {
   const [isAlertVehicleDeletedOpen, setAlertVehicleDeletedOpen] =
@@ -347,63 +348,7 @@ const VehicleDetail: FunctionComponent = () => {
             </div>
           </div>
         </div>
-        <div className="absolute h-[calc(100%_-_90px)] top-[90px] bottom-[0px] left-[0px] bg-ghostwhite w-[90px]">
-          <div className="absolute top-[20px] left-[calc(50%_-_25px)] flex flex-col items-start justify-start gap-[16px]">
-            <img
-              className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
-              alt=""
-              src="/button11.svg"
-              onClick={onButtonIconClick}
-            />
-            <img
-              className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
-              alt=""
-              src="/button12.svg"
-              onClick={onButtonIcon1Click}
-            />
-            <img
-              className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
-              alt=""
-              src="/button4.svg"
-              onClick={onButtonIcon2Click}
-            />
-            <img
-              className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
-              alt=""
-              src="/button5.svg"
-            />
-            <img
-              className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
-              alt=""
-              src="/button6.svg"
-            />
-            <div className="w-[50px] relative rounded-31xl bg-primary-white box-border h-[50px] overflow-hidden shrink-0 border-[1px] border-solid border-grey-grey-30">
-              <img
-                className="absolute top-[calc(50%_-_10px)] left-[calc(50%_-_10px)] w-5 h-5"
-                alt=""
-                src="/icon3.svg"
-              />
-              <div className="absolute top-[15px] left-[25px] w-2.5 h-2.5">
-                <div className="absolute h-full w-full top-[0%] right-[0%] bottom-[0%] left-[0%] rounded-3xs bg-primary-blue box-border border-[2px] border-solid border-primary-white" />
-              </div>
-            </div>
-            <img
-              className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
-              alt=""
-              src="/button7.svg"
-            />
-          </div>
-          <Base
-            baseWidth="1px"
-            basePosition="absolute"
-            baseRight="0px"
-            baseBottom="0px"
-            baseLeft="unset"
-            baseHeight="100%"
-            baseTop="0px"
-            baseAlignSelf="unset"
-          />
-        </div>
+        <Sidebar />
         <MainHeader dealDetails="Deal  Details" onLogoClick={onLogoClick} />
       </div>
     </>

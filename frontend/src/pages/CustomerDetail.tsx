@@ -340,13 +340,7 @@ const CustomerDetail: FunctionComponent = () => {
             </div>
           </div>
         </div>
-        <div
-            className="w-[1366px] bg-grey-grey-10 max-w-full h-[910px] overflow-y-auto text-left text-5xl text-primary-navy font-heading-h5-bold">
-          <Sidebar/>
-          <div
-              className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start">
-          </div>
-        </div>
+        <Sidebar />
         <MainHeader dealDetails="Customer Details" onLogoClick={onLogoClick}/>
       </div>
     </>
