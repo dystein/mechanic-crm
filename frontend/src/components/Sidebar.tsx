@@ -10,11 +10,11 @@ const Sidebar: FunctionComponent = () => {
     const location = useLocation();
 
     const onButtonIcon1Click = useCallback(() => {
-        navigate('/vehicles'); // Navigate to home page
+        navigate('/vehicles'); // Navigate to vehicle page
     }, [navigate]);
 
     const onButtonIcon2Click = useCallback(() => {
-        navigate('/customers'); // Navigate to vehicles page
+        navigate('/customers'); // Navigate to customer page
     }, [navigate]);
 
     const onButtonIcon3Click = useCallback(() => {
