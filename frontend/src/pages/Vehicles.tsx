@@ -9,6 +9,7 @@ import Base from "../components/Base";
 import { useNavigate } from "react-router-dom";
 import TypeRightIconStylePrimary from "../components/TypeRightIconStylePrimary";
 import Sidebar from "../components/Sidebar";
+import MainHeader from "../components/MainHeader";
 
 const Vehicles: FunctionComponent = () => {
   const [isSelectCustomerOpen, setSelectCustomerOpen] = useState(false);
@@ -221,51 +222,8 @@ const Vehicles: FunctionComponent = () => {
         </div>
       </div>
       <Sidebar />
-      <div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[90px] text-5xl">
-        <div
-            className="absolute w-[calc(100%_-_507px)] top-[0px] right-[417px] left-[90px] bg-ghostwhite h-[90px] overflow-hidden">
-          <b className="absolute top-[calc(50%_-_20px)] left-[24px] leading-[40px]">
-            Vehicles
-          </b>
-        </div>
-        <div className="absolute top-[0px] right-[0px] bg-ghostwhite w-[417px] h-[90px] overflow-hidden">
-          <img
-            className="absolute top-[calc(50%_-_25px)] right-[94px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
-            alt=""
-            src="/button.svg"
-          />
-          <TypeRightIconStylePrimary
-            button="Add New Deal"
-            icon="/icon.svg"
-            typeRightIconStylePrimaryBackgroundColor="#e8c400"
-            typeRightIconStylePrimaryOverflow="unset"
-            typeRightIconStylePrimaryPosition="absolute"
-            typeRightIconStylePrimaryTop="calc(50% - 25px)"
-            typeRightIconStylePrimaryRight="164px"
-          />
-          <img
-            className="absolute top-[calc(50%_-_25px)] right-[24px] rounded-81xl w-[50px] h-[50px] overflow-hidden object-cover"
-            alt=""
-            src="/user1@2x.png"
-          />
-        </div>
-        <img
-          className="absolute top-[calc(50%_-_45px)] left-[0px] w-[90px] h-[90px] overflow-hidden cursor-pointer"
-          alt=""
-          src="/logo.svg"
-          onClick={onLogoClick}
-        />
-        <Base
-          baseWidth="100%"
-          basePosition="absolute"
-          baseRight="0px"
-          baseBottom="0px"
-          baseLeft="0px"
-          baseHeight="1px"
-          baseTop="unset"
-          baseAlignSelf="unset"
-        />
-      </div>
+      
+      <MainHeader/>
     </div>
   );
 };

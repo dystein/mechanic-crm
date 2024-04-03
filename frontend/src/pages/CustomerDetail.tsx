@@ -341,7 +341,7 @@ const CustomerDetail: FunctionComponent = () => {
           </div>
         </div>
         <Sidebar />
-        <MainHeader dealDetails="Customer Details" onLogoClick={onLogoClick}/>
+        <MainHeader />
       </div>
     </>
   );
