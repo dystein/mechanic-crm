@@ -113,7 +113,7 @@ public class Vehicle {
     }
 
     public void setState(String state) {
-        this.additionalNotes = state;
+        this.state = state;
     }
 
     public Customer getCustomer() {
