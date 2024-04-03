@@ -37,20 +37,20 @@ const Sidebar: FunctionComponent = () => {
                 <img
                     className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
                     alt=""
-                    //src="/button-1.svg" // Update if you have a different icon
-                    src={location.pathname === '/dashboard' || location.pathname === '/' ? '/button-1.svg' : '/button11.svg' }
+                    //src="/dashboardHighlight.svg" // Update if you have a different icon
+                    src={location.pathname === '/dashboard' || location.pathname === '/' ? '/dashboardHighlight.svg' : '/dashboard.svg' }
                     onClick={onButtonIcon3Click}
                 />
                 <img
                     className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
                     alt=""
-                    src={location.pathname === '/vehicles' || location.pathname === '/vehicle-detail' ? '/button12.svg' : '/button3.svg' }
+                    src={location.pathname === '/vehicles' || location.pathname === '/vehicle-detail' ? '/dealHighlight.svg' : '/deal.svg' }
                     onClick={onButtonIcon1Click}
                 />
                 <img
                     className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0 cursor-pointer"
                     alt=""
-                    src={location.pathname === '/customers' || location.pathname === '/customer-detail' ? '/button15.svg' : '/button4.svg' }
+                    src={location.pathname === '/customers' || location.pathname === '/customer-detail' ? '/customerHighlight.svg' : '/customer.svg' }
                     onClick={onButtonIcon2Click}
                 />
                 {/* Add more buttons or elements as needed for your sidebar navigation */}

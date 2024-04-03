@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useCallback } from "react";
+import { FunctionComponent, useState, useEffect, useCallback } from "react";
 import ScreenColumnsBG from "../components/ScreenColumnsBG";
 import InfoAndFilters from "../components/InfoAndFilters";
 import TableHeader from "../components/TableHeader";
@@ -26,6 +26,20 @@ const Vehicles: FunctionComponent = () => {
   const onLogoClick = useCallback(() => {
     navigate("/dashboard");
   }, [navigate]);
+
+  {/*
+  const [vehiclesData, setVehiclesData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/api/vehicles');
+      const data = await response.json();
+      setVehiclesData(data);
+    };
+
+    fetchData();
+  }, []);
+  */}
 
   return (
     <div className="w-full relative bg-grey-grey-10 h-[910px] overflow-y-auto text-left text-base text-primary-navy font-heading-h5-bold">
@@ -60,6 +74,20 @@ const Vehicles: FunctionComponent = () => {
               propFlex1="unset"
               propWidth3="120px"
             />
+            {/* CALL TO MAP WITH DEAL ROW TO POPULATE VEHICLES PAGE
+            {vehiclesData.map((vehicle) => (
+                <VehicleRow
+                    key={vehicle.id} //assuming you have a unique ID
+                    image={vehicle.image}
+                    year={vehicle.year}
+                    make={vehicle.make}
+                    model={vehicle.model}
+                    mileage={vehicle.mileage}
+                    appointmentDate={vehicle.appointmentDate}
+                    price={vehicle.price}
+                    status={vehicle.status}
+                />
+            ))} */}
             <div className="self-stretch relative h-20 overflow-hidden shrink-0">
               <div className="absolute h-[calc(100%_-_1px)] w-full top-[0px] right-[0px] bottom-[1px] left-[0px] flex flex-row items-center justify-start py-0 pr-6 pl-3 box-border gap-[24px]">
                 <div className="w-11 relative rounded-6xl bg-grey-grey-50 h-11 overflow-hidden shrink-0">

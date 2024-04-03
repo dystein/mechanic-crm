@@ -9,6 +9,7 @@ import CustomerVehicleCount from "../components/CustomerVehicleCount";
 import DashRecentCustomer from "../components/DashRecentCustomer";
 import Sidebar from "../components/Sidebar";
 import MainHeader from "../components/MainHeader";
+import VehicleRow from "../components/VehicleRow";
 
 const Dashboard: FunctionComponent = () => {
   const [isAddNewOpen, setAddNewOpen] = useState(false);
