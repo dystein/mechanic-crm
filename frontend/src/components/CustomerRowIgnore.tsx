@@ -10,6 +10,7 @@ export type CustomerRowIgnoreType = {
   city?: string;
   state?: string;
   zipCode?: string;
+  phone?: string;
 };
 
 const CustomerRowIgnore: FunctionComponent<CustomerRowIgnoreType> = ({
@@ -22,6 +23,7 @@ const CustomerRowIgnore: FunctionComponent<CustomerRowIgnoreType> = ({
   city,
   state,
   zipCode,
+  phone
 }) => {
   return (
     <div className="self-stretch relative h-20 overflow-hidden shrink-0 text-left text-base text-primary-navy font-heading-h5-bold">
