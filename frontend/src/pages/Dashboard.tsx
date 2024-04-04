@@ -1,18 +1,14 @@
 import { FunctionComponent, useState, useCallback } from "react";
-import TypeRightIconStylePrimary from "../components/TypeRightIconStylePrimary";
 import { useNavigate } from "react-router-dom";
 import DashRecentVehicle from "../components/DashRecentVehicle";
-import Base from "../components/Base";
 import DashLatestRepair from "../components/DashLatestRepair";
 import DashRecVehRepairs from "../components/DashRecVehRepairs";
 import CustomerVehicleCount from "../components/CustomerVehicleCount";
 import DashRecentCustomer from "../components/DashRecentCustomer";
 import Sidebar from "../components/Sidebar";
 import MainHeader from "../components/MainHeader";
-import VehicleRow from "../components/VehicleRow";
 
 const Dashboard: FunctionComponent = () => {
-  const [isAddNewOpen, setAddNewOpen] = useState(false);
   const navigate = useNavigate();
 
   const onVehiclesClick = useCallback(() => {
@@ -25,7 +21,7 @@ const Dashboard: FunctionComponent = () => {
 
   return (
     <div className="w-[1366px] bg-grey-grey-10 max-w-full h-[910px] overflow-y-auto text-left text-5xl text-primary-navy font-heading-h5-bold">
-      <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start">
+      <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start  bottom-[0px]">
         {/* Inner dashboard content */}
         <div className="absolute w-[calc(100%_-_417px)] top-[0px] right-[417px] left-[0px] h-[820px]">
           {/* Inner dashboard content: Upper section */}
@@ -66,7 +62,7 @@ const Dashboard: FunctionComponent = () => {
           </div>
         </div>
         {/* Right Sidebar: Dashboard Customers */}
-        <div className="absolute top-[0px] right-[0px] bg-grey-grey-20 w-[417px] h-[820px]">
+        <div className="absolute top-[0px] right-[0px] bg-grey-grey-20 w-[417px] bottom-[0px]">
           <div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[316px] flex flex-col items-start justify-start">
             <div className="self-stretch relative h-[78px] overflow-hidden shrink-0">
               <b className="absolute top-[24px] left-[24px] leading-[30px]">
@@ -99,7 +95,7 @@ const Dashboard: FunctionComponent = () => {
       {/* Left Sidebar */}
       <Sidebar />
       {/* Header */}
-      <MainHeader/>
+      <MainHeader />
     </div>
   );
 };
