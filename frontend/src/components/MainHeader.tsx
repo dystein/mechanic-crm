@@ -47,8 +47,8 @@ const MainHeader: FunctionComponent = () => {
       setButtonName(getButton(location.pathname));
     }, [location.pathname]);
 
-  return (
-<div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[90px] text-5xl">
+  return ( // changed 5xl to black
+<div className="absolute w-full top-[0px] right-[0px] left-[0px] h-[90px] text-5xl text-black"> 
         <div className="absolute w-[calc(100%_-_507px)] top-[0px] right-[417px] left-[90px] bg-ghostwhite h-[90px] overflow-hidden">
           <b className="absolute top-[calc(50%_-_20px)] left-[24px] leading-[40px]">
             {title}
