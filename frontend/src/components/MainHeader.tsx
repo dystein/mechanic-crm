@@ -17,7 +17,7 @@ const getTitle = (pathname: string) => {
     return "Customer Details" // For some reason, the text is in white
   }
     // Return a default title if the pathname doesn't match any condition
-    return "Default Title";
+    return "";
   }
 ;
 
@@ -30,7 +30,7 @@ if (pathname === '/dashboard' || pathname === '/') {
     return "Add New Customer"
   } // We shouldnt include a button inn /customer-detail and /vehicle-detail because it seems unnecessary, there is already an edit button that can be used to change stuff
     // Return a default title if the pathname doesn't match any condition
-    return "Default Title";
+    return "";
   }
 ;
 
@@ -54,11 +54,12 @@ const MainHeader: FunctionComponent = () => {
             {title}
           </b>
         </div>
+        {(location.pathname !== 'vehicle-detail' && location.pathname !== 'customer-detail') && (
         <div className="absolute top-[0px] right-[0px] bg-ghostwhite w-[417px] h-[90px] overflow-hidden">
           <img
             className="absolute top-[calc(50%_-_25px)] right-[94px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
             alt=""
-            src="/button.svg"
+            src="button.svg"
           />
           <TypeRightIconStylePrimary
             button={buttonName}
@@ -75,6 +76,7 @@ const MainHeader: FunctionComponent = () => {
             src="/user1@2x.png"
           />
         </div>
+        )}
         <img
           className="absolute top-[calc(50%_-_45px)] left-[0px] w-[90px] h-[90px] overflow-hidden cursor-pointer"
           alt=""
@@ -91,5 +93,10 @@ const MainHeader: FunctionComponent = () => {
           baseAlignSelf="unset"
         />
       </div>  );
-}
+      }
+      
+    
+  
+
+
 export default MainHeader;

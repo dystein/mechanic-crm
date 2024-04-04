@@ -1,4 +1,5 @@
 import { FunctionComponent, useMemo, type CSSProperties } from "react";
+import {useLocation} from "react-router-dom";
 
 export type TypeRightIconStylePrimaryType = {
   button?: string;
@@ -12,6 +13,7 @@ export type TypeRightIconStylePrimaryType = {
   typeRightIconStylePrimaryRight?: CSSProperties["right"];
 };
 
+
 const TypeRightIconStylePrimary: FunctionComponent<
   TypeRightIconStylePrimaryType
 > = ({
@@ -23,6 +25,16 @@ const TypeRightIconStylePrimary: FunctionComponent<
   typeRightIconStylePrimaryTop,
   typeRightIconStylePrimaryRight,
 }) => {
+
+  const location = useLocation();
+
+  const isHidden = location.pathname === '/vehicle-detail' || location.pathname === '/customer-detail';
+
+  // Conditional rendering to hide the component if isHidden is true
+  if (isHidden) {
+    return null;
+  }
+
   const typeRightIconStylePrimaryStyle: CSSProperties = useMemo(() => {
     return {
       backgroundColor: typeRightIconStylePrimaryBackgroundColor,
