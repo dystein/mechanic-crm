@@ -30,6 +30,20 @@ const Customers: FunctionComponent = () => {
     navigate("/dashboard");
   }, [navigate]);
 
+  {/*
+  const [customerData, setCustomerData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await fetch('/api/customers');
+      const data = await response.json();
+      setVehiclesData(data);
+    };
+
+    fetchData();
+  }, []);
+  */}
+
   return (
     <div className="w-full relative bg-grey-grey-10 h-[910px] text-left text-base text-primary-navy font-heading-h5-bold">
       <ScreenColumnsBG
@@ -60,6 +74,21 @@ const Customers: FunctionComponent = () => {
               className="self-stretch relative h-20 overflow-hidden shrink-0 cursor-pointer"
               onClick={onCustomerRowRepeatLinkClick}
             >
+              {/* CALL TO MAP WITH DEAL ROW TO POPULATE VEHICLES PAGE
+              {customersData.map((customer) => (
+                <CustomerRow
+                    customerID={customer.id} //assuming you have a unique ID
+                    //avatar={customer.image}
+                    firstName={customer.firstName}
+                    lastName={customer.lastName}
+                    phone={customer.phone}
+                    email={customer.email}
+                    street={customer.address.split(',')[0].trim()}
+                    city={customer.address.split(',')[1].trim()}
+                    state={customer.address.split(',')[2].trim()}
+                    zipCode={customer.address.split(',')[3].trim()}
+                />
+               ))} */}
               <div className="absolute h-[calc(100%_-_1px)] w-full top-[0px] right-[0px] bottom-[1px] left-[0px] flex flex-row items-center justify-start py-0 pr-6 pl-3 box-border gap-[24px]">
                 <div className="w-11 relative rounded-6xl bg-grey-grey-30 h-11 overflow-hidden shrink-0">
                   <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-81xl bg-grey-grey-30" />
