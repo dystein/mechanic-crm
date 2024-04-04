@@ -78,11 +78,13 @@ const Vehicles: FunctionComponent = () => {
             {vehiclesData.map((vehicle) => (
                 <VehicleRow
                     key={vehicle.id} //assuming you have a unique ID
-                    image={vehicle.image}
+                    //image={vehicle.image}
                     year={vehicle.year}
                     make={vehicle.make}
                     model={vehicle.model}
                     mileage={vehicle.mileage}
+                    licensePlate={vehicle.licensePlate}
+                    licensePlateState={vehicle.state}
                     appointmentDate={vehicle.appointmentDate}
                     price={vehicle.price}
                     status={vehicle.status}
