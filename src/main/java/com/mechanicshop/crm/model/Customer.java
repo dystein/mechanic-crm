@@ -1,6 +1,7 @@
 package com.mechanicshop.crm.model;
 
 // Necessary imports for JPA annotations and Java utilities
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import java.util.Set;
 import java.util.HashSet;
@@ -37,6 +38,7 @@ public class Customer {
     // Establishes a one-to-many relationship with the Vehicle entity
     // Cascade type ALL means persist, merge, remove, and refresh operations will cascade from customer to vehicles
     @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private Set<Vehicle> vehicles = new HashSet<>();
 
     // Default constructor required by JPA

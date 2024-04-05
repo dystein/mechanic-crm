@@ -2,16 +2,16 @@ import { FunctionComponent } from "react";
 
 export type CustomerType = {
   avatar?: string;
-  firstName?: string;
-  lastName?: string;
+  firstname?: string;
+  lastname?: string;
   email?: string;
   edit?: string;
 };
 
 const Customer: FunctionComponent<CustomerType> = ({
   avatar,
-  firstName,
-  lastName,
+  firstname,
+  lastname,
   email,
   edit,
 }) => {
@@ -25,8 +25,8 @@ const Customer: FunctionComponent<CustomerType> = ({
         />
         <div className="flex-1 flex flex-col items-start justify-start">
           <div className="self-stretch flex flex-row items-start justify-start gap-[5px]">
-            <b className="relative leading-[27px]">{firstName}</b>
-            <b className="flex-1 relative leading-[27px]">{lastName}</b>
+            <b className="relative leading-[27px]">{firstname}</b>
+            <b className="flex-1 relative leading-[27px]">{lastname}</b>
           </div>
           <div className="self-stretch relative text-sm leading-[27px] text-grey-grey-70">
             {email}
