@@ -1,6 +1,8 @@
 package com.mechanicshop.crm.model;
 
 // Importing Jakarta Persistence API annotations for ORM (Object-Relational Mapping)
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 // Declares this class as an entity to be managed by JPA in the context of ORM
@@ -45,6 +47,7 @@ public class Vehicle {
     // FetchType.LAZY indicates that the customer associated with a vehicle is loaded on demand
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID") // Specifies the foreign key column in the vehicles table
+    @JsonIgnore
     private Customer customer;
 
     // Default no-argument constructor required by JPA
