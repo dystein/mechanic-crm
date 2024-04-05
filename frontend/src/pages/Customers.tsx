@@ -48,10 +48,20 @@ const Customers: FunctionComponent = () => {
     const fetchCustomers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers');
+        const username = 'admin'; // Your username
+        const password = 'password'; // Your password
+        const basicAuth = btoa(`${username}:${password}`); // Encode username and password in base64
+
+        const response = await fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers', {
+          headers: {
+            'Authorization': `Basic ${basicAuth}`,
+          },
+        });
+
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
+
         const data = await response.json();
         console.log('Fetched data:', data);
         setCustomers(data);
@@ -61,6 +71,7 @@ const Customers: FunctionComponent = () => {
         setIsLoading(false);
       }
     };
+
 
     fetchCustomers();
   }, []);
