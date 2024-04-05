@@ -41,36 +41,36 @@ const SelectCustomer: FunctionComponent = () => {
             </div>
             <Customer
               avatar="/avatar2@2x.png"
-              firstName="Andrea"
-              lastName="Willis"
+              firstname="Andrea"
+              lastname="Willis"
               email="andreawillis@gmail.com"
               edit="/edit1.svg"
             />
             <Customer
               avatar="/avatar3@2x.png"
-              firstName="Brent"
-              lastName="Rodrigues"
+              firstname="Brent"
+              lastname="Rodrigues"
               email="brodrigues@gmail.com"
               edit="/edit1.svg"
             />
             <Customer
               avatar="/avatar4@2x.png"
-              firstName="Andrew"
-              lastName="Sommers"
+              firstname="Andrew"
+              lastname="Sommers"
               email="andrewsommers@gmail.com"
               edit="/edit1.svg"
             />
             <Customer
               avatar="/avatar5@2x.png"
-              firstName="Edgar"
-              lastName="Cavins"
+              firstname="Edgar"
+              lastname="Cavins"
               email="edgarcavins@gmail.com"
               edit="/edit1.svg"
             />
             <Customer
               avatar="/avatar6@2x.png"
-              firstName="Theresa"
-              lastName="Wells"
+              firstname="Theresa"
+              lastname="Wells"
               email="theresawells@gmail.com"
               edit="/edit1.svg"
             />
