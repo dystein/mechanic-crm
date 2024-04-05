@@ -46,7 +46,7 @@ const Customers: FunctionComponent = () => {
     const fetchCustomers = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('/customers');
+        const response = await fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers');
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
