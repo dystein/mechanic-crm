@@ -12,12 +12,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf().disable() // Disabling CSRF for non-browser clients/APIs
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/customers/**").permitAll() // Allow public access to /customers
-                        .anyRequest().authenticated() // Require authentication for any other request
-                )
-                .httpBasic(); // Enable HTTP Basic Authentication
-
+                .authorizeHttpRequests().anyRequest().permitAll(); // Allow all requests without authentication
         return http.build();
     }
 }

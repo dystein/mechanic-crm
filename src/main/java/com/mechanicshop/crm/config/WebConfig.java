@@ -1,5 +1,3 @@
-// FilePath: src/main/java/com/mechanicshop/crm/config/WebConfig.java
-
 package com.mechanicshop.crm.config;
 
 import org.springframework.context.annotation.Bean;
@@ -15,7 +13,7 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**").allowedOrigins("http://localhost:3000"); // Replace with your frontend's origin
+                registry.addMapping("/**").allowedOrigins("*").allowedMethods("*"); // Allow all origins and methods
             }
         };
     }
