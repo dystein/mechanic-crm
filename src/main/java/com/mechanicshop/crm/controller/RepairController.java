@@ -10,6 +10,7 @@ import java.util.List;
 
 // The RestController annotation is used to define a controller and mark that its methods' return values should be bound to the web response body.
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 // RequestMapping annotation is used to map HTTP requests to handler methods of MVC and REST controllers.
 @RequestMapping("/repairs")
 public class RepairController {

@@ -10,6 +10,7 @@ import java.util.List;
 
 // Marks this class as a RestController, meaning it's ready for use by Spring MVC to handle web requests.
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 // Maps web requests to the /vehicles path.
 @RequestMapping("/vehicles")
 public class VehicleController {

@@ -4,6 +4,7 @@ import com.mechanicshop.crm.model.Customer;
 import com.mechanicshop.crm.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 // The @RestController annotation marks this class as a controller where
 // every method returns a domain object instead of a view. It's part of Spring MVC.
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 // @RequestMapping at the class level defines the base URL path for all the
 // controller methods.
 @RequestMapping("/customers")
@@ -41,11 +43,6 @@ public class CustomerController {
 
     // @GetMapping annotation is used to map HTTP GET requests onto the
     // specific handler method below.
-    @GetMapping
-    public List<Customer> getAllCustomers() {
-        // Retrieves all customers by calling the getAllCustomers method of customerService.
-        return customerService.getAllCustomers();
-    }
 
     // @GetMapping with a path variable is used to fetch a specific customer by ID.
     @GetMapping("/{id}")
@@ -74,7 +71,10 @@ public class CustomerController {
         customerService.deleteCustomer(id);
     }
 
-    // Placeholder for a future method to add a search endpoint based on
-    // criteria like name or phone number.
-    // TODO: Implement the search functionality.
+    @GetMapping
+    public ResponseEntity<List<Customer>> getAllCustomers() {
+        List<Customer> customers = customerService.findAllCustomers();
+        return new ResponseEntity<>(customers, HttpStatus.OK);
+    }
+
 }

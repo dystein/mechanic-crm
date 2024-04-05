@@ -63,4 +63,8 @@ public class CustomerService {
     }
 
 
+    public List<Customer> findAllCustomers() {
+        return customerRepository.findAll();
+    }
+
 }
