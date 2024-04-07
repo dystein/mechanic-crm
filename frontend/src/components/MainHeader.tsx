@@ -122,6 +122,7 @@ const MainHeader: FunctionComponent = () => {
           <AddNew
             onChooseVehicle={() => setShowPopup(2)}
             onChooseCustomer={() => setShowPopup(3)}
+            onClose={() => setShowPopup(0)}
           />
         </div>
       )}
