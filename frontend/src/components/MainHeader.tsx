@@ -2,6 +2,7 @@ import { FunctionComponent, useState, useCallback, useEffect } from "react";
 import Base from "./Base";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./MainHeader.module.css";
+import AddNew from "./AddNew";
 
 const getTitle = (pathname: string) => {
   if (pathname === "/dashboard" || pathname === "/") {
@@ -115,9 +116,13 @@ const MainHeader: FunctionComponent = () => {
       </div>
       {showPopup === 1 && (
         <div className={styles.popup}>
-          <button onClick={() => setShowPopup(2)}>Add New Vehicle</button>
+          {/* <button onClick={() => setShowPopup(2)}>Add New Vehicle</button>
           <button onClick={() => setShowPopup(3)}>Add New Customer</button>
-          <button onClick={closePopup}>Close</button>
+          <button onClick={closePopup}>Close</button> */}
+          <AddNew
+            onChooseVehicle={() => setShowPopup(2)}
+            onChooseCustomer={() => setShowPopup(3)}
+          />
         </div>
       )}
       {showPopup === 2 && (
