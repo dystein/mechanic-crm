@@ -1,7 +1,6 @@
 import { FunctionComponent, useState, useCallback, useEffect } from "react";
 import Base from "./Base";
 import { useLocation, useNavigate } from "react-router-dom";
-import TypeRightIconStylePrimary from "./TypeRightIconStylePrimary";
 
 const getTitle = (pathname: string) => {
   if (pathname === "/dashboard" || pathname === "/") {
@@ -34,6 +33,10 @@ const MainHeader: FunctionComponent = () => {
   const [title, setTitle] = useState("");
   const [buttonName, setButtonName] = useState("");
 
+  // Popup toggle
+  const [showPopup, setShowPopup] = useState(false);
+  const togglePopup = () => setShowPopup(!showPopup);
+
   useEffect(() => {
     setTitle(getTitle(location.pathname));
   }, [location.pathname]);
@@ -50,30 +53,38 @@ const MainHeader: FunctionComponent = () => {
           {title}
         </b>
       </div>
-      {location.pathname !== "vehicle-detail" &&
-        location.pathname !== "customer-detail" && (
-          <div className="absolute top-[0px] right-[0px] bg-ghostwhite w-[417px] h-[90px] overflow-hidden">
-            <img
-              className="absolute top-[calc(50%_-_25px)] right-[94px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
-              alt=""
-              src="button.svg"
-            />
-            <TypeRightIconStylePrimary
-              button={buttonName}
-              icon="/icon.svg"
-              typeRightIconStylePrimaryBackgroundColor="#e8c400"
-              typeRightIconStylePrimaryOverflow="unset"
-              typeRightIconStylePrimaryPosition="absolute"
-              typeRightIconStylePrimaryTop="calc(50% - 25px)"
-              typeRightIconStylePrimaryRight="164px"
-            />
-            <img
-              className="absolute top-[calc(50%_-_25px)] right-[24px] rounded-81xl w-[50px] h-[50px] overflow-hidden object-cover"
-              alt=""
-              src="/user1@2x.png"
-            />
-          </div>
-        )}
+      <div className="absolute top-[0px] right-[0px] bg-ghostwhite w-[417px] h-[90px] overflow-hidden">
+        <img
+          className="absolute top-[calc(50%_-_25px)] right-[94px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
+          alt=""
+          src="button.svg"
+        />
+        {location.pathname !== "/vehicle-detail" &&
+          location.pathname !== "/customer-detail" && (
+            <button
+              className="rounded-51xl bg-primary-blue overflow-hidden flex flex-row items-center justify-center py-2.5 pr-4 pl-5 gap-[12px] text-left text-sm text-primary-white font-heading-h5-bold"
+              style={{
+                backgroundColor: "#e8c400",
+                overflow: "unset",
+                position: "absolute",
+                top: "calc(50% - 25px)",
+                right: "164px",
+                cursor: "pointer",
+              }}
+              onClick={togglePopup}
+            >
+              <div className="relative leading-[30px] font-medium">
+                {buttonName}
+              </div>
+              <img className="w-5 relative h-5" alt="" src="/icon.svg" />
+            </button>
+          )}
+        <img
+          className="absolute top-[calc(50%_-_25px)] right-[24px] rounded-81xl w-[50px] h-[50px] overflow-hidden object-cover"
+          alt=""
+          src="/user1@2x.png"
+        />
+      </div>
       <img
         className="absolute top-[calc(50%_-_45px)] left-[0px] w-[90px] h-[90px] overflow-hidden cursor-pointer"
         alt=""

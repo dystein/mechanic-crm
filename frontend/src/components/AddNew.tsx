@@ -1,7 +1,7 @@
 import { FunctionComponent } from "react";
 import Base from "./Base";
 
-const AddNew: FunctionComponent = () => {
+const AddNew: FunctionComponent = (props) => {
   return (
     <div className="w-[1366px] bg-black-black-50 h-[910px] overflow-hidden max-w-full max-h-full text-left text-sm text-primary-navy font-heading-h5-bold">
       <div className="absolute top-[calc(50%_-_77px)] left-[calc(50%_-_120px)] rounded-xl bg-primary-white w-60 overflow-hidden flex flex-col items-start justify-start">

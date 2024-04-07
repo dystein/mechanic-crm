@@ -5,9 +5,7 @@ import TableHeader from "../components/TableHeader";
 import Badge from "../components/Badge";
 import DealRowIgnore from "../components/DealRowIgnore";
 import DefaultButton from "../components/DefaultButton";
-import Base from "../components/Base";
 import { useNavigate } from "react-router-dom";
-import TypeRightIconStylePrimary from "../components/TypeRightIconStylePrimary";
 import Sidebar from "../components/Sidebar";
 import MainHeader from "../components/MainHeader";
 
@@ -27,7 +25,8 @@ const Vehicles: FunctionComponent = () => {
     navigate("/dashboard");
   }, [navigate]);
 
-  {/*
+  {
+    /*
   const [vehiclesData, setVehiclesData] = useState([]);
 
   useEffect(() => {
@@ -39,7 +38,8 @@ const Vehicles: FunctionComponent = () => {
 
     fetchData();
   }, []);
-  */}
+  */
+  }
 
   return (
     <div className="w-full relative bg-grey-grey-10 h-[910px] overflow-y-auto text-left text-base text-primary-navy font-heading-h5-bold">
@@ -252,8 +252,8 @@ const Vehicles: FunctionComponent = () => {
         </div>
       </div>
       <Sidebar />
-      
-      <MainHeader/>
+
+      <MainHeader />
     </div>
   );
 };
