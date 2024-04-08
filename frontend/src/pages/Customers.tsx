@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useState, useEffect, useCallback } from "react";
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
 import { useNavigate } from "react-router-dom";
 import ScreenColumnsBG from "../components/ScreenColumnsBG";
 import InfoAndFilters from "../components/InfoAndFilters";
@@ -8,16 +13,14 @@ import CustomerRow from "../components/CustomerRow"; // Make sure to create this
 import Sidebar from "../components/Sidebar";
 import MainHeader from "../components/MainHeader";
 
-
 interface Customer {
   customerid: number;
-  firstname: string;
-  lastname: string;
+  firstName: string;
+  lastName: string;
   phone: string;
   email: string;
   address: string;
 }
-
 
 const Customers: FunctionComponent = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
@@ -41,37 +44,40 @@ const Customers: FunctionComponent = () => {
     navigate("/dashboard");
   }, [navigate]);
 
-  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:3000';
+  const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
 
   // Fetch customers when the component mounts
   useEffect(() => {
     const fetchCustomers = async () => {
       setIsLoading(true);
       try {
-        const username = 'admin'; // Your username
-        const password = 'password'; // Your password
+        const username = "admin"; // Your username
+        const password = "password"; // Your password
         const basicAuth = btoa(`${username}:${password}`); // Encode username and password in base64
 
-        const response = await fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers', {
-          headers: {
-            'Authorization': `Basic ${basicAuth}`,
-          },
-        });
+        const response = await fetch(
+          "https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers",
+          {
+            headers: {
+              Authorization: `Basic ${basicAuth}`,
+            },
+          }
+        );
 
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error("Network response was not ok");
         }
 
         const data = await response.json();
-        console.log('Fetched data:', data);
+        console.log("Fetched data:", data);
         setCustomers(data);
       } catch (error) {
-        console.error('Error fetching data: ', error);
+        console.error("Error fetching data: ", error);
       } finally {
         setIsLoading(false);
       }
     };
-
 
     fetchCustomers();
   }, []);
@@ -91,7 +97,10 @@ const Customers: FunctionComponent = () => {
       />
       <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start">
         <div className="self-stretch overflow-hidden flex flex-col items-center justify-start">
-          <InfoAndFilters totalInfoRowCount={`${customers.length}`} customers="customers" />
+          <InfoAndFilters
+            totalInfoRowCount={`${customers.length}`}
+            customers="customers"
+          />
           <div className="self-stretch rounded-xl overflow-hidden flex flex-col items-start justify-start py-0 px-6">
             <TableHeader
               icon="/icon19.svg"
@@ -109,8 +118,8 @@ const Customers: FunctionComponent = () => {
                 <CustomerRow
                   key={customer.customerid}
                   customerid={customer.customerid}
-                  firstname={customer.firstname}
-                  lastname={customer.lastname}
+                  firstname={customer.firstName}
+                  lastname={customer.lastName}
                   phone={customer.phone}
                   email={customer.email}
                   address={customer.address}
@@ -138,7 +147,6 @@ const Customers: FunctionComponent = () => {
       <MainHeader />
     </div>
   );
-
 };
 
 export default Customers;

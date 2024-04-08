@@ -127,13 +127,18 @@ const MainHeader: FunctionComponent = () => {
         <div className={styles.popup}>
           <SelectCustomer
             onChooseVehicle={() => setShowPopup(2)}
-            onChooseCustomer={() => setShowPopup(3)}
+            onChooseCustomer={() => setShowPopup(4)}
             onClose={() => setShowPopup(0)}
           />
           {/* Add New Vehicle Form <button onClick={closePopup}>Close</button> */}
         </div>
       )}
       {showPopup === 3 && (
+        <div className={styles.popup}>
+          Add New Customer Form <button onClick={closePopup}>Close</button>
+        </div>
+      )}
+      {showPopup === 4 && (
         <div className={styles.popup}>
           Add New Customer Form <button onClick={closePopup}>Close</button>
         </div>
