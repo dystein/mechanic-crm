@@ -40,7 +40,7 @@ const CustomerRow: FunctionComponent<CustomerRowType> = ({
                 <img
                     className="w-11 h-11 rounded-full object-cover"
                     alt=""
-                    src={avatar || 'default-avatar.png'} // Provide a default image if avatar is not available
+                    src={avatar || 'avatar6@2x.png'} // Provide a default image if avatar is not available
                 />
                 <div className="flex-1">{`${firstname} ${lastname}`}</div>
                 <div className="flex-1">{email}</div>
