@@ -3,6 +3,7 @@ import Base from "./Base";
 import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./MainHeader.module.css";
 import AddNew from "./AddNew";
+import SelectCustomer from "./SelectCustomer";
 
 const getTitle = (pathname: string) => {
   if (pathname === "/dashboard" || pathname === "/") {
@@ -10,13 +11,12 @@ const getTitle = (pathname: string) => {
   } else if (pathname === "/vehicles") {
     return "Vehicles";
   } else if (pathname === "/vehicle-detail") {
-    return "Vehicle Details"; // Gray not black
+    return "Vehicle Details";
   } else if (pathname === "/customers") {
     return "Customers";
   } else if (pathname === "/customer-detail") {
-    return "Customer Details"; // For some reason, the text is in white
+    return "Customer Details";
   }
-  // Return a default title if the pathname doesn't match any condition
   return "";
 };
 const getButton = (pathname: string) => {
@@ -116,9 +116,6 @@ const MainHeader: FunctionComponent = () => {
       </div>
       {showPopup === 1 && (
         <div className={styles.popup}>
-          {/* <button onClick={() => setShowPopup(2)}>Add New Vehicle</button>
-          <button onClick={() => setShowPopup(3)}>Add New Customer</button>
-          <button onClick={closePopup}>Close</button> */}
           <AddNew
             onChooseVehicle={() => setShowPopup(2)}
             onChooseCustomer={() => setShowPopup(3)}
@@ -128,7 +125,12 @@ const MainHeader: FunctionComponent = () => {
       )}
       {showPopup === 2 && (
         <div className={styles.popup}>
-          Add New Vehicle Form <button onClick={closePopup}>Close</button>
+          <SelectCustomer
+            onChooseVehicle={() => setShowPopup(2)}
+            onChooseCustomer={() => setShowPopup(3)}
+            onClose={() => setShowPopup(0)}
+          />
+          {/* Add New Vehicle Form <button onClick={closePopup}>Close</button> */}
         </div>
       )}
       {showPopup === 3 && (
