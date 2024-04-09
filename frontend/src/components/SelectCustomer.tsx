@@ -2,14 +2,14 @@ import { FunctionComponent } from "react";
 import Customer from "./SelectCustomerEntry";
 
 interface ChoicePopupProps {
-  onChooseVehicle: () => void;
   onChooseCustomer: () => void;
+  onAddCustomer: () => void;
   onClose: () => void;
 }
 
 const SelectCustomer: FunctionComponent<ChoicePopupProps> = ({
-  onChooseVehicle,
   onChooseCustomer,
+  onAddCustomer,
   onClose,
 }) => {
   return (
@@ -22,7 +22,7 @@ const SelectCustomer: FunctionComponent<ChoicePopupProps> = ({
           <b className="flex-1 relative leading-[30px]">Select Customer</b>
           <div
             className="hover:cursor-pointer relative text-sm leading-[30px] font-medium text-olive text-right"
-            onClick={onChooseCustomer}
+            onClick={onAddCustomer}
           >
             Add New
           </div>
@@ -34,7 +34,10 @@ const SelectCustomer: FunctionComponent<ChoicePopupProps> = ({
           />
         </div>
         <div className="self-stretch bg-primary-white h-[504px] overflow-y-auto shrink-0 flex flex-col items-start justify-start text-base">
-          <div className="self-stretch overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[4px]">
+          <div
+            className="self-stretch overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[4px]"
+            onClick={onChooseCustomer} // Change this somehow to pass the chosen customer to Add New Vehicle popup
+          >
             <Customer
               avatar="/avatar2@2x.png"
               firstname="Andrea"

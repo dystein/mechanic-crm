@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Vehicles from "./pages/Vehicles";
-import AddNewVehicle from "./pages/AddNewVehicle";
 import VehicleDetail from "./pages/VehicleDetail";
 import Customers from "./pages/Customers";
 import CustomerDetail from "./pages/CustomerDetail";
@@ -37,10 +36,6 @@ function App() {
         metaDescription = "";
         break;
       case "/vehicles":
-        title = "";
-        metaDescription = "";
-        break;
-      case "/add-new-vehicle":
         title = "";
         metaDescription = "";
         break;
@@ -77,7 +72,6 @@ function App() {
       <Route path="/" element={<Dashboard />} />
       <Route path="/dashboard" element={<Dashboard />} />
       <Route path="/vehicles" element={<Vehicles />} />
-      <Route path="/add-new-vehicle" element={<AddNewVehicle />} />
       <Route path="/vehicle-detail" element={<VehicleDetail />} />
       <Route path="/customers" element={<Customers />} />
       <Route path="/customer-detail" element={<CustomerDetail />} />

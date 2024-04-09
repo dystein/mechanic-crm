@@ -5,6 +5,7 @@ import styles from "./MainHeader.module.css";
 import AddNew from "./AddNew";
 import SelectCustomer from "./SelectCustomer";
 import AddNewCustomer from "./AddNewCustomer";
+import AddNewVehicle from "./AddNewVehicle";
 
 const getTitle = (pathname: string) => {
   if (pathname === "/dashboard" || pathname === "/") {
@@ -133,15 +134,18 @@ const MainHeader: FunctionComponent = () => {
       {showPopup === 2 && (
         <div className={styles.popup}>
           <SelectCustomer
-            onChooseVehicle={() => setShowPopup(2)}
-            onChooseCustomer={() => setShowPopup(4)}
+            onChooseCustomer={() => setShowPopup(3)}
+            onAddCustomer={() => setShowPopup(4)}
             onClose={() => setShowPopup(0)}
           />
         </div>
       )}
       {showPopup === 3 && (
         <div className={styles.popup}>
-          Add New Vehicle Form <button onClick={closePopup}>Close</button>
+          <AddNewVehicle
+            onChooseCustomer={() => setShowPopup(3)}
+            onClose={() => setShowPopup(0)}
+          />
         </div>
       )}
       {showPopup === 4 && (
