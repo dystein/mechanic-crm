@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import Customer from "./Customer";
+import Customer from "./SelectCustomerEntry";
 
 interface ChoicePopupProps {
   onChooseVehicle: () => void;
@@ -35,32 +35,18 @@ const SelectCustomer: FunctionComponent<ChoicePopupProps> = ({
         </div>
         <div className="self-stretch bg-primary-white h-[504px] overflow-y-auto shrink-0 flex flex-col items-start justify-start text-base">
           <div className="self-stretch overflow-hidden shrink-0 flex flex-col items-start justify-start gap-[4px]">
-            <div className="self-stretch overflow-hidden flex flex-row items-center justify-start py-[9px] pr-3.5 pl-6">
-              <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
-                <div className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0">
-                  <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] rounded-6xl bg-grey-grey-30" />
-                </div>
-                <div className="flex-1 flex flex-col items-start justify-start">
-                  <div className="self-stretch flex flex-row items-start justify-start gap-[5px]">
-                    <b className="relative leading-[27px]">Deanna</b>
-                    <b className="flex-1 relative leading-[27px]">Annis</b>
-                  </div>
-                  <div className="self-stretch relative text-sm leading-[27px] text-grey-grey-70">
-                    deannannis@gmail.com
-                  </div>
-                </div>
-              </div>
-              <img
-                className="w-[50px] relative rounded-31xl h-[50px] overflow-hidden shrink-0"
-                alt=""
-                src="/edit1.svg"
-              />
-            </div>
             <Customer
               avatar="/avatar2@2x.png"
               firstname="Andrea"
               lastname="Willis"
               email="andreawillis@gmail.com"
+              edit="/edit1.svg"
+            />
+            <Customer
+              avatar="/avatar2@2x.png"
+              firstname="Dylan"
+              lastname="Spelbring"
+              email="dspbring@gmail.com"
               edit="/edit1.svg"
             />
             <Customer

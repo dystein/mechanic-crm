@@ -2,7 +2,6 @@ import { FunctionComponent, useMemo, type CSSProperties } from "react";
 import Badge from "./Badge";
 
 export type DealRowIgnoreType = {
-  image?: string;
   street?: string;
   city?: string;
   state?: string;
@@ -21,7 +20,6 @@ export type DealRowIgnoreType = {
 };
 
 const DealRowIgnore: FunctionComponent<DealRowIgnoreType> = ({
-  image,
   street,
   city,
   state,
@@ -77,11 +75,6 @@ const DealRowIgnore: FunctionComponent<DealRowIgnoreType> = ({
   return (
     <div className="self-stretch relative h-20 overflow-hidden shrink-0 text-left text-base text-primary-navy font-heading-h5-bold">
       <div className="absolute h-[calc(100%_-_1px)] w-full top-[0px] right-[0px] bottom-[1px] left-[0px] flex flex-row items-center justify-start py-0 pr-6 pl-3 box-border gap-[24px]">
-        <img
-          className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
-          alt=""
-          src={image}
-        />
         <div className="flex-1 relative h-[30px] overflow-hidden">
           <div
             className="absolute top-[calc(50%_-_15px)] left-[0px] flex flex-row items-start justify-start gap-[5px]"

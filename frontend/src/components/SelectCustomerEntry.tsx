@@ -18,11 +18,6 @@ const Customer: FunctionComponent<CustomerType> = ({
   return (
     <div className="overflow-hidden flex flex-row items-center justify-start py-[9px] pr-3.5 pl-6 box-border text-left text-base text-primary-navy font-heading-h5-bold self-stretch">
       <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
-        <img
-          className="w-11 relative rounded-6xl h-11 overflow-hidden shrink-0 object-cover"
-          alt=""
-          src={avatar}
-        />
         <div className="flex-1 flex flex-col items-start justify-start">
           <div className="self-stretch flex flex-row items-start justify-start gap-[5px]">
             <b className="relative leading-[27px]">{firstname}</b>

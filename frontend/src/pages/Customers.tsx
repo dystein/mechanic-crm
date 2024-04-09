@@ -8,8 +8,7 @@ import { useNavigate } from "react-router-dom";
 import ScreenColumnsBG from "../components/ScreenColumnsBG";
 import InfoAndFilters from "../components/InfoAndFilters";
 import TableHeader from "../components/TableHeader";
-import DefaultButton from "../components/DefaultButton";
-import CustomerRow from "../components/CustomerRow"; // Make sure to create this component
+import CustomerRow from "../components/CustomerRow";
 import Sidebar from "../components/Sidebar";
 import MainHeader from "../components/MainHeader";
 

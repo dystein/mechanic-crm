@@ -4,6 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./MainHeader.module.css";
 import AddNew from "./AddNew";
 import SelectCustomer from "./SelectCustomer";
+import AddNewCustomer from "./AddNewCustomer";
 
 const getTitle = (pathname: string) => {
   if (pathname === "/dashboard" || pathname === "/") {
@@ -31,6 +32,7 @@ const getButton = (pathname: string) => {
   return "";
 };
 const MainHeader: FunctionComponent = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [title, setTitle] = useState("");
   const [buttonName, setButtonName] = useState("");
@@ -46,6 +48,10 @@ const MainHeader: FunctionComponent = () => {
     setButtonName(getButton(location.pathname));
   }, [location.pathname]);
 
+  const goHome = useCallback(() => {
+    navigate("/dashboard"); // Navigate to dashboard page
+  }, [navigate]);
+
   const handleButtonClick = () => {
     switch (location.pathname) {
       case "/dashboard":
@@ -55,7 +61,7 @@ const MainHeader: FunctionComponent = () => {
         setShowPopup(2); // Show "Add New Vehicle" popup
         break;
       case "/customers":
-        setShowPopup(3); // Show "Add New Customer" popup
+        setShowPopup(4); // Show "Add New Customer" popup
         break;
       default:
         setShowPopup(0); // No popup
@@ -71,6 +77,7 @@ const MainHeader: FunctionComponent = () => {
         className="absolute top-[calc(50%_-_45px)] left-[0px] w-[90px] h-[90px] overflow-hidden cursor-pointer"
         alt=""
         src="/logo.svg"
+        onClick={goHome}
       />
       {/* Header Left */}
       <div className="absolute w-[calc(100%_-_507px)] top-[0px] right-[417px] left-[90px] bg-ghostwhite h-[90px] overflow-hidden">
@@ -118,7 +125,7 @@ const MainHeader: FunctionComponent = () => {
         <div className={styles.popup}>
           <AddNew
             onChooseVehicle={() => setShowPopup(2)}
-            onChooseCustomer={() => setShowPopup(3)}
+            onChooseCustomer={() => setShowPopup(4)}
             onClose={() => setShowPopup(0)}
           />
         </div>
@@ -130,17 +137,16 @@ const MainHeader: FunctionComponent = () => {
             onChooseCustomer={() => setShowPopup(4)}
             onClose={() => setShowPopup(0)}
           />
-          {/* Add New Vehicle Form <button onClick={closePopup}>Close</button> */}
         </div>
       )}
       {showPopup === 3 && (
         <div className={styles.popup}>
-          Add New Customer Form <button onClick={closePopup}>Close</button>
+          Add New Vehicle Form <button onClick={closePopup}>Close</button>
         </div>
       )}
       {showPopup === 4 && (
         <div className={styles.popup}>
-          Add New Customer Form <button onClick={closePopup}>Close</button>
+          <AddNewCustomer onClose={() => setShowPopup(0)} />
         </div>
       )}
       <Base
