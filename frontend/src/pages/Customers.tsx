@@ -24,24 +24,6 @@ interface Customer {
 const Customers: FunctionComponent = () => {
   const [customers, setCustomers] = useState<Customer[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const navigate = useNavigate();
-
-  // Navigate callback functions
-  const onCustomerRowRepeatLinkClick = useCallback(() => {
-    navigate("/customer-detail");
-  }, [navigate]);
-
-  const onButtonIconClick = useCallback(() => {
-    navigate("/dashboard");
-  }, [navigate]);
-
-  const onButtonIcon1Click = useCallback(() => {
-    navigate("/vehicles");
-  }, [navigate]);
-
-  const onLogoClick = useCallback(() => {
-    navigate("/dashboard");
-  }, [navigate]);
 
   const API_BASE_URL =
     process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
@@ -110,7 +92,7 @@ const Customers: FunctionComponent = () => {
               dealsColumn={false}
             />
             {isLoading ? (
-              <p>Loading customers...</p>
+              <p className="p-4">Loading customers...</p>
             ) : (
               customers.map((customer) => (
                 <CustomerRow

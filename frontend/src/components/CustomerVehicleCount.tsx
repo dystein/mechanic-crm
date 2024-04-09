@@ -12,12 +12,12 @@ const CustomerVehicleCount: FunctionComponent<CustomerVehicleCountType> = ({
   const navigate = useNavigate();
 
   const onDashboardVehiclesCountClick = useCallback(() => {
-    navigate(`/${customerOrVehicle}`);
+    navigate(`/${customerOrVehicle?.toLowerCase()}`);
   }, [navigate]);
 
   return (
     <div
-      className="self-stretch relative rounded-xl bg-primary-white box-border h-[168px] cursor-pointer border-[1px] border-solid border-grey-grey-30"
+      className="hover:cursor-pointer hover:bg-gray-100 self-stretch relative rounded-xl bg-primary-white box-border h-[168px] cursor-pointer border-[1px] border-solid border-grey-grey-30"
       onClick={onDashboardVehiclesCountClick}
     >
       <div className="absolute h-full w-full top-[0px] right-[0px] bottom-[0px] left-[0px] overflow-hidden">

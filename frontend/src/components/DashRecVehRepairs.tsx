@@ -15,7 +15,26 @@ const DashRecVehRepairs = () => {
         className="self-stretch flex-1 flex flex-col items-start justify-start cursor-pointer"
         onClick={onDealContainer2Click}
       >
-        <div className="self-stretch relative bg-primary-white h-[86px] overflow-hidden shrink-0">
+        <div className="self-stretch relative h-[86px] overflow-hidden shrink-0">
+          <div className="absolute top-[calc(50%_-_25px)] left-[20px] flex-1 flex flex-col items-start justify-start">
+            <div className="self-stretch flex flex-row items-start justify-start gap-[12px]">
+              <b className="flex-1 relative leading-[27px] text-base text-primary-navy">
+                2011 Nissan Altima
+              </b>
+            </div>
+            <div className="self-stretch flex flex-row items-start justify-start gap-[12px] text-sm text-grey-grey-70">
+              <div className="flex-1 flex flex-row items-start justify-start">
+                <div className="relative leading-[27px]">WEI0302</div>
+                <div className="w-2.5 relative leading-[27px] inline-block shrink-0">
+                  ,{" "}
+                </div>
+                <div className="relative leading-[27px]">NY</div>
+                <div className="w-[42px] relative leading-[27px] hidden">
+                  12345
+                </div>
+              </div>
+            </div>
+          </div>
           <Badge
             statusLabel="IN PROGRESS"
             badgeBackgroundColor="#fffdc3"
@@ -28,6 +47,11 @@ const DashRecVehRepairs = () => {
             badgeTextTransform="uppercase"
             badgeFontWeight="500"
           />
+          <img
+            className="absolute top-[calc(50%_-_25px)] right-[24px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
+            alt=""
+            src="/button1.svg"
+          />
           <Base
             baseWidth="100%"
             basePosition="absolute"
@@ -37,11 +61,6 @@ const DashRecVehRepairs = () => {
             baseHeight="1px"
             baseTop="unset"
             baseAlignSelf="unset"
-          />
-          <img
-            className="absolute top-[calc(50%_-_25px)] right-[24px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
-            alt=""
-            src="/button1.svg"
           />
         </div>
         <div className="self-stretch flex-1 relative">
@@ -86,7 +105,7 @@ const DashRecVehRepairs = () => {
                 </div>
               </div>
             </div>
-            <div className="self-stretch relative bg-primary-white h-[46px] overflow-hidden shrink-0 text-center text-base text-olive">
+            <div className="self-stretch relative h-[46px] overflow-hidden shrink-0 text-center text-base text-olive">
               <b className="absolute top-[calc(50%_-_15px)] left-[calc(50%_-_41.5px)] leading-[30px]">
                 Load More
               </b>

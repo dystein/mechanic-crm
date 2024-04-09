@@ -92,9 +92,8 @@ const MainHeader: FunctionComponent = () => {
         {location.pathname !== "/vehicle-detail" &&
           location.pathname !== "/customer-detail" && (
             <button
-              className="rounded-51xl bg-primary-blue overflow-hidden flex flex-row items-center justify-center py-2.5 pr-4 pl-5 gap-[12px] text-left text-sm text-primary-white font-heading-h5-bold"
+              className="bg-[#e8c400] hover:bg-[#f8d800] rounded-51xl overflow-hidden flex flex-row items-center justify-center py-2.5 pr-4 pl-5 gap-[12px] text-left text-sm text-primary-white font-heading-h5-bold"
               style={{
-                backgroundColor: "#e8c400",
                 overflow: "unset",
                 position: "absolute",
                 top: "calc(50% - 25px)",
