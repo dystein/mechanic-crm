@@ -1,9 +1,12 @@
 package com.mechanicshop.crm.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 //import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "repairs")
@@ -33,6 +36,7 @@ public class Repair {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "vehicleID") // Updated to uppercase as per database schema
+    @JsonBackReference
     private Vehicle vehicle;
 
     public Repair() {
