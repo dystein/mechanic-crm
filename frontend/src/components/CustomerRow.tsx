@@ -54,7 +54,7 @@ const CustomerRow: FunctionComponent<CustomerRowType> = ({
           </div>
         </div>
         <img
-          className="hover:cursor-pointer w-[60px] relative rounded-3xs h-[60px] overflow-hidden shrink-0"
+          className="hover:cursor-pointer hover:bg-gray-200 w-[60px] relative rounded-3xs h-[60px] overflow-hidden shrink-0"
           alt=""
           src="/edit-cell1.svg"
           onClick={(e) => {

@@ -1,5 +1,5 @@
 import { FunctionComponent, useState, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ScreenColumnsBG from "../components/ScreenColumnsBG";
 import Base from "../components/Base";
 import LabelYes from "../components/LabelYes";
@@ -9,6 +9,8 @@ import MainHeader from "../components/MainHeader";
 import Sidebar from "../components/Sidebar";
 
 const VehicleDetail: FunctionComponent = () => {
+  let { vehicleId } = useParams();
+
   const [isAlertVehicleDeletedOpen, setAlertVehicleDeletedOpen] =
     useState(false);
   const navigate = useNavigate();
@@ -96,7 +98,7 @@ const VehicleDetail: FunctionComponent = () => {
             <div className="self-stretch bg-primary-white flex flex-row items-center justify-start p-6 gap-[24px] text-9xl text-primary-navy">
               <div className="flex-1 flex flex-col items-start justify-start gap-[10px]">
                 <b className="relative leading-[40px]">
-                  2020 Mercedes-Benz S550
+                  [Vehicle with ID {vehicleId}]
                 </b>
                 <div className="flex flex-row items-start justify-start">
                   <b className="relative leading-[40px]">6ZAW303</b>
