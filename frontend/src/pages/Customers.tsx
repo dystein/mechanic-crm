@@ -103,7 +103,6 @@ const Customers: FunctionComponent = () => {
           />
           <div className="self-stretch rounded-xl overflow-hidden flex flex-col items-start justify-start py-0 px-6">
             <TableHeader
-              icon="/icon19.svg"
               name1="Name"
               deals="Deals"
               email="Email"
@@ -118,15 +117,15 @@ const Customers: FunctionComponent = () => {
                 <CustomerRow
                   key={customer.customerid}
                   customerid={customer.customerid}
-                  firstname={customer.firstName}
-                  lastname={customer.lastName}
+                  firstName={customer.firstName}
+                  lastName={customer.lastName}
                   phone={customer.phone}
                   email={customer.email}
                   address={customer.address}
                 />
               ))
             )}
-            <DefaultButton
+            {/* <DefaultButton
               buttonText="Load More"
               DefaultButtonPosition="absolute"
               DefaultButtonTop="calc(50% - 25px)"
@@ -139,7 +138,7 @@ const Customers: FunctionComponent = () => {
               DefaultButtonBorder="1px solid #eaeef4"
               DefaultButtonFlex="unset"
               buttonColor="#092c4c"
-            />
+            /> */}
           </div>
         </div>
       </div>

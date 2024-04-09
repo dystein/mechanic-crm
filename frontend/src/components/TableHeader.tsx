@@ -20,7 +20,6 @@ export type TableHeaderType = {
 };
 
 const TableHeader: FunctionComponent<TableHeaderType> = ({
-  icon,
   name1,
   deals,
   email,
@@ -70,7 +69,6 @@ const TableHeader: FunctionComponent<TableHeaderType> = ({
   return (
     <div className="self-stretch relative h-[60px] overflow-hidden shrink-0 text-left text-base text-grey-grey-70 font-heading-h5-bold">
       <div className="absolute h-[calc(100%_-_1px)] w-full top-[0px] right-[0px] bottom-[1px] left-[0px] flex flex-row items-center justify-start py-0 pr-6 pl-3 box-border gap-[24px]">
-        <img className="w-11 relative h-11" alt="" src={icon} />
         <div className="flex-1 relative h-[30px] overflow-hidden">
           <div className="absolute top-[calc(50%_-_14.5px)] left-[0px] leading-[30px] font-medium">
             {name1}
