@@ -8,6 +8,7 @@ interface ChoicePopupProps {
 }
 
 const AddNewCustomer: FunctionComponent<ChoicePopupProps> = ({ onClose }) => {
+
   return (
     <div
       className="w-[1366px] bg-black-black-50 h-[910px] max-w-full max-h-full overflow-auto text-left text-lg text-primary-navy font-heading-h5-bold"
