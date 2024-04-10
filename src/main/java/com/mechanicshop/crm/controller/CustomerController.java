@@ -4,6 +4,7 @@ import com.mechanicshop.crm.model.Customer;
 import com.mechanicshop.crm.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,7 +34,7 @@ public class CustomerController {
     // specific handler method below.
     // @ResponseStatus marks the method so that if it completes successfully,
     // it will return the HTTP status code CREATED (201).
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.CREATED)
     public Customer addCustomer(@RequestBody Customer customer) {
         // Calls the saveCustomer method of customerService to add a new customer

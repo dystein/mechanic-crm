@@ -7,6 +7,7 @@ interface ChoicePopupProps {
   onClose: () => void;
 }
 
+
 const AddNewCustomer: FunctionComponent<ChoicePopupProps> = ({ onClose }) => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
@@ -19,9 +20,51 @@ const AddNewCustomer: FunctionComponent<ChoicePopupProps> = ({ onClose }) => {
 
   const handleSaveCustomer = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Implement the POST request to save the customer data
-    // If successful, close the form and reset the state
-  };
+
+    const fullAddress = `${street}, ${city}, ${state} ${zip}`;
+
+
+    const customerData = {
+        firstName,
+        lastName,
+        email,
+        phone,
+        address: fullAddress,
+      };
+
+    const API_URL = 'https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers'; // Example: 'https://yourdomain.com/api/customers'
+    const username = 'admin'; // Your username for basic auth
+    const password = 'password'; // Your password for basic auth
+    const basicAuth = `Basic ${btoa(`${username}:${password}`)}`;
+
+    try {
+        const response = await fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': basicAuth,
+          },
+          body: JSON.stringify({
+                  firstName: firstName,
+                  lastName: lastName,
+                  email: email,
+                  phone: phone,
+                  address: `${street}, ${city}, ${state}, ${zip}`,
+                }),
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        // Handle success
+        console.log("Customer added successfully");
+        onClose(); // Close the modal/form
+        // Optionally, reset the state here if the form remains open
+      } catch (error) {
+        console.error("Error adding customer: ", error);
+      }
+    };
 
   return (
     <div
