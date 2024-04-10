@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo, type CSSProperties } from "react";
+import React, { FunctionComponent, useMemo, CSSProperties, ChangeEvent } from "react";
 
 export type LabelNoType = {
   icon?: string;
@@ -6,6 +6,8 @@ export type LabelNoType = {
   icon1?: string;
   showIcon?: boolean;
   iconVisible?: boolean;
+  value?: string; // Add value prop
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void; // Add onChange prop
 
   /** Style props */
   labelNoFlex?: CSSProperties["flex"];
@@ -19,39 +21,34 @@ const LabelNo: FunctionComponent<LabelNoType> = ({
   icon,
   placeholder,
   icon1,
-  showIcon,
+  showIcon = false,
   iconVisible,
   labelNoFlex,
   labelNoWidth,
   labelNoAlignSelf,
   labelNoBackgroundColor,
   placeholderFlex,
+  value, // Utilizing value prop
+  onChange, // Utilizing onChange prop
 }) => {
-  const labelNoStyle: CSSProperties = useMemo(() => {
-    return {
+  const labelNoStyle: CSSProperties = useMemo(() => ({
       flex: labelNoFlex,
       width: labelNoWidth,
       alignSelf: labelNoAlignSelf,
       backgroundColor: labelNoBackgroundColor,
-    };
-  }, [labelNoFlex, labelNoWidth, labelNoAlignSelf, labelNoBackgroundColor]);
-
-  const placeholder1Style: CSSProperties = useMemo(() => {
-    return {
-      flex: placeholderFlex,
-    };
-  }, [placeholderFlex]);
+    }), [labelNoFlex, labelNoWidth, labelNoAlignSelf, labelNoBackgroundColor]);
 
   return (
-    <div
-      className="rounded-lg bg-grey-grey-10 box-border overflow-hidden flex flex-row items-center justify-start py-2.5 px-5 gap-[12px] text-left text-base text-grey-grey-70 font-heading-h5-bold flex-1 border-[1px] border-solid border-grey-grey-30"
-      style={labelNoStyle}
-    >
-      {showIcon && <img className="w-5 relative h-5" alt="" src={icon} />}
-      <div className="flex-1 relative leading-[30px]" style={placeholder1Style}>
-        {placeholder}
-      </div>
-      {iconVisible && <img className="w-5 relative h-5" alt="" src={icon1} />}
+    <div className="rounded-lg bg-grey-grey-10 overflow-hidden flex flex-row items-center justify-start py-2.5 px-5 gap-[12px] border-[1px] border-solid border-grey-grey-30" style={labelNoStyle}>
+      {showIcon && <img className="w-5 h-5" alt="" src={icon} />}
+      <input
+        type="text"
+        className="flex-1 rounded-lg py-2.5 px-5"
+        value={value || ''}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
+      {iconVisible && <img className="w-5 h-5" alt="" src={icon1} />}
     </div>
   );
 };

@@ -1,9 +1,9 @@
-import { FunctionComponent, useMemo, type CSSProperties } from "react";
-
+import React, { FunctionComponent, CSSProperties, useMemo } from "react";
 export type DefaultButtonType = {
-  buttonText?: string;
-
-  /** Style props */
+  buttonText: string;
+  onClick?: () => void; // Optional click handler
+  type?: "button" | "submit" | "reset"; // Optional button type, with default
+  // Existing style props
   DefaultButtonPosition?: CSSProperties["position"];
   DefaultButtonTop?: CSSProperties["top"];
   DefaultButtonRight?: CSSProperties["right"];
@@ -19,6 +19,9 @@ export type DefaultButtonType = {
 
 const DefaultButton: FunctionComponent<DefaultButtonType> = ({
   buttonText,
+  onClick, // Using the new onClick prop
+  type = "button", // Setting a default type
+  // Destructuring all existing props
   DefaultButtonPosition,
   DefaultButtonTop,
   DefaultButtonRight,
@@ -31,20 +34,19 @@ const DefaultButton: FunctionComponent<DefaultButtonType> = ({
   DefaultButtonFlex,
   buttonColor,
 }) => {
-  const DefaultButtonStyle: CSSProperties = useMemo(() => {
-    return {
-      position: DefaultButtonPosition,
-      top: DefaultButtonTop,
-      right: DefaultButtonRight,
-      width: DefaultButtonWidth,
-      overflow: DefaultButtonOverflow,
-      bottom: DefaultButtonBottom,
-      left: DefaultButtonLeft,
-      backgroundColor: DefaultButtonBackgroundColor,
-      border: DefaultButtonBorder,
-      flex: DefaultButtonFlex,
-    };
-  }, [
+  const DefaultButtonStyle: CSSProperties = useMemo(() => ({
+    position: DefaultButtonPosition,
+    top: DefaultButtonTop,
+    right: DefaultButtonRight,
+    width: DefaultButtonWidth,
+    overflow: DefaultButtonOverflow,
+    bottom: DefaultButtonBottom,
+    left: DefaultButtonLeft,
+    backgroundColor: DefaultButtonBackgroundColor,
+    border: DefaultButtonBorder,
+    flex: DefaultButtonFlex,
+    // Additional styles can be added here
+  }), [
     DefaultButtonPosition,
     DefaultButtonTop,
     DefaultButtonRight,
@@ -57,21 +59,20 @@ const DefaultButton: FunctionComponent<DefaultButtonType> = ({
     DefaultButtonFlex,
   ]);
 
-  const buttonStyle: CSSProperties = useMemo(() => {
-    return {
-      color: buttonColor,
-    };
-  }, [buttonColor]);
+  const buttonTextStyle: CSSProperties = useMemo(() => ({
+    color: buttonColor,
+  }), [buttonColor]);
 
+  // Returning a button element instead of a div for semantic and accessibility reasons
   return (
-    <div
-      className="rounded-51xl bg-primary-white overflow-hidden flex flex-row items-center justify-center py-2.5 px-6 text-left text-sm text-primary-navy font-heading-h5-bold border-[1px] border-solid border-grey-grey-30"
-      style={DefaultButtonStyle}
+    <button
+      type={type} // Applying the button type
+      onClick={onClick} // Applying the onClick event handler
+      style={{...DefaultButtonStyle, ...buttonTextStyle}} // Merging the button styles with text styles
+      className="rounded-xl overflow-hidden flex items-center justify-center py-2.5 px-6 text-sm font-bold border-[1px] border-solid"
     >
-      <div className="relative leading-[30px] font-medium" style={buttonStyle}>
-        {buttonText}
-      </div>
-    </div>
+      {buttonText}
+    </button>
   );
 };
 

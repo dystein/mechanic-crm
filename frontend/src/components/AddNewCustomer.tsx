@@ -1,196 +1,99 @@
-import { FunctionComponent } from "react";
-import LabelYes from "./LabelYes";
-import LabelNo from "./LabelNo";
-import DefaultButton from "./DefaultButton";
+import React, { useState, FunctionComponent } from "react";
+import LabelYes from "./LabelYes"; // Make sure this component accepts 'label', 'value', and 'onChange' props.
+import LabelNo from "./LabelNo"; // Make sure this component accepts 'placeholder', 'value', and 'onChange' props.
+import DefaultButton from "./DefaultButton"; // Make sure this component accepts 'buttonText', 'onClick', and 'type' props.
 
 interface ChoicePopupProps {
   onClose: () => void;
 }
 
 const AddNewCustomer: FunctionComponent<ChoicePopupProps> = ({ onClose }) => {
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [state, setState] = useState('');
+  const [zip, setZip] = useState('');
+
+  const handleSaveCustomer = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // Implement the POST request to save the customer data
+    // If successful, close the form and reset the state
+  };
 
   return (
     <div
-      className="w-[1366px] bg-black-black-50 h-[910px] max-w-full max-h-full overflow-auto text-left text-lg text-primary-navy font-heading-h5-bold"
-      style={{ height: "100vh", width: "100vw" }}
+      className="w-full h-full fixed top-0 left-0 bg-black bg-opacity-50 flex justify-center items-center"
     >
-      <div className="absolute top-[calc(50%_-_350px)] left-[calc(50%_-_310px)] rounded-xl bg-primary-white w-[620px] overflow-hidden flex flex-col items-start justify-start">
-        <div className="self-stretch flex flex-row items-center justify-start py-3.5 pr-3.5 pl-8 gap-[32px]">
-          <b className="flex-1 relative leading-[30px]">Add New Customer</b>
-          <img
-            className="hover:cursor-pointer w-[50px] relative rounded-31xl h-[50px]"
-            alt=""
-            src="/button9.svg"
-            onClick={onClose}
-          />
-        </div>
-        <div className="self-stretch relative bg-primary-white h-[528px] overflow-y-auto shrink-0 text-base">
-          <div className="absolute w-full top-[0px] right-[0px] left-[0px] flex flex-col items-start justify-start py-2 px-8 box-border gap-[20px]">
-            <div className="self-stretch flex flex-row items-start justify-start gap-[20px]">
-              <LabelYes
-                label="First Name"
-                icon="/icon11.svg"
-                placeholder="Barbara"
-                icon1="/icon12.svg"
-                showIcon={false}
-                showPlaceholder={false}
-                iconVisible={false}
-                labelYesFlex="1"
-                labelYesAlignSelf="unset"
-                labelYesHeight="unset"
-                labelAlignSelf="stretch"
-                labelWidth="unset"
-                inputHeight="50px"
-                inputBackgroundColor="#f6fafd"
-                placeholderFlex="unset"
-                placeholderWidth="240px"
-              />
-              <LabelYes
-                label="Last Name"
-                icon="/icon11.svg"
-                placeholder="Anderson"
-                icon1="/icon12.svg"
-                showIcon={false}
-                showPlaceholder={false}
-                iconVisible={false}
-                labelYesFlex="1"
-                labelYesAlignSelf="unset"
-                labelYesHeight="unset"
-                labelAlignSelf="stretch"
-                labelWidth="unset"
-                inputHeight="50px"
-                inputBackgroundColor="#f6fafd"
-                placeholderFlex="unset"
-                placeholderWidth="240px"
-              />
-            </div>
-            <div className="self-stretch flex flex-row items-start justify-start gap-[20px]">
-              <LabelYes
-                label="Email"
-                icon="/icon11.svg"
-                placeholder="banderson@gmail.com"
-                icon1="/icon12.svg"
-                showIcon={false}
-                showPlaceholder={false}
-                iconVisible={false}
-                labelYesFlex="1"
-                labelYesAlignSelf="unset"
-                labelYesHeight="unset"
-                labelAlignSelf="unset"
-                labelWidth="344px"
-                inputHeight="50px"
-                inputBackgroundColor="#f6fafd"
-                placeholderFlex="unset"
-                placeholderWidth="240px"
-              />
-              <LabelYes
-                label="Phone"
-                icon="/icon11.svg"
-                placeholder="310-685-3335"
-                icon1="/icon12.svg"
-                showIcon={false}
-                showPlaceholder={false}
-                iconVisible={false}
-                labelYesFlex="1"
-                labelYesAlignSelf="unset"
-                labelYesHeight="unset"
-                labelAlignSelf="unset"
-                labelWidth="unset"
-                inputHeight="50px"
-                inputBackgroundColor="#f6fafd"
-                placeholderFlex="unset"
-                placeholderWidth="240px"
-              />
-            </div>
+      <div className="rounded-xl bg-white w-3/4 max-w-2xl overflow-hidden flex flex-col">
+        <header className="flex justify-between items-center p-4 border-b">
+          <h2 className="text-xl font-bold">Add New Customer</h2>
+          <button onClick={onClose}>X</button>
+        </header>
+        <div className="p-4 overflow-y-auto">
+          <form onSubmit={handleSaveCustomer}>
+            {/* First Name Input */}
             <LabelYes
-              label="Address"
-              icon="/icon11.svg"
-              placeholder="Street Address"
-              icon1="/icon12.svg"
-              showIcon={false}
-              showPlaceholder
-              iconVisible={false}
-              labelYesFlex="unset"
-              labelYesAlignSelf="stretch"
-              labelYesHeight="unset"
-              labelAlignSelf="stretch"
-              labelWidth="unset"
-              inputHeight="unset"
-              inputBackgroundColor="#f6fafd"
-              placeholderFlex="1"
-              placeholderWidth="unset"
+              label="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
-            <div className="self-stretch flex flex-row items-start justify-start gap-[20px]">
-              <LabelNo
-                icon="/icon11.svg"
-                placeholder="City"
-                icon1="/icon12.svg"
-                showIcon={false}
-                iconVisible={false}
-                labelNoFlex="1"
-                labelNoWidth="unset"
-                labelNoAlignSelf="unset"
-                labelNoBackgroundColor="#f6fafd"
-                placeholderFlex="1"
+            {/* Last Name Input */}
+            <LabelYes
+              label="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
+            />
+            {/* Email Input */}
+            <LabelYes
+              label="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {/* Phone Input */}
+            <LabelYes
+              label="Phone"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+            />
+            {/* Street Address Input */}
+            <LabelYes
+              label="Street Address"
+              value={street}
+              onChange={(e) => setStreet(e.target.value)}
+            />
+            {/* City Input */}
+            <LabelNo
+              placeholder="City"
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+            />
+            {/* State / Province Input */}
+            <LabelNo
+              placeholder="State / Province"
+              value={state}
+              onChange={(e) => setState(e.target.value)}
+            />
+            {/* Zip Code Input */}
+            <LabelNo
+              placeholder="Zip Code"
+              value={zip}
+              onChange={(e) => setZip(e.target.value)}
+            />
+            {/* Form Buttons */}
+            <div className="flex justify-end gap-2 mt-4">
+              <DefaultButton
+                buttonText="Cancel"
+                onClick={onClose}
               />
-              <LabelNo
-                icon="/icon11.svg"
-                placeholder="State / Province"
-                icon1="/icon12.svg"
-                showIcon={false}
-                iconVisible={false}
-                labelNoFlex="unset"
-                labelNoWidth="unset"
-                labelNoAlignSelf="unset"
-                labelNoBackgroundColor="#f6fafd"
-                placeholderFlex="unset"
-              />
-              <LabelNo
-                icon="/icon11.svg"
-                placeholder="Zip Code"
-                icon1="/icon12.svg"
-                showIcon={false}
-                iconVisible={false}
-                labelNoFlex="unset"
-                labelNoWidth="unset"
-                labelNoAlignSelf="unset"
-                labelNoBackgroundColor="#f6fafd"
-                placeholderFlex="unset"
+              <DefaultButton
+                buttonText="Save Customer"
+                type="submit"
               />
             </div>
-          </div>
-        </div>
-        <div className="self-stretch flex flex-row items-center justify-end pt-4 px-8 pb-7">
-          <div className="flex flex-row items-start justify-start gap-[16px]">
-            <DefaultButton
-              buttonText="Cancel"
-              DefaultButtonPosition="unset"
-              DefaultButtonTop="unset"
-              DefaultButtonRight="unset"
-              DefaultButtonWidth="unset"
-              DefaultButtonOverflow="hidden"
-              DefaultButtonBottom="unset"
-              DefaultButtonLeft="unset"
-              DefaultButtonBackgroundColor="unset"
-              DefaultButtonBorder="unset"
-              DefaultButtonFlex="unset"
-              buttonColor="#092c4c"
-            />
-            <DefaultButton
-              buttonText="Save Customer"
-              DefaultButtonPosition="unset"
-              DefaultButtonTop="unset"
-              DefaultButtonRight="unset"
-              DefaultButtonWidth="unset"
-              DefaultButtonOverflow="hidden"
-              DefaultButtonBottom="unset"
-              DefaultButtonLeft="unset"
-              DefaultButtonBackgroundColor="#dbb800"
-              DefaultButtonBorder="unset"
-              DefaultButtonFlex="unset"
-              buttonColor="#fff"
-            />
-          </div>
+          </form>
         </div>
       </div>
     </div>

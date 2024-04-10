@@ -1,4 +1,4 @@
-import { FunctionComponent, useMemo, type CSSProperties } from "react";
+import React, { FunctionComponent, useMemo, CSSProperties, ChangeEvent } from "react";
 
 export type LabelYesType = {
   label?: string;
@@ -8,6 +8,8 @@ export type LabelYesType = {
   showIcon?: boolean;
   showPlaceholder?: boolean;
   iconVisible?: boolean;
+  value?: string; // Added value prop
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void; // Added onChange prop
 
   /** Style props */
   labelYesFlex?: CSSProperties["flex"];
@@ -26,8 +28,8 @@ const LabelYes: FunctionComponent<LabelYesType> = ({
   icon,
   placeholder,
   icon1,
-  showIcon,
-  showPlaceholder,
+  showIcon = false,
+  showPlaceholder = true,
   iconVisible,
   labelYesFlex,
   labelYesAlignSelf,
@@ -38,59 +40,36 @@ const LabelYes: FunctionComponent<LabelYesType> = ({
   inputBackgroundColor,
   placeholderFlex,
   placeholderWidth,
+  value, // Utilizing value prop
+  onChange, // Utilizing onChange prop
 }) => {
-  const labelYesStyle: CSSProperties = useMemo(() => {
-    return {
+  const labelYesStyle: CSSProperties = useMemo(() => ({
       flex: labelYesFlex,
       alignSelf: labelYesAlignSelf,
       height: labelYesHeight,
-    };
-  }, [labelYesFlex, labelYesAlignSelf, labelYesHeight]);
+    }), [labelYesFlex, labelYesAlignSelf, labelYesHeight]);
 
-  const labelStyle: CSSProperties = useMemo(() => {
-    return {
+  const labelStyle: CSSProperties = useMemo(() => ({
       alignSelf: labelAlignSelf,
       width: labelWidth,
-    };
-  }, [labelAlignSelf, labelWidth]);
+    }), [labelAlignSelf, labelWidth]);
 
-  const inputStyle: CSSProperties = useMemo(() => {
-    return {
+  const inputStyle: CSSProperties = useMemo(() => ({
       height: inputHeight,
       backgroundColor: inputBackgroundColor,
-    };
-  }, [inputHeight, inputBackgroundColor]);
-
-  const placeholderStyle: CSSProperties = useMemo(() => {
-    return {
-      flex: placeholderFlex,
-      width: placeholderWidth,
-    };
-  }, [placeholderFlex, placeholderWidth]);
+    }), [inputHeight, inputBackgroundColor]);
 
   return (
-    <div
-      className="flex flex-col items-start justify-start gap-[12px] text-left text-base text-primary-navy font-heading-h5-bold flex-1"
-      style={labelYesStyle}
-    >
-      <b className="self-stretch relative leading-[30px]" style={labelStyle}>
-        {label}
-      </b>
-      <div
-        className="self-stretch rounded-lg bg-grey-grey-10 overflow-hidden flex flex-row items-center justify-start py-2.5 px-5 gap-[12px] text-grey-grey-70 border-[1px] border-solid border-grey-grey-30"
+    <div className="flex flex-col items-start justify-start gap-[12px] text-left text-base text-primary-navy font-heading-h5-bold flex-1" style={labelYesStyle}>
+      <b className="self-stretch relative leading-[30px]" style={labelStyle}>{label}</b>
+      <input
+        type="text"
+        className="self-stretch rounded-lg py-2.5 px-5 border-[1px] border-solid border-grey-grey-30"
         style={inputStyle}
-      >
-        {showIcon && <img className="w-5 relative h-5" alt="" src={icon} />}
-        {showPlaceholder && (
-          <div
-            className="flex-1 relative leading-[30px]"
-            style={placeholderStyle}
-          >
-            {placeholder}
-          </div>
-        )}
-        {iconVisible && <img className="w-5 relative h-5" alt="" src={icon1} />}
-      </div>
+        value={value || ''}
+        onChange={onChange}
+        placeholder={placeholder}
+      />
     </div>
   );
 };
