@@ -34,7 +34,7 @@ public class CustomerController {
     // specific handler method below.
     // @ResponseStatus marks the method so that if it completes successfully,
     // it will return the HTTP status code CREATED (201).
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
+    @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Customer addCustomer(@RequestBody Customer customer) {
         // Calls the saveCustomer method of customerService to add a new customer
