@@ -25,12 +25,18 @@ const AddNewCustomer: FunctionComponent<ChoicePopupProps> = ({ onClose }) => {
 
   return (
     <div
-      className="w-full h-full fixed top-0 left-0 bg-black bg-opacity-50 flex justify-center items-center"
+      className="w-[1366px] bg-black-black-50 h-[910px] max-w-full max-h-full overflow-auto text-left text-lg text-primary-navy font-heading-h5-bold"
+            style={{ height: "100vh", width: "100vw" }}
     >
-      <div className="rounded-xl bg-white w-3/4 max-w-2xl overflow-hidden flex flex-col">
+      <div className="absolute top-[calc(50%_-_350px)] left-[calc(50%_-_310px)] rounded-xl bg-primary-white w-[620px] overflow-hidden flex flex-col items-start justify-start">
         <header className="flex justify-between items-center p-4 border-b">
-          <h2 className="text-xl font-bold">Add New Customer</h2>
-          <button onClick={onClose}>X</button>
+            <h2 className="flex-1 relative leading-[30px]">Add New Customer</h2>
+            <img
+              className="hover:cursor-pointer w-[50px] relative rounded-31xl h-[50px]"
+              alt=""
+              src="/button9.svg"
+              onClick={onClose}
+            />
         </header>
         <div className="p-4 overflow-y-auto">
           <form onSubmit={handleSaveCustomer}>

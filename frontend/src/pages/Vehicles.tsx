@@ -9,6 +9,9 @@ import { useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 import MainHeader from "../components/MainHeader";
 
+ const API_BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+
 const Vehicles: FunctionComponent = () => {
   const [isSelectCustomerOpen, setSelectCustomerOpen] = useState(false);
   const navigate = useNavigate();
