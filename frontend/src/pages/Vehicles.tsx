@@ -16,13 +16,13 @@ import DealRowIgnore from "../components/DealRowIgnore";
 import VehicleRow from "../components/VehicleRow";
 
 interface Vehicle {
-  vehicleid: number; // add elsewhere
+  vehicleId: number; // add elsewhere
   customerid: number; // make work
   make: string;
   model: string;
   year: number;
   mileage: number;
-  licenseplate: string;
+  licensePlate: string;
   state: string;
   notes: string;
 }
@@ -102,13 +102,13 @@ const Vehicles: FunctionComponent = () => {
               ) : (
                   vehicles.map((vehicle) => (
                       <VehicleRow
-                          vehicleid={vehicle.vehicleid}
+                          vehicleId={vehicle.vehicleId}
                           customerid={vehicle.customerid}
                           make={vehicle.make}
                           model={vehicle.model}
                           year={vehicle.year}
                           mileage={vehicle.mileage}
-                          licenseplate={vehicle.licenseplate}
+                          licensePlate={vehicle.licensePlate}
                           state={vehicle.state}
                           notes={vehicle.notes}
                       />
