@@ -1,3 +1,149 @@
+import React, {
+  FunctionComponent,
+  useState,
+  useEffect,
+  useCallback,
+} from "react";
+
+import { useNavigate } from "react-router-dom";
+import ScreenColumnsBG from "../components/ScreenColumnsBG";
+import InfoAndFilters from "../components/InfoAndFilters";
+import TableHeader from "../components/TableHeader";
+import CustomerRow from "../components/CustomerRow";
+import Sidebar from "../components/Sidebar";
+import MainHeader from "../components/MainHeader";
+import DealRowIgnore from "../components/DealRowIgnore";
+import VehicleRow from "../components/VehicleRow";
+
+interface Vehicle {
+  vehicleid: number; // add elsewhere
+  customerid: number; // make work
+  make: string;
+  model: string;
+  year: number;
+  mileage: number;
+  licenseplate: string;
+  state: string;
+  notes: string;
+}
+
+const Vehicles: FunctionComponent = () => {
+  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const API_BASE_URL =
+      process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+
+  // Fetch customers when the component mounts
+  useEffect(() => {
+    const fetchVehicles = async () => {
+      setIsLoading(true);
+      try {
+        const username = "admin"; // Your username
+        const password = "password"; // Your password
+        const basicAuth = btoa(`${username}:${password}`); // Encode username and password in base64
+
+        const response = await fetch(
+            "https://mechanicshopcrm-fff7703161a3.herokuapp.com/vehicles",
+            {
+              headers: {
+                Authorization: `Basic ${basicAuth}`,
+              },
+            }
+        );
+
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+
+        const data = await response.json();
+        console.log("Fetched data:", data);
+        setVehicles(data);
+      } catch (error) {
+        console.error("Error fetching data: ", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchVehicles();
+  }, []);
+
+  return (
+      <div className="w-full relative bg-grey-grey-10 h-[910px] text-left text-base text-primary-navy font-heading-h5-bold">
+        <ScreenColumnsBG
+            showRightArea={false}
+            screenColumnsBGWidth="100%"
+            screenColumnsBGHeight="100%"
+            screenColumnsBGPosition="absolute"
+            screenColumnsBGTop="0px"
+            screenColumnsBGRight="0px"
+            screenColumnsBGBottom="0px"
+            screenColumnsBGLeft="0px"
+            rightAreaOverflow="hidden"
+        />
+        <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start">
+          <div className="self-stretch overflow-hidden flex flex-col items-center justify-start">
+            <InfoAndFilters
+                totalInfoRowCount={`${vehicles.length}`}
+                customers="customers"
+            />
+            <div className="self-stretch rounded-xl overflow-hidden flex flex-col items-start justify-start py-0 px-6">
+              <TableHeader
+                  name1="Year, Make, and Model"
+                  deals="Deals"
+                  email="Mileage"
+                  phone="State"
+                  address="License Plate"
+                  dealsColumn={false}
+              />
+              {isLoading ? (
+                  <p className="p-4">Loading vehicles...</p>
+              ) : (
+                  vehicles.map((vehicle) => (
+                      <VehicleRow
+                          vehicleid={vehicle.vehicleid}
+                          customerid={vehicle.customerid}
+                          make={vehicle.make}
+                          model={vehicle.model}
+                          year={vehicle.year}
+                          mileage={vehicle.mileage}
+                          licenseplate={vehicle.licenseplate}
+                          state={vehicle.state}
+                          notes={vehicle.notes}
+                      />
+                  ))
+              )}
+              {/* <DefaultButton
+              buttonText="Load More"
+              DefaultButtonPosition="absolute"
+              DefaultButtonTop="calc(50% - 25px)"
+              DefaultButtonRight="unset"
+              DefaultButtonWidth="130px"
+              DefaultButtonOverflow="hidden"
+              DefaultButtonBottom="unset"
+              DefaultButtonLeft="calc(50% - 65px)"
+              DefaultButtonBackgroundColor="#fff"
+              DefaultButtonBorder="1px solid #eaeef4"
+              DefaultButtonFlex="unset"
+              buttonColor="#092c4c"
+              /> */}
+            </div>
+          </div>
+        </div>
+        <Sidebar />
+        <MainHeader />
+      </div>
+  );
+};
+
+export default Vehicles;
+
+
+
+
+
+/*
 import { FunctionComponent, useState, useEffect, useCallback } from "react";
 import ScreenColumnsBG from "../components/ScreenColumnsBG";
 import InfoAndFilters from "../components/InfoAndFilters";
@@ -41,7 +187,7 @@ const Vehicles: FunctionComponent = () => {
 
     fetchData();
   }, []);
-  */
+
   }
 
   return (
@@ -92,7 +238,7 @@ const Vehicles: FunctionComponent = () => {
                     price={vehicle.price}
                     status={vehicle.status}
                 />
-            ))} */}
+            ))} }
             <DealRowIgnore
               street="2013"
               city="Nissan"
@@ -186,3 +332,5 @@ const Vehicles: FunctionComponent = () => {
 };
 
 export default Vehicles;
+
+*/
