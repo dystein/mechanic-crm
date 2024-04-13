@@ -54,11 +54,6 @@ public class RepairService {
         repairRepository.delete(repair);
     }
 
-    public Optional<Repair> findTopByOrderByStartDateDesc() {
-        return repairRepository.findTopByOrderByStartDateDesc();
-
-    }
-
     public Repair findLatestRepairWithVehicle() {
         return repairRepository.findLatestRepairWithVehicle(PageRequest.of(0, 1))
                 .getContent().stream().findFirst()
