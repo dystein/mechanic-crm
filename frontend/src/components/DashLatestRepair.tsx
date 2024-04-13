@@ -24,7 +24,7 @@ const DashLatestRepair = () => {
       <div className="absolute top-[78px] left-[0px] w-[268px] h-[314px] overflow-hidden">
         <div className="absolute h-full w-[calc(100%_-_101.1px)] top-[0px] right-[101.1px] bottom-[0px] left-[0px] flex flex-col items-start justify-start">
           <div
-            className="w-[268px] relative h-[314px] overflow-hidden shrink-0 cursor-pointer"
+            className="w-[268px] relative h-[314px] overflow-hidden shrink-0"
             onClick={onDealContainerClick}
           >
             <div className="absolute top-[0px] left-[24px] w-[220px] flex flex-row items-center justify-start gap-[12px]">
