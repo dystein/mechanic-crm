@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useCallback } from "react";
+import { FunctionComponent, useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashRecentVehicle from "../components/DashRecentVehicle";
 import DashLatestRepair from "../components/DashLatestRepair";
@@ -10,6 +10,26 @@ import MainHeader from "../components/MainHeader";
 
 const Dashboard: FunctionComponent = () => {
   const navigate = useNavigate();
+  const [totalCustomers, setTotalCustomers] = useState(0);
+
+  const API_BASE_URL = "http://localhost:3000";
+
+  const fetchTotalCustomers = async () => {
+      try {
+        const response = await fetch(`${API_BASE_URL}/customers/count`);
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        const totalCount = await response.json();
+        setTotalCustomers(totalCount);
+      } catch (error) {
+        console.error("Error fetching total customer count: ", error);
+      }
+    };
+
+    useEffect(() => {
+        fetchTotalCustomers();
+      }, [])
 
   const onVehiclesClick = useCallback(() => {
     navigate("/vehicles");
@@ -21,7 +41,7 @@ const Dashboard: FunctionComponent = () => {
 
   return (
     <div className="w-[1366px] bg-grey-grey-10 max-w-full h-[910px] overflow-y-auto text-left text-5xl text-primary-navy font-heading-h5-bold">
-      <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start  bottom-[0px]">
+      <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start bottom-[0px]">
         {/* Inner dashboard content */}
         <div className="absolute w-[calc(100%_-_417px)] top-[0px] right-[417px] left-[0px] h-[820px]">
           {/* Inner dashboard content: Upper section */}
@@ -54,7 +74,10 @@ const Dashboard: FunctionComponent = () => {
           <div className="absolute w-[calc(100%_-_48px)] top-[436px] right-[24px] left-[24px] flex flex-row items-start justify-start gap-[24px] text-grey-grey-70">
             {/* Customer & Vehicle Count */}
             <div className="w-[268px] h-[360px] flex flex-col items-start justify-start gap-[24px]">
-              <CustomerVehicleCount customerOrVehicle="Customers" />
+              <CustomerVehicleCount
+                customerOrVehicle="Customers"
+                count={totalCustomers}
+              />
               <CustomerVehicleCount customerOrVehicle="Vehicles" />
             </div>
             {/* Recent Vehicle Repairs */}
