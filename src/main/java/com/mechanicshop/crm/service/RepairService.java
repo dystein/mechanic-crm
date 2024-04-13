@@ -4,6 +4,7 @@ import com.mechanicshop.crm.model.Repair;
 import com.mechanicshop.crm.model.Vehicle;
 import com.mechanicshop.crm.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -53,14 +54,21 @@ public class RepairService {
 
     @Transactional(readOnly = true)
     public RepairWithVehicleDTO findLatestRepairWithVehicle() {
-        // Adjust to fetch only the most recent repair with no endDate
-        Optional<Repair> optionalRepair = repairRepository.findTopByOrderByStartDateDesc(PageRequest.of(0, 1));
-        Repair repair = optionalRepair.orElseThrow(() -> new RuntimeException("No repairs found"));
+        // Assuming that you want only one result with the latest start date and null end date.
+        // The PageRequest of size one will take care of that.
+        List<Repair> repairs = repairRepository.findLatestRepairWithNoEndDate(PageRequest.of(0, 1));
 
-        // Initialize Vehicle data
+        // If no repairs found, throw an exception
+        if (repairs.isEmpty()) {
+            throw new RuntimeException("No repairs found");
+        }
+
+        // Get the first repair from the list, which should be the latest one due to the ordering in the repository method
+        Repair repair = repairs.get(0);
+
         Vehicle vehicle = repair.getVehicle();
 
-        // Create and populate DTO
+        // Map to DTO
         RepairWithVehicleDTO dto = new RepairWithVehicleDTO();
         dto.setRepairId(repair.getRepairId());
         dto.setDescription(repair.getDescription());
@@ -80,4 +88,5 @@ public class RepairService {
 
         return dto;
     }
+
 }
