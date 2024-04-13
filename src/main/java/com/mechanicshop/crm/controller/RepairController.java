@@ -70,6 +70,11 @@ public class RepairController {
         repairService.deleteRepair(id);
     }
 
+    @GetMapping("/latest")
+    public Repair getLatestRepairWithVehicle() {
+        return repairService.findLatestRepairWithVehicle();
+    }
+
     // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
     // TODO: Implement search functionality and service addition.
 

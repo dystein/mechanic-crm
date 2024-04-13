@@ -3,6 +3,7 @@ package com.mechanicshop.crm.repository;
 // Required imports
 
 import com.mechanicshop.crm.model.Repair; // Importing the Repair entity
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.jpa.repository.JpaRepository; // Spring Data JPA repository interface
 import org.springframework.data.jpa.repository.Query;
@@ -15,6 +16,9 @@ import java.util.Optional;
 @Repository // Marks the interface as a repository component in the Spring context
 public interface RepairRepository extends JpaRepository<Repair, Long> {
     Optional<Repair> findTopByOrderByStartDateDesc();
+
+    @Query("SELECT r FROM Repair r JOIN FETCH r.vehicle ORDER BY r.startDate DESC")
+    Page<Repair> findLatestRepairWithVehicle(Pageable pageable);
 
 
 }
