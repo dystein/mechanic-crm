@@ -69,7 +69,7 @@ const DefaultButton: FunctionComponent<DefaultButtonType> = ({
       type={type} // Applying the button type
       onClick={onClick} // Applying the onClick event handler
       style={{...DefaultButtonStyle, ...buttonTextStyle}} // Merging the button styles with text styles
-      className="rounded-xl overflow-hidden flex items-center justify-center py-2.5 px-6 text-sm font-bold border-[1px] border-solid"
+      className="hover:cursor-pointer rounded-xl overflow-hidden flex items-center justify-center py-2.5 px-6 text-sm font-bold border-[1px] border-solid"
     >
       {buttonText}
     </button>

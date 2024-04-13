@@ -151,7 +151,7 @@ const VehicleDetail: FunctionComponent = () => {
                 <div className="self-stretch flex flex-row items-start justify-start gap-[24px]">
                   <div className="flex-1 relative h-[60px]">
                     <div className="absolute top-[0px] left-[0px] leading-[30px]">
-                      Mileage
+                      Mileage 
                     </div>
                     <div className="absolute top-[30px] left-[0px] flex flex-row items-center justify-start text-base text-grey-grey-90">
                       <b className="relative leading-[30px]">123,456</b>
@@ -162,26 +162,26 @@ const VehicleDetail: FunctionComponent = () => {
                       Number of people
                     </div>
                     <b className="absolute top-[30px] left-[0px] text-base leading-[30px] text-grey-grey-90">
-                      10
+                      1
                     </b>
                   </div>
                 </div>
                 <div className="self-stretch flex flex-row items-start justify-start gap-[24px]">
                   <div className="flex-1 relative h-[60px]">
                     <div className="absolute top-[0px] left-[0px] leading-[30px]">
-                      Price
+                      Vehicle Access
                     </div>
                     <div className="absolute top-[30px] left-[0px] flex flex-row items-start justify-start gap-[2px] text-base text-grey-grey-90">
-                      <b className="relative leading-[30px]">$</b>
-                      <b className="relative leading-[30px]">6000</b>
+                      <b className="relative leading-[30px]">Keys with Dylan</b>
+                      <b className="relative leading-[30px]"></b>
                     </div>
                   </div>
                   <div className="flex-1 relative h-[60px]">
                     <div className="absolute top-[0px] left-[0px] leading-[30px]">
-                      Vehicle Access
+                      
                     </div>
                     <b className="absolute top-[30px] left-[0px] text-base leading-[30px] text-grey-grey-90">
-                      Keys with Dylan
+                      
                     </b>
                   </div>
                 </div>
@@ -190,17 +190,13 @@ const VehicleDetail: FunctionComponent = () => {
                     Special Instructions
                   </div>
                   <div className="self-stretch relative text-base leading-[30px] font-medium text-grey-grey-90">
-                    At risus viverra adipiscing at in tellus. Blandit massa enim
-                    nec dui nunc mattis. Lacus vel facilisis volutpat est velit.
-                  </div>
+                    N/A
+                    </div>
                 </div>
               </div>
               <div className="w-80 flex flex-col items-start justify-start">
-                <img
-                  className="w-80 relative rounded-xl h-80 overflow-hidden shrink-0"
-                  alt=""
-                  src="/image8.svg"
-                />
+                
+                
               </div>
             </div>
           </div>

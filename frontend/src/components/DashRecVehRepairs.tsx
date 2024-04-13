@@ -12,7 +12,7 @@ const DashRecVehRepairs = () => {
   return (
     <div className="flex-1 rounded-xl bg-primary-white box-border h-[360px] flex flex-col items-start justify-start text-sm border-[1px] border-solid border-grey-grey-30">
       <div
-        className="self-stretch flex-1 flex flex-col items-start justify-start cursor-pointer"
+        className="self-stretch flex-1 flex flex-col items-start justify-start"
         onClick={onDealContainer2Click}
       >
         <div className="self-stretch relative h-[86px] overflow-hidden shrink-0">
@@ -48,7 +48,7 @@ const DashRecVehRepairs = () => {
             badgeFontWeight="500"
           />
           <img
-            className="absolute top-[calc(50%_-_25px)] right-[24px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
+            className="hover:cursor-pointer hover:bg-grey-grey-20 absolute top-[calc(50%_-_25px)] right-[24px] rounded-31xl w-[50px] h-[50px] overflow-hidden"
             alt=""
             src="/button1.svg"
           />
@@ -106,7 +106,7 @@ const DashRecVehRepairs = () => {
               </div>
             </div>
             <div className="self-stretch relative h-[46px] overflow-hidden shrink-0 text-center text-base text-olive">
-              <b className="absolute top-[calc(50%_-_15px)] left-[calc(50%_-_41.5px)] leading-[30px]">
+              <b className="hover:cursor-pointer absolute top-[calc(50%_-_15px)] left-[calc(50%_-_41.5px)] leading-[30px]">
                 Load More
               </b>
             </div>
