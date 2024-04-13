@@ -104,7 +104,7 @@ const DashLatestRepair = () => {
           <div className="absolute bottom-[24px] right-[24px]">
             <DefaultButton
               buttonText="See Detail"
-              DefaultButtonPosition="absolute"
+              DefaultButtonPosition="sticky"
               DefaultButtonTop="unset"
               DefaultButtonRight="0px"
               DefaultButtonWidth="84px"
