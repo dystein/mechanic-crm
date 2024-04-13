@@ -5,6 +5,7 @@ import com.mechanicshop.crm.service.RepairService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import com.mechanicshop.crm.repository.RepairRepository;
 
 import java.util.List;
 
@@ -47,6 +48,12 @@ public class RepairController {
         return repairService.getRepairById(id).orElseThrow(() -> new RuntimeException("Repair not found"));
     }
 
+    @GetMapping("/latest")
+    public Repair getLatestRepair(){
+        return repairService.findTopByOrderByStartDateDesc()
+                .orElseThrow(() -> new RuntimeException("No repairs found"));
+    }
+
     // PutMapping annotation is used to map HTTP PUT requests onto specific handler methods. Here it's used to update an existing repair entry.
     @PutMapping("/{id}")
     public Repair updateRepair(@PathVariable Long id, @RequestBody Repair repair) {
@@ -65,7 +72,6 @@ public class RepairController {
 
     // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
     // TODO: Implement search functionality and service addition.
-
 
 
 }

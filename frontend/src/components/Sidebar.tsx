@@ -51,8 +51,8 @@ const Sidebar: FunctionComponent = () => {
           src={
             location.pathname === "/vehicles" ||
             location.pathname === "/vehicle-detail"
-              ? "/dealHighlight.svg"
-              : "/deal.svg"
+              ? "/car-yellow.svg"
+              : "/car-svgrepo-com.svg"
           }
           onClick={onButtonIcon1Click}
         />
