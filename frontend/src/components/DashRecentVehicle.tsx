@@ -29,7 +29,8 @@ const DashRecentVehicle: FunctionComponent<VehicleRowType> = ({
   };
 
   return (
-    <div className="hover:cursor-pointer hover:bg-gray-100 self-stretch overflow-hidden shrink-0 flex flex-row items-start justify-start py-[9px] px-6">
+    <div className="hover:cursor-pointer hover:bg-gray-100 self-stretch overflow-hidden shrink-0 flex flex-row items-start justify-start py-[9px] px-6"
+         onClick={() => handleClick()}>
       <div className="flex-1 flex flex-row items-center justify-start gap-[16px]">
         <div className="flex-1 flex flex-col items-start justify-start">
           <div className="self-stretch flex flex-row items-start justify-start gap-[12px]">
