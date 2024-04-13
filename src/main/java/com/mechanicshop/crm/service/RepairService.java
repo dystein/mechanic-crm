@@ -55,9 +55,9 @@ public class RepairService {
     }
 
     public Repair findLatestRepairWithVehicle() {
-        return repairRepository.findLatestRepairWithVehicle(PageRequest.of(0, 1))
-                .getContent().stream().findFirst()
+        return repairRepository.findTopByOrderByStartDateDesc()
                 .orElseThrow(() -> new RuntimeException("No repairs found"));
     }
+
 
 }

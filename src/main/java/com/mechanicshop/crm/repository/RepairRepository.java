@@ -16,8 +16,9 @@ import java.util.Optional;
 @Repository // Marks the interface as a repository component in the Spring context
 public interface RepairRepository extends JpaRepository<Repair, Long> {
 
-    @Query("SELECT r FROM Repair r JOIN FETCH r.vehicle ORDER BY r.startDate DESC")
-    Page<Repair> findLatestRepairWithVehicle(Pageable pageable);
+    @Query("SELECT r FROM Repair r JOIN FETCH r.vehicle v ORDER BY r.startDate DESC")
+    Optional<Repair> findTopByOrderByStartDateDesc();
+
 
 
 }

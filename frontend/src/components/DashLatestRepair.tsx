@@ -1,25 +1,49 @@
-import { useState, useEffect, useCallback } from 'react';
-import DefaultButton from './DefaultButton';
-import { useNavigate } from 'react-router-dom';
+import { useCallback, useEffect, useState } from "react";
+import DefaultButton from "./DefaultButton";
+import { useNavigate } from "react-router-dom";
+
+interface Vehicle {
+  vehicleId: number;
+  make: string;
+  model: string;
+  year: number;
+  mileage: number;
+  state: string;
+}
+
+interface Repair {
+  repairId: number;
+  description: string;
+  startDate: string | null;
+  cost: number;
+  vehicle: Vehicle;
+}
 
 const DashLatestRepair = () => {
   const navigate = useNavigate();
-  const [latestRepair, setLatestRepair] = useState(null);
+  const [latestRepair, setLatestRepair] = useState<Repair | null>(null);
 
   useEffect(() => {
-    // Replace with your actual API endpoint
-    const API_URL = 'https://mechanicshopcrm-fff7703161a3.herokuapp.com/repairs/latest';
-
     const fetchLatestRepair = async () => {
+      const username = 'admin'; // Replace with the correct username
+      const password = 'password'; // Replace with the correct password
+      const basicAuth = `Basic ${btoa(`${username}:${password}`)}`;
+
       try {
-        const response = await fetch(API_URL);
+        const response = await fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/repairs/latest', {
+          headers: {
+            'Authorization': basicAuth,
+          },
+        });
+
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          throw new Error(`HTTP error! status: ${response.status}`);
         }
+
         const data = await response.json();
         setLatestRepair(data);
       } catch (error) {
-        console.error('Failed to fetch latest repair:', error);
+        console.error("Fetching latest repair failed: ", error);
       }
     };
 
@@ -27,36 +51,64 @@ const DashLatestRepair = () => {
   }, []);
 
   const onDealContainerClick = useCallback(() => {
-    // Navigate to the detailed view of the latest repair
-    navigate('/repair-detail/' + latestRepair?.id);
+    if (latestRepair) {
+      navigate(`/repair-detail/${latestRepair.repairId}`);
+    }
   }, [navigate, latestRepair]);
-
-  if (!latestRepair) {
-    return <div>Loading latest repair...</div>;
-  }
 
   return (
     <div className="w-[268px] relative rounded-xl bg-goldenrod-200 box-border h-[392px] text-sm text-primary-white border-[1px] border-solid border-grey-grey-30">
-      {/* ...rest of your component */}
-      <div className="absolute top-[78px] left-[0px] w-[268px] h-[314px] overflow-hidden">
-        {/* ... */}
-        <div className="absolute top-[78px] left-[24px] w-[220px] flex flex-col items-start justify-start">
-          <div className="relative leading-[27px]">Start Date</div>
-          <b className="w-[220px] relative leading-[27px] inline-block h-[27px] shrink-0">
-            {new Date(latestRepair.startDate).toLocaleString()}
+      {/* Latest Repair Header */}
+      <div className="absolute top-[0px] left-[0px] w-[268px] h-[78px] overflow-hidden text-lg">
+        <div className="absolute top-[0px] left-[0px] w-[268px] h-[78px]">
+          <b className="absolute top-[24px] left-[24px] leading-[30px]">
+            Latest Repair
           </b>
+          <div className="absolute top-[34px] right-[28px] rounded-3xs bg-primary-white w-2.5 h-2.5" />
         </div>
-        {/* ...other details */}
-        <div className="absolute top-[236px] left-[24px] w-[73px] flex flex-col items-start justify-start">
-          <div className="relative leading-[27px]">Price</div>
-          <b className="relative leading-[27px]">$ {latestRepair.cost}</b>
-        </div>
-        {/* ... */}
-        <DefaultButton
-          buttonText="See Detail"
-          // ...rest of the props
-        />
       </div>
+      {/* Latest Repair Details */}
+      {latestRepair ? (
+        <div
+          className="absolute top-[78px] left-[0px] w-[268px] h-[314px] overflow-hidden cursor-pointer"
+          onClick={onDealContainerClick}
+        >
+          <div className="absolute top-[24px] left-[24px] leading-[27px]">
+            <b>{`${latestRepair.vehicle.year} ${latestRepair.vehicle.make} ${latestRepair.vehicle.model}`}</b>
+          </div>
+          <div className="absolute top-[78px] left-[24px] leading-[27px]">
+            <div>Appointment Date</div>
+            <b>
+              {latestRepair.startDate ? new Date(latestRepair.startDate).toLocaleDateString() : 'Not set'}
+            </b>
+          </div>
+          <div className="absolute top-[156px] left-[24px] leading-[27px]">
+            <div>Mileage</div>
+            <b>{latestRepair.vehicle.mileage}</b>
+          </div>
+          <div className="absolute top-[156px] right-[24px] leading-[27px]">
+            <div>State</div>
+            <b>{latestRepair.vehicle.state}</b>
+          </div>
+          <div className="absolute top-[236px] left-[24px] leading-[27px]">
+            <div>Cost</div>
+            <b>${latestRepair.cost.toFixed(2)}</b>
+          </div>
+          <DefaultButton
+            buttonText="See Detail"
+            DefaultButtonPosition="absolute"
+            DefaultButtonTop="238px"
+            DefaultButtonRight="24px"
+            DefaultButtonWidth="84px"
+            DefaultButtonOverflow="hidden"
+            DefaultButtonBackgroundColor="#fff"
+            DefaultButtonBorder="1px solid #eaeef4"
+            buttonColor="#092c4c"
+          />
+        </div>
+      ) : (
+        <div className="absolute top-[78px] left-[24px]">Loading latest repair...</div>
+      )}
     </div>
   );
 };
