@@ -2,7 +2,6 @@ package com.mechanicshop.crm.controller;
 
 import com.mechanicshop.crm.model.Repair;
 import com.mechanicshop.crm.service.RepairService;
-import com.mechanicshop.crm.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -67,11 +66,6 @@ public class RepairController {
     // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
     // TODO: Implement search functionality and service addition.
 
-    @GetMapping("/latest")
-    public Repair getLatestRepair(){
-        return (Repair) repairService.findTopByOrderByStartDateDesc()
-                .orElseThrow(() -> new RuntimeException("No repairs found"));
-    }
 
 
 }
