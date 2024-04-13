@@ -71,4 +71,5 @@ public class VehicleController {
     public ResponseEntity<Long> getTotalVehicleCount() {
         long count = vehicleService.getVehiclesCount();
         return new ResponseEntity<>(count, HttpStatus.OK);
+    }
 }
