@@ -81,7 +81,7 @@ const DashLatestRepair = () => {
           </div>
           {/* Appointment Date */}
           <div className="absolute top-[78px] left-[24px]">
-            <div className="relative leading-[27px]">Appointment Date</div>
+            <div className="relative leading-[27px]">Start Date</div>
             <b className="relative leading-[27px]">
               {latestRepair.startDate ? new Date(latestRepair.startDate).toLocaleDateString() : 'Not set'}
             </b>
