@@ -30,7 +30,8 @@ const CustomerRow: FunctionComponent<CustomerRowType> = ({
   // const [street, city, state, zip] = address.split(', ');
 
   return (
-    <div className="hover:cursor-pointer hover:bg-gray-100 self-stretch relative h-20 overflow-hidden shrink-0 text-left text-base text-primary-navy font-heading-h5-bold">
+    <div className="hover:cursor-pointer hover:bg-gray-100 self-stretch relative h-20 overflow-hidden shrink-0 text-left text-base text-primary-navy font-heading-h5-bold"
+         onClick={() => handleClick()}>
       <div className="absolute h-[calc(100%_-_1px)] w-full top-[0px] right-[0px] bottom-[1px] left-[0px] flex flex-row items-center justify-start py-0 pr-6 pl-3 box-border gap-[24px]">
         <div className="flex-1 relative h-[30px] overflow-hidden">
           <div className="absolute top-[calc(50%_-_14.5px)] left-[0px] overflow-hidden flex flex-row items-start justify-start gap-[5px]">
