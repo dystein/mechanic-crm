@@ -55,6 +55,7 @@ public class RepairService {
     }
 
     public Optional<Repair> findTopByOrderByStartDateDesc() {
-        return repairRepository.findTopByOrderByStartDateDesc((Pageable) PageRequest.of(0, 1));
+        return repairRepository.findTopByOrderByStartDateDesc();
+
     }
 }
