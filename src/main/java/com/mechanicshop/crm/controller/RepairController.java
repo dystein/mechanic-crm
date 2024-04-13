@@ -65,4 +65,12 @@ public class RepairController {
 
     // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
     // TODO: Implement search functionality and service addition.
+
+    @GetMapping("/latest")
+    public Repair getLatestRepair(){
+        return repairService.findTopByOrderByStartDateDesc()
+                .orElseThrow(() -> new RuntimeException("No repairs found"));
+    }
+
+
 }

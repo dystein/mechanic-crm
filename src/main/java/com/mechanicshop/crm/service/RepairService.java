@@ -49,4 +49,8 @@ public class RepairService {
                 .orElseThrow(() -> new RuntimeException("Repair not found for this id :: " + id));
         repairRepository.delete(repair);
     }
+
+    public Optional<Object> findTopByOrderByStartDateDesc() {
+        return Optional.ofNullable(repairRepository.findTopByOrderByStartDateDesc());
+    }
 }
