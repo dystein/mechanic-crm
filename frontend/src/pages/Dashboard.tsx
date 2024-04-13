@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useCallback, useEffect } from "react";
+import React, { FunctionComponent, useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashRecentVehicle from "../components/DashRecentVehicle";
 import DashLatestRepair from "../components/DashLatestRepair";
@@ -7,11 +7,22 @@ import CustomerVehicleCount from "../components/CustomerVehicleCount";
 import DashRecentCustomer from "../components/DashRecentCustomer";
 import Sidebar from "../components/Sidebar";
 import MainHeader from "../components/MainHeader";
+import {fetchCustomers} from "./api";
+import VehicleRow from "../components/VehicleRow";
+
+interface Customer {
+  customerid: number;
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+}
 
 const Dashboard: FunctionComponent = () => {
   const navigate = useNavigate();
   const [totalCustomers, setTotalCustomers] = useState(0);
   const [totalVehicles, setTotalVehicles] = useState(0);
+  const [customers, setCustomers] = useState<Customer[]>([]);
 
   // Correctly use process.env.REACT_APP_API_BASE_URL
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
@@ -65,9 +76,40 @@ const Dashboard: FunctionComponent = () => {
       }
     };
 
+  {/* ITS ONLY USING 7 EVEN THO IT SAYS 8}*/}
+  const select8Customers = (customers: any[]) => {
+    customers.sort(() => Math.random() - 0.5);
+    return customers.slice(0, 7);
+  }
+
+  const fetchCustomers = async () => {
+    try {
+      const response = await fetch(
+          "https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers",
+          {
+            headers: {
+              'Authorization': basicAuth,
+            },
+          }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json()
+      const eightCustomers = select8Customers(data);
+      console.log("Fetched data:", data);
+      setCustomers(eightCustomers);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
   useEffect(() => {
     fetchTotalCustomers();
     fetchTotalVehicles();
+    fetchCustomers()
   }, []);
 
   const onVehiclesClick = useCallback(() => {
@@ -143,14 +185,17 @@ const Dashboard: FunctionComponent = () => {
             <div className="self-stretch relative shrink-0 text-base">
               <div className="absolute w-full top-[0px] right-[0px] left-[0px] flex flex-col items-start justify-start gap-[3px]">
                 {/* Add map functionality for 8 recent customers from db: repairs/startdate/customers */}
-                <DashRecentCustomer />
-                <DashRecentCustomer />
-                <DashRecentCustomer />
-                <DashRecentCustomer />
-                <DashRecentCustomer />
-                <DashRecentCustomer />
-                <DashRecentCustomer />
-                <DashRecentCustomer />
+                {(
+                    customers.map((customer) => (
+                        <DashRecentCustomer
+                            customerid={customer.customerid}
+                            firstName={customer.firstName}
+                            lastName={customer.lastName}
+                            phone={customer.phone}
+                            email={customer.email}
+                        />
+                    ))
+                )}
               </div>
             </div>
           </div>
