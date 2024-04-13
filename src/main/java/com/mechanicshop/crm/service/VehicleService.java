@@ -78,4 +78,8 @@ public class VehicleService {
     public void saveAllVehicles(List<Vehicle> vehicles) {
         vehicleRepository.saveAll(vehicles);
     }
+
+    public long getVehiclesCount() {
+        return vehicleRepository.count();
+    }
 }
