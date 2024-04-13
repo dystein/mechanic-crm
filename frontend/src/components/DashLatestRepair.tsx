@@ -1,13 +1,41 @@
-import { useCallback } from "react";
+import { useEffect, useState, useCallback } from "react";
 import DefaultButton from "./DefaultButton";
 import { useNavigate } from "react-router-dom";
 
 const DashLatestRepair = () => {
   const navigate = useNavigate();
+  const [latestRepair, setLatestRepair] = useState(null);
+
+  useEffect(() => {
+    // Assuming you have already set the authentication credentials somewhere
+    const username = 'admin';
+    const password = 'password';
+    const headers = new Headers({
+      'Authorization': 'Basic ' + btoa(username + ":" + password)
+    });
+
+    fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/repairs/latest', { headers })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
+      .then(data => {
+        setLatestRepair(data);
+      })
+      .catch(error => {
+        console.error('Error fetching latest repair:', error);
+      });
+  }, []); // The empty array causes this effect to only run on mount
 
   const onDealContainerClick = useCallback(() => {
     navigate("/vehicle-detail");
   }, [navigate]);
+
+  if (!latestRepair) {
+    return <div>Loading latest repair details...</div>;
+  }
 
   return (
     <div className="w-[268px] relative rounded-xl bg-goldenrod-200 box-border h-[392px] text-sm text-primary-white border-[1px] border-solid border-grey-grey-30">

@@ -4,9 +4,13 @@ package com.mechanicshop.crm.service;
 import com.mechanicshop.crm.model.Repair;
 import com.mechanicshop.crm.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+
+import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.data.domain.PageRequest;
 
 @Service // Marks the class as a Spring service component
 public class RepairService {
@@ -51,6 +55,6 @@ public class RepairService {
     }
 
     public Optional<Repair> findTopByOrderByStartDateDesc() {
-        return repairRepository.findTopByOrderByStartDateDesc();
+        return repairRepository.findTopByOrderByStartDateDesc((Pageable) PageRequest.of(0, 1));
     }
 }
