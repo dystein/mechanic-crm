@@ -11,6 +11,7 @@ import MainHeader from "../components/MainHeader";
 const Dashboard: FunctionComponent = () => {
   const navigate = useNavigate();
   const [totalCustomers, setTotalCustomers] = useState(0);
+  const [totalVehicles, setTotalVehicles] = useState(0);
 
   // Correctly use process.env.REACT_APP_API_BASE_URL
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
@@ -43,8 +44,30 @@ const Dashboard: FunctionComponent = () => {
     }
   };
 
+  const fetchTotalVehicles = async () => {
+      try {
+        const response = await fetch("https://mechanicshopcrm-fff7703161a3.herokuapp.com/vehicles/count", {
+          headers: {
+            'Authorization': basicAuth,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        // Assuming the API returns the count directly as a number
+        // If the structure is different, you will need to adjust how you extract the count
+        const totalCount = await response.json();
+        setTotalVehicles(totalCount);
+      } catch (error) {
+        console.error("Error fetching total customer count: ", error);
+      }
+    };
+
   useEffect(() => {
     fetchTotalCustomers();
+    fetchTotalVehicles();
   }, []);
 
   const onVehiclesClick = useCallback(() => {
@@ -94,7 +117,10 @@ const Dashboard: FunctionComponent = () => {
                 customerOrVehicle="Customers"
                 count={totalCustomers}
               />
-              <CustomerVehicleCount customerOrVehicle="Vehicles" />
+              <CustomerVehicleCount
+                customerOrVehicle="Vehicles"
+                count={totalVehicles}
+              />
             </div>
             {/* Recent Vehicle Repairs */}
             <DashRecVehRepairs />
