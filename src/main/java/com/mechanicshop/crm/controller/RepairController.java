@@ -2,8 +2,10 @@ package com.mechanicshop.crm.controller;
 
 import com.mechanicshop.crm.model.Repair;
 import com.mechanicshop.crm.service.RepairService;
+import com.mechanicshop.crm.service.RepairWithVehicleDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.mechanicshop.crm.repository.RepairRepository;
 
@@ -19,7 +21,7 @@ public class RepairController {
     // The RepairService dependency is automatically injected by Spring's dependency injection facilities.
     private final RepairService repairService;
 
-    // Autowired annotation is used to automatically inject the RepairService into this controller.
+    // Autowired's annotation is used to automatically inject the RepairService into this controller.
     @Autowired
     public RepairController(RepairService repairService) {
         this.repairService = repairService;
@@ -66,13 +68,14 @@ public class RepairController {
     }
 
     @GetMapping("/latest")
-    public Repair getLatestRepairWithVehicle() {
-        return repairService.findLatestRepairWithVehicle();
+    public ResponseEntity<RepairWithVehicleDTO> getLatestRepairWithVehicle() {
+        RepairWithVehicleDTO repairWithVehicleDTO = repairService.findLatestRepairWithVehicle();
+        return ResponseEntity.ok(repairWithVehicleDTO);
+
+
+        // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
+        // TODO: Implement search functionality and service addition.
+
+
     }
-
-
-    // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
-    // TODO: Implement search functionality and service addition.
-
-
 }

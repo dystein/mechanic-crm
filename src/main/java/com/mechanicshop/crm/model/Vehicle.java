@@ -126,4 +126,8 @@ public class Vehicle {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+    public Long getId() {
+        return vehicleId;
+    }
 }
