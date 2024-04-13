@@ -3,26 +3,26 @@ import { useNavigate } from "react-router-dom";
 
 export type VehicleRowType = {
     avatar?: string;
-    vehicleid: number;
+    vehicleId: number;
     customerid?: number;
     make: string;
     model: string;
     year: number;
     mileage: number;
-    licenseplate: string;
+    licensePlate: string;
     state: string;
     notes?: string;
 };
 
 const VehicleRow: FunctionComponent<VehicleRowType> = ({
                                                            avatar,
-                                                           vehicleid,
+                                                           vehicleId,
                                                            customerid,
                                                            make,
                                                            model,
                                                            year,
                                                            mileage,
-                                                           licenseplate,
+                                                           licensePlate,
                                                            state,
                                                            notes
 }) => {
@@ -30,7 +30,7 @@ const VehicleRow: FunctionComponent<VehicleRowType> = ({
 
     const handleClick = () => {
         // Navigate to vehicle detail page
-        navigate(`/vehicle-detail/${vehicleid}`);
+        navigate(`/vehicle-detail/${vehicleId}`);
     };
 
     return (
@@ -57,7 +57,7 @@ const VehicleRow: FunctionComponent<VehicleRowType> = ({
                 </div>
                 <div className="flex-1 relative h-[30px] overflow-hidden">
                     <div className="absolute top-[calc(50%_-_14.5px)] left-[0px] h-[30px] overflow-hidden flex flex-row items-start justify-start gap-[5px]">
-                        <div className="relative leading-[30px]">{licenseplate}</div>
+                        <div className="relative leading-[30px]">{licensePlate}</div>
                     </div>
                 </div>
                 <img
@@ -66,7 +66,7 @@ const VehicleRow: FunctionComponent<VehicleRowType> = ({
                     src="/edit-cell1.svg"
                     onClick={(e) => {
                         e.stopPropagation(); // Prevent the row's click event
-                        navigate(`/vehicle-edit/${vehicleid}`);
+                        navigate(`/vehicle-edit/${vehicleId}`);
                     }}
                 />
             </div>
