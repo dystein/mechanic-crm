@@ -2,6 +2,7 @@ package com.mechanicshop.crm.controller;
 
 import com.mechanicshop.crm.model.Repair;
 import com.mechanicshop.crm.service.RepairService;
+import com.mechanicshop.crm.repository.RepairRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -68,7 +69,7 @@ public class RepairController {
 
     @GetMapping("/latest")
     public Repair getLatestRepair(){
-        return repairService.findTopByOrderByStartDateDesc()
+        return (Repair) repairService.findTopByOrderByStartDateDesc()
                 .orElseThrow(() -> new RuntimeException("No repairs found"));
     }
 
