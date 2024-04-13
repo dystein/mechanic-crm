@@ -1,4 +1,4 @@
-import { FunctionComponent, useState, useCallback } from "react";
+import { FunctionComponent, useState, useCallback, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import DashRecentVehicle from "../components/DashRecentVehicle";
 import DashLatestRepair from "../components/DashLatestRepair";
@@ -10,6 +10,65 @@ import MainHeader from "../components/MainHeader";
 
 const Dashboard: FunctionComponent = () => {
   const navigate = useNavigate();
+  const [totalCustomers, setTotalCustomers] = useState(0);
+  const [totalVehicles, setTotalVehicles] = useState(0);
+
+  // Correctly use process.env.REACT_APP_API_BASE_URL
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+
+  // Correctly declare username and password
+  const username = 'admin';
+  const password = 'password';
+
+  // Correctly assign basicAuth without duplicate 'const' and variable declaration
+  const basicAuth = `Basic ${btoa(`${username}:${password}`)}`; // Encode username and password in base64
+
+  const fetchTotalCustomers = async () => {
+    try {
+      const response = await fetch("https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers/count", {
+        headers: {
+          'Authorization': basicAuth,
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Assuming the API returns the count directly as a number
+      // If the structure is different, you will need to adjust how you extract the count
+      const totalCount = await response.json();
+      setTotalCustomers(totalCount);
+    } catch (error) {
+      console.error("Error fetching total customer count: ", error);
+    }
+  };
+
+  const fetchTotalVehicles = async () => {
+      try {
+        const response = await fetch("https://mechanicshopcrm-fff7703161a3.herokuapp.com/vehicles/count", {
+          headers: {
+            'Authorization': basicAuth,
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+
+        // Assuming the API returns the count directly as a number
+        // If the structure is different, you will need to adjust how you extract the count
+        const totalCount = await response.json();
+        setTotalVehicles(totalCount);
+      } catch (error) {
+        console.error("Error fetching total customer count: ", error);
+      }
+    };
+
+  useEffect(() => {
+    fetchTotalCustomers();
+    fetchTotalVehicles();
+  }, []);
 
   const onVehiclesClick = useCallback(() => {
     navigate("/vehicles");
@@ -21,7 +80,7 @@ const Dashboard: FunctionComponent = () => {
 
   return (
     <div className="w-[1366px] bg-grey-grey-10 max-w-full h-[910px] overflow-y-auto text-left text-5xl text-primary-navy font-heading-h5-bold">
-      <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start  bottom-[0px]">
+      <div className="absolute w-[calc(100%_-_90px)] top-[90px] right-[0px] left-[90px] flex flex-col items-start justify-start bottom-[0px]">
         {/* Inner dashboard content */}
         <div className="absolute w-[calc(100%_-_417px)] top-[0px] right-[417px] left-[0px] h-[820px]">
           {/* Inner dashboard content: Upper section */}
@@ -54,8 +113,14 @@ const Dashboard: FunctionComponent = () => {
           <div className="absolute w-[calc(100%_-_48px)] top-[436px] right-[24px] left-[24px] flex flex-row items-start justify-start gap-[24px] text-grey-grey-70">
             {/* Customer & Vehicle Count */}
             <div className="w-[268px] h-[360px] flex flex-col items-start justify-start gap-[24px]">
-              <CustomerVehicleCount customerOrVehicle="Customers" />
-              <CustomerVehicleCount customerOrVehicle="Vehicles" />
+              <CustomerVehicleCount
+                customerOrVehicle="Customers"
+                count={totalCustomers}
+              />
+              <CustomerVehicleCount
+                customerOrVehicle="Vehicles"
+                count={totalVehicles}
+              />
             </div>
             {/* Recent Vehicle Repairs */}
             <DashRecVehRepairs />

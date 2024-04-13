@@ -4,16 +4,18 @@ import { useNavigate } from "react-router-dom";
 
 export type CustomerVehicleCountType = {
   customerOrVehicle?: string;
+  count?: number; // New property to display the count dynamically
 };
 
 const CustomerVehicleCount: FunctionComponent<CustomerVehicleCountType> = ({
   customerOrVehicle,
+  count // Use the new count prop
 }) => {
   const navigate = useNavigate();
 
   const onDashboardVehiclesCountClick = useCallback(() => {
     navigate(`/${customerOrVehicle?.toLowerCase()}`);
-  }, [navigate]);
+  }, [navigate, customerOrVehicle]);
 
   return (
     <div
@@ -25,8 +27,8 @@ const CustomerVehicleCount: FunctionComponent<CustomerVehicleCountType> = ({
           {customerOrVehicle}
         </div>
         <div className="absolute top-[64px] left-[24px] text-29xl leading-[80px] font-semibold font-manrope text-primary-navy">
-          {/* Need to make this number dynamic */}
-          69
+          {/* Dynamic count displayed here */}
+          {count ?? 'N/A'}
         </div>
         <img
           className="absolute top-[44px] left-[164px] rounded-81xl w-20 h-20 overflow-hidden"

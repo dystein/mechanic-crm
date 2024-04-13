@@ -4,6 +4,7 @@ import com.mechanicshop.crm.model.Vehicle;
 import com.mechanicshop.crm.service.VehicleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -64,5 +65,11 @@ public class VehicleController {
                                         @RequestParam(required = false) String model) {
         // The method delegates the search operation to the VehicleService, potentially using all or some of the provided parameters.
         return vehicleService.searchVehicles(licensePlate, make, model);
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getTotalVehicleCount() {
+        long count = vehicleService.getVehiclesCount();
+        return new ResponseEntity<>(count, HttpStatus.OK);
     }
 }
