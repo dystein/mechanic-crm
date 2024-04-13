@@ -48,11 +48,6 @@ public class RepairController {
         return repairService.getRepairById(id).orElseThrow(() -> new RuntimeException("Repair not found"));
     }
 
-    @GetMapping("/latest")
-    public Repair getLatestRepair(){
-        return repairService.findTopByOrderByStartDateDesc()
-                .orElseThrow(() -> new RuntimeException("No repairs found"));
-    }
 
     // PutMapping annotation is used to map HTTP PUT requests onto specific handler methods. Here it's used to update an existing repair entry.
     @PutMapping("/{id}")
