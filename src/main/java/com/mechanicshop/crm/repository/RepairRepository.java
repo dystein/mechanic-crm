@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.JpaRepository; // Spring Data JPA
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository; // Annotation to denote a repository component
 
-import java.awt.print.Pageable;
+import org.springframework.data.domain.Pageable;
 import java.util.List; // Import for using the List collection
 import java.util.Optional;
 
