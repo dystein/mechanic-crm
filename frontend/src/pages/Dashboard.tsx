@@ -12,24 +12,40 @@ const Dashboard: FunctionComponent = () => {
   const navigate = useNavigate();
   const [totalCustomers, setTotalCustomers] = useState(0);
 
-  const API_BASE_URL = "http://localhost:3000";
+  // Correctly use process.env.REACT_APP_API_BASE_URL
+  const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
+
+  // Correctly declare username and password
+  const username = 'admin';
+  const password = 'password';
+
+  // Correctly assign basicAuth without duplicate 'const' and variable declaration
+  const basicAuth = `Basic ${btoa(`${username}:${password}`)}`; // Encode username and password in base64
 
   const fetchTotalCustomers = async () => {
-      try {
-        const response = await fetch(`${API_BASE_URL}/customers/count`);
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-        const totalCount = await response.json();
-        setTotalCustomers(totalCount);
-      } catch (error) {
-        console.error("Error fetching total customer count: ", error);
-      }
-    };
+    try {
+      const response = await fetch("https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers/count", {
+        headers: {
+          'Authorization': basicAuth,
+        },
+      });
 
-    useEffect(() => {
-        fetchTotalCustomers();
-      }, [])
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      // Assuming the API returns the count directly as a number
+      // If the structure is different, you will need to adjust how you extract the count
+      const totalCount = await response.json();
+      setTotalCustomers(totalCount);
+    } catch (error) {
+      console.error("Error fetching total customer count: ", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchTotalCustomers();
+  }, []);
 
   const onVehiclesClick = useCallback(() => {
     navigate("/vehicles");
