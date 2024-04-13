@@ -18,11 +18,24 @@ interface Customer {
   email: string;
 }
 
+interface Vehicle {
+  vehicleId: number; // add elsewhere
+  customerid: number; // make work
+  make: string;
+  model: string;
+  year: number;
+  mileage: number;
+  licensePlate: string;
+  state: string;
+  notes: string;
+}
+
 const Dashboard: FunctionComponent = () => {
   const navigate = useNavigate();
   const [totalCustomers, setTotalCustomers] = useState(0);
   const [totalVehicles, setTotalVehicles] = useState(0);
   const [customers, setCustomers] = useState<Customer[]>([]);
+  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
 
   // Correctly use process.env.REACT_APP_API_BASE_URL
   const API_BASE_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:3000";
@@ -106,10 +119,41 @@ const Dashboard: FunctionComponent = () => {
     }
   };
 
+  const selectVehicles = (vehicles: any[]) => {
+    vehicles.sort(() => Math.random() - 0.5);
+    return vehicles.slice(0, 4);
+  }
+
+  const fetchVehicles = async () => {
+    try {
+      const response = await fetch(
+          "https://mechanicshopcrm-fff7703161a3.herokuapp.com/vehicles",
+          {
+            headers: {
+              'Authorization': basicAuth,
+            },
+          }
+      );
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      const selectedVehicles = selectVehicles(data);
+      console.log("Fetched data:", data);
+      setVehicles(selectedVehicles);
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    } finally {
+    }
+  };
+
   useEffect(() => {
     fetchTotalCustomers();
     fetchTotalVehicles();
     fetchCustomers()
+    fetchVehicles();
   }, []);
 
   const onVehiclesClick = useCallback(() => {
@@ -142,10 +186,18 @@ const Dashboard: FunctionComponent = () => {
               </div>
               <div className="self-stretch h-[314px] overflow-y-auto shrink-0 flex flex-col items-start justify-start gap-[4px] text-base">
                 {/* Add map functionality for 4 recent vehicles from db: repairs/startdate */}
-                <DashRecentVehicle />
-                <DashRecentVehicle />
-                <DashRecentVehicle />
-                <DashRecentVehicle />
+                {(
+                    vehicles.map((vehicle) => (
+                        <DashRecentVehicle
+                            vehicleId={vehicle.vehicleId}
+                            year={vehicle.year}
+                            make={vehicle.make}
+                            model={vehicle.model}
+                            licensePlate={vehicle.licensePlate}
+                            state={vehicle.state}
+                        />
+                    ))
+                )}
               </div>
             </div>
             {/* Latest Repair */}
