@@ -48,6 +48,7 @@ public class Vehicle {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "customerID") // Specifies the foreign key column in the vehicles table
     @JsonIgnore
+    @JsonBackReference
     private Customer customer;
 
     // Default no-argument constructor required by JPA
