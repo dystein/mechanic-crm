@@ -8,8 +8,9 @@ export type LabelYesType = {
   showIcon?: boolean;
   showPlaceholder?: boolean;
   iconVisible?: boolean;
-  value?: string; // Added value prop
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void; // Added onChange prop
+  value?: string;
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void;
+  name?: string;  // Added name prop for handling form fields
 
   /** Style props */
   labelYesFlex?: CSSProperties["flex"];
@@ -40,8 +41,9 @@ const LabelYes: FunctionComponent<LabelYesType> = ({
   inputBackgroundColor,
   placeholderFlex,
   placeholderWidth,
-  value, // Utilizing value prop
-  onChange, // Utilizing onChange prop
+  value,
+  onChange,
+  name,
 }) => {
   const labelYesStyle: CSSProperties = useMemo(() => ({
       flex: labelYesFlex,
@@ -69,6 +71,7 @@ const LabelYes: FunctionComponent<LabelYesType> = ({
         value={value || ''}
         onChange={onChange}
         placeholder={placeholder}
+        name={name}  // Include the name attribute here
       />
     </div>
   );

@@ -1,5 +1,7 @@
 package com.mechanicshop.crm.controller;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.mechanicshop.crm.model.Customer;
 import com.mechanicshop.crm.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,20 +43,24 @@ public class CustomerController {
     // it will return the HTTP status code CREATED (201).
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
-    public Customer addCustomer(@RequestBody Customer customer) {
-        logger.info("Attempting to add customer: {}", customer);
-
-        try{
+    public ResponseEntity<Customer> addCustomer(@RequestBody String customerJson) {
+        logger.info("Received JSON for new customer: {}", customerJson);
+        try {
+            Customer customer = new ObjectMapper().readValue(customerJson, Customer.class);
             Customer savedCustomer = customerService.saveCustomer(customer);
             logger.info("Customer added successfully: {}", savedCustomer);
-            return savedCustomer;
+            return ResponseEntity.status(HttpStatus.CREATED).body(savedCustomer);
+        } catch (JsonProcessingException e) {
+            logger.error("Error parsing customer JSON: {}", e.getMessage());
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
         } catch (Exception e) {
             logger.error("Error saving customer: {}", e.getMessage(), e);
-            throw new RuntimeException(e);
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
-        // Calls the saveCustomer method of customerService to add a new customer
-        // to the database and returns the saved Customer object.
     }
+
+
+
 
     // @GetMapping annotation is used to map HTTP GET requests onto the
     // specific handler method below.
@@ -97,6 +103,8 @@ public class CustomerController {
         long count = customerService.getCustomersCount();
         return new ResponseEntity<>(count, HttpStatus.OK);
     }
+
+
 
 
 }

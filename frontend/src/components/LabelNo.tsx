@@ -6,8 +6,9 @@ export type LabelNoType = {
   icon1?: string;
   showIcon?: boolean;
   iconVisible?: boolean;
-  value?: string; // Add value prop
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void; // Add onChange prop
+  value?: string; // Utilizing value prop
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void; // Utilizing onChange prop
+  name?: string; // Added name prop for handling form fields
 
   /** Style props */
   labelNoFlex?: CSSProperties["flex"];
@@ -28,8 +29,9 @@ const LabelNo: FunctionComponent<LabelNoType> = ({
   labelNoAlignSelf,
   labelNoBackgroundColor,
   placeholderFlex,
-  value, // Utilizing value prop
-  onChange, // Utilizing onChange prop
+  value,
+  onChange,
+  name,
 }) => {
   const labelNoStyle: CSSProperties = useMemo(() => ({
       flex: labelNoFlex,
@@ -47,6 +49,7 @@ const LabelNo: FunctionComponent<LabelNoType> = ({
         value={value || ''}
         onChange={onChange}
         placeholder={placeholder}
+        name={name} // Include the name attribute here
       />
       {iconVisible && <img className="w-5 h-5" alt="" src={icon1} />}
     </div>
