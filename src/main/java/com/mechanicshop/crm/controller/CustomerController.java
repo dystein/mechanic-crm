@@ -8,6 +8,9 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 // The @RestController annotation marks this class as a controller where
@@ -18,6 +21,8 @@ import java.util.List;
 // controller methods.
 @RequestMapping("/customers")
 public class CustomerController {
+
+    private static final Logger logger = LoggerFactory.getLogger(CustomerController.class);
 
     // This is an instance of CustomerService that will be used to handle
     // the business logic.
@@ -37,9 +42,18 @@ public class CustomerController {
     @PostMapping(consumes = "application/json")
     @ResponseStatus(HttpStatus.CREATED)
     public Customer addCustomer(@RequestBody Customer customer) {
+        logger.info("Attempting to add customer: {}", customer);
+
+        try{
+            Customer savedCustomer = customerService.saveCustomer(customer);
+            logger.info("Customer added successfully: {}", savedCustomer);
+            return savedCustomer;
+        } catch (Exception e) {
+            logger.error("Error saving customer: {}", e.getMessage(), e);
+            throw new RuntimeException(e);
+        }
         // Calls the saveCustomer method of customerService to add a new customer
         // to the database and returns the saved Customer object.
-        return customerService.saveCustomer(customer);
     }
 
     // @GetMapping annotation is used to map HTTP GET requests onto the

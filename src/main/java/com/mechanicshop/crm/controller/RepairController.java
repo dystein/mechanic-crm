@@ -49,7 +49,17 @@ public class RepairController {
         // Calls the getRepairById method of the repair service to retrieve a repair. Throws an exception if the repair is not found.
         return repairService.getRepairById(id).orElseThrow(() -> new RuntimeException("Repair not found"));
     }
+    @GetMapping("/latest")
+    public ResponseEntity<RepairWithVehicleDTO> getLatestRepairWithVehicle() {
+        RepairWithVehicleDTO repairWithVehicleDTO = repairService.findLatestRepairWithVehicle();
+        return ResponseEntity.ok(repairWithVehicleDTO);
 
+
+        // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
+        // TODO: Implement search functionality and service addition.
+
+
+    }
 
     // PutMapping annotation is used to map HTTP PUT requests onto specific handler methods. Here it's used to update an existing repair entry.
     @PutMapping("/{id}")
@@ -67,15 +77,5 @@ public class RepairController {
         repairService.deleteRepair(id);
     }
 
-    @GetMapping("/latest")
-    public ResponseEntity<RepairWithVehicleDTO> getLatestRepairWithVehicle() {
-        RepairWithVehicleDTO repairWithVehicleDTO = repairService.findLatestRepairWithVehicle();
-        return ResponseEntity.ok(repairWithVehicleDTO);
 
-
-        // A placeholder comment indicating where methods for searching and adding services to a vehicle's information might be added in the future.
-        // TODO: Implement search functionality and service addition.
-
-
-    }
 }

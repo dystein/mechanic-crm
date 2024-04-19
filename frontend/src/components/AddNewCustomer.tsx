@@ -8,20 +8,55 @@ interface ChoicePopupProps {
 }
 
 const AddNewCustomer: FunctionComponent<ChoicePopupProps> = ({ onClose }) => {
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [street, setStreet] = useState('');
-  const [city, setCity] = useState('');
-  const [state, setState] = useState('');
-  const [zip, setZip] = useState('');
+  const [firstname, setfirstname] = useState('');
+  const [lastname, setlastname] = useState('');
+  const [email, setemail] = useState('');
+  const [phone, setphone] = useState('');
+  const [street, setstreet] = useState('');
+  const [city, setcity] = useState('');
+  const [state, setstate] = useState('');
+  const [zip, setzip] = useState('');
 
   const handleSaveCustomer = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // Implement the POST request to save the customer data
-    // If successful, close the form and reset the state
+
+    const customerData = {
+      firstname: firstname,
+      lastname: lastname,
+      email: email,
+      phone: phone,
+      address: `${street}, ${city}, ${state}, ${zip}` // Assuming your backend expects a single string for the address
+    };
+
+    const username = 'admin'; // Replace with actual username
+    const password = 'password'; // Replace with actual password
+    const basicAuth = `Basic ${btoa(`${username}:${password}`)}`;
+
+    try {
+      const response = await fetch('https://mechanicshopcrm-fff7703161a3.herokuapp.com/customers', {
+        method: 'POST',
+        headers: {
+          'Authorization': basicAuth,
+          'Content-Type': 'application/json', // Ensure that the Content-Type header is application/json
+          // Authorization header should be included if your endpoint requires authentication
+        },
+        body: JSON.stringify(customerData)
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      console.log(result);
+      onClose(); // Close the form on successful save
+      // Reset form state here if needed
+    } catch (error) {
+      console.error("Error saving customer:", error);
+    }
   };
+
+
 
   return (
     <div
@@ -43,50 +78,50 @@ const AddNewCustomer: FunctionComponent<ChoicePopupProps> = ({ onClose }) => {
             {/* First Name Input */}
             <LabelYes
               label="First Name"
-              value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              value={firstname}
+              onChange={(e) => setfirstname(e.target.value)}
             />
             {/* Last Name Input */}
             <LabelYes
               label="Last Name"
-              value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              value={lastname}
+              onChange={(e) => setlastname(e.target.value)}
             />
             {/* Email Input */}
             <LabelYes
               label="Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setemail(e.target.value)}
             />
             {/* Phone Input */}
             <LabelYes
               label="Phone"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => setphone(e.target.value)}
             />
             {/* Street Address Input */}
             <LabelYes
               label="Street Address"
               value={street}
-              onChange={(e) => setStreet(e.target.value)}
+              onChange={(e) => setstreet(e.target.value)}
             />
             {/* City Input */}
             <LabelNo
               placeholder="City"
               value={city}
-              onChange={(e) => setCity(e.target.value)}
+              onChange={(e) => setcity(e.target.value)}
             />
             {/* State / Province Input */}
             <LabelNo
               placeholder="State / Province"
               value={state}
-              onChange={(e) => setState(e.target.value)}
+              onChange={(e) => setstate(e.target.value)}
             />
             {/* Zip Code Input */}
             <LabelNo
               placeholder="Zip Code"
               value={zip}
-              onChange={(e) => setZip(e.target.value)}
+              onChange={(e) => setzip(e.target.value)}
             />
             {/* Form Buttons */}
             <div className="flex justify-end gap-2 mt-4">
